@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Syntax and Data Types</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            /* Removed overflow:hidden; from here to allow content scrolling if it exceeds viewport height */
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0; /* Light gray for text */
+            background-color: #0B0F11; /* Very dark background */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0; /* Slightly lighter heading color */
+            font-weight: 700;
+            text-align: left; /* Align headings left as in the image */
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+             text-align: center; /* Main title centered */
+             margin-bottom: 40px;
+             font-size: 2.5em;
+        }
+
+        .section-heading {
+             font-size: 1.8em;
+             border-bottom: 1px solid #333; /* Subtle line below section headings */
+             padding-bottom: 10px;
+             margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content {
+            background-color: #0B0F11; /* Make these blend with body background */
+            padding: 0; /* Remove padding if you want it completely plain */
+            border-radius: 0; /* No rounded corners */
+            box-shadow: none; /* No shadow */
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF; /* Blue border accent */
+            padding-left: 15px;
+            /* background-color: #1A1E22;  Removed for plain background */
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B; /* Dark content background for code */
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖'; /* Using a robot emoji for list style */
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11; /* Blends with body background */
+            border-left: 4px solid #ff9933; /* Orange accent */
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .resources li {
+            background-color: #1E242B; /* Slightly distinct background for resource list items */
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Basic Syntax and Data Types in C, C++, Python, and Java</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Introduction</h2>
+            <div class="intro-text">
+                <p>Understanding basic syntax and data types is the foundation of programming. Data types define the kind of data a variable can hold, such as numbers, characters, or boolean values. This guide will walk you through variables, constants, type conversion, and type casting with real-world examples in C, C++, Python, and Java.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. Variables and Constants</h2>
+
+            <h3>What are Variables?</h3>
+            <p>Variables are named storage locations in memory that hold data. Think of them as labeled jars in a kitchen pantry where you store different ingredients.</p>
+
+            <h3>What are Constants?</h3>
+            <p>Constants are fixed values that do not change during program execution. They are like the recipe instructions that remain the same every time you cook.</p>
+
+            <h3>Real-Life Example:</h3>
+            <div class="real-life-example">
+                <p>Imagine a smart thermostat in your home. The current temperature is a **variable** because it changes throughout the day. The maximum allowed temperature (e.g., 24°C) is a **constant** because it remains fixed to ensure comfort.</p>
+            </div>
+
+            <h3>Code Examples:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-vc')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-vc')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-vc')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-vc')">Java</button>
+            </div>
+
+            <div id="c-vc" class="tab-content">
+                <h3>C: Variables and Constants</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+#define MAX_TEMP 24 // Constant
+
+int main() {
+    int currentTemp = 20; // Variable
+    const float gravity = 9.8; // Constant
+    printf("Current Temperature: %d\n", currentTemp);
+    printf("Maximum Allowed Temperature: %d\n", MAX_TEMP);
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="cpp-vc" class="tab-content">
+                <h3>C++: Variables and Constants</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+#define MAX_TEMP 24 // Constant
+
+int main() {
+    int currentTemp = 20;
+    const float gravity = 9.8;
+    cout &lt;&lt; "Current Temperature: " &lt;&lt; currentTemp &lt;&lt; endl;
+    cout &lt;&lt; "Maximum Allowed Temperature: " &lt;&lt; MAX_TEMP &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="python-vc" class="tab-content">
+                <h3>Python: Variables and Constants</h3>
+                <pre><code>MAX_TEMP = 24 # Constant
+currentTemp = 20 # Variable
+
+type="temperature"
+print(f"Current {type}: {currentTemp}°C")
+print(f"Maximum Allowed {type}: {MAX_TEMP}°C")</code></pre>
+            </div>
+
+            <div id="java-vc" class="tab-content">
+                <h3>Java: Variables and Constants</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        final int MAX_TEMP = 24; // Constant
+        int currentTemp = 20;
+
+        System.out.println("Current Temperature: " + currentTemp + "°C");
+        System.out.println("Maximum Allowed Temperature: " + MAX_TEMP + "°C");
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Data Types</h2>
+
+            <p>Data types define what kind of values a variable can hold.</p>
+            <h3>Common Data Types:</h3>
+            <ul>
+                <li><strong>Integer:</strong> Whole numbers (e.g., 5, -10)</li>
+                <li><strong>Float/Double:</strong> Decimal numbers (e.g., 3.14, -2.7)</li>
+                <li><strong>Character:</strong> Single characters ('A', 'b')</li>
+                <li><strong>String:</strong> Sequence of characters ("Hello")</li>
+                <li><strong>Boolean:</strong> True/False values</li>
+            </ul>
+
+            <h3>Real-Life Example:</h3>
+            <div class="real-life-example">
+                <p>Imagine an online shopping website where:</p>
+                <ul>
+                    <li>The order ID is an **integer** (e.g., 12345).</li>
+                    <li>The product price is a **float** (e.g., $19.99).</li>
+                    <li>The customer's first initial is a **character** (e.g., 'J').</li>
+                    <li>The product name is a **string** (e.g., "Wireless Mouse").</li>
+                    <li>The payment status is a **boolean** (e.g., true for paid, false for pending).</li>
+                </ul>
+            </div>
+
+            <h3>Code Examples:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-dt')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'python-dt')">Python</button>
+            </div>
+
+            <div id="c-dt" class="tab-content">
+                <h3>C: Data Types</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int orderID = 12345;
+    float price = 19.99;
+    char initial = 'J';
+    int paymentStatus = 1; // 1 for true (paid), 0 for false (pending)
+
+    printf("Order ID: %d\n", orderID);
+    printf("Price: %.2f\n", price);
+    printf("Customer Initial: %c\n", initial);
+    printf("Payment Status: %d\n", paymentStatus);
+
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="python-dt" class="tab-content">
+                <h3>Python: Data Types</h3>
+                <pre><code>orderID = 12345
+price = 19.99
+initial = 'J'
+paymentStatus = True
+
+print(f"Order ID: {orderID}")
+print(f"Price: ${price}")
+print(f"Customer Initial: {initial}")
+print(f"Payment Status: {paymentStatus}")</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Type Conversion and Type Casting</h2>
+
+            <h3>Type Conversion (Implicit and Explicit)</h3>
+            <p><strong>Implicit conversion:</strong> The compiler automatically converts smaller data types into larger ones.</p>
+            <p><strong>Explicit conversion (Type Casting):</strong> The user manually converts one data type into another.</p>
+
+            <h3>Real-Life Example:</h3>
+            <div class="real-life-example">
+                <p>Think about converting currency for international travel. If you're converting 100 Indian Rupees (INR) to U.S. Dollars (USD), the system automatically applies the exchange rate (implicit conversion). If you manually round off the converted amount to a whole number, that is explicit conversion.</p>
+            </div>
+
+            <h3>Code Examples:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-tc')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'python-tc')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-tc')">Java</button>
+            </div>
+
+            <div id="c-tc" class="tab-content">
+                <h3>C: Type Conversion and Type Casting</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int rupees = 100;
+    float usd = rupees / 83.0; // Implicit conversion (int to float)
+    int roundedUsd = (int) usd; // Explicit casting
+
+    printf("Converted USD: %.2f\n", usd);
+    printf("Rounded USD: %d\n", roundedUsd);
+
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="python-tc" class="tab-content">
+                <h3>Python: Type Conversion and Type Casting</h3>
+                <pre><code>rupees = 100
+usd = rupees / 83 # Implicit conversion
+rounded_usd = int(usd) # Explicit casting
+
+print(f"Converted USD: {usd:.2f}")
+print(f"Rounded USD: {rounded_usd}")</code></pre>
+            </div>
+
+            <div id="java-tc" class="tab-content">
+                <h3>Java: Type Conversion and Type Casting</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        int rupees = 100;
+        float usd = rupees / 83.0f; // Implicit conversion
+        int roundedUsd = (int) usd; // Explicit casting
+
+        System.out.println("Converted USD: " + usd);
+        System.out.println("Rounded USD: " + roundedUsd);
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>Conclusion</h2>
+            <p>Mastering basic syntax, data types, and type conversion is essential for programming. This guide has provided real-world examples in C, C++, Python and Java to help you understand and implement these concepts efficiently.</p>
+            <p>Keep practicing and exploring more advanced concepts to strengthen your programming skills! 🚀</p>
+            <p>Happy Coding! 🎯</p>
+        </div>
+
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Open the first tab in each tab container by default
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
