@@ -9,6 +9,9 @@
 
         html, body {
             /* Removed overflow:hidden; from here to allow content scrolling if it exceeds viewport height */
+            overflow-y: scroll;   /* keeps scroll functionality */
+            overflow-x: hidden;
+            scrollbar-width: none;  /* for Firefox */
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.6;
             color: #E0E0E0; /* Light gray for text */
@@ -17,6 +20,12 @@
             padding: 0; /* Remove default body padding */
             min-height: 100vh; /* Ensure body takes at least full viewport height */
         }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;   /* for Chrome, Safari, Edge */
+        }
+                
 
         .content-wrapper {
             max-width: 900px;
