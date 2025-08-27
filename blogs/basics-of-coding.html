@@ -9,7 +9,9 @@
 
         html, body {
             /* Hides scrollbars for both horizontal and vertical overflow */
-            overflow: hidden;
+            overflow-y: scroll;   /* keeps scroll functionality */
+            overflow-x: hidden;
+            scrollbar-width: none;  /* for Firefox */
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.6;
             color: #E0E0E0; /* Light gray for text */
@@ -17,6 +19,10 @@
             max-width: 900px;
             margin: auto;
             padding: 20px;
+        }
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;   /* for Chrome, Safari, Edge */
         }
 
         h1, h2, h3 {
