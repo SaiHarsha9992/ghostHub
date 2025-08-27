@@ -8,27 +8,53 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
 
         html, body {
-            /* Hides scrollbars for both horizontal and vertical overflow */
             overflow-y: scroll;   /* keeps scroll functionality */
             overflow-x: hidden;
             scrollbar-width: none;  /* for Firefox */
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.6;
             color: #E0E0E0; /* Light gray for text */
-            background-color: #0B0F11;
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
+            background-color: #0B0F11; /* Very dark background */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
         }
+        
         html::-webkit-scrollbar, 
         body::-webkit-scrollbar {
             display: none;   /* for Chrome, Safari, Edge */
         }
 
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
         h1, h2, h3 {
             color: #F0F0F0; /* Slightly lighter heading color */
             font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+        
+        h1 {
             text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+             font-size: 1.8em;
+             border-bottom: 1px solid #333;
+             padding-bottom: 10px;
+             margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
         }
 
         .image-container {
@@ -40,21 +66,7 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow for dark mode */
-        }
-
-        .container {
-            background-color: #12161A; /* Darker container background, slightly different from body */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-
-        .intro {
-            border-left: 5px solid #00A6FF; /* Blue border accent */
-            padding-left: 15px;
-            background-color: #1A1E22; /* Slightly different background for the intro section */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
         .tab-container {
@@ -63,6 +75,7 @@
             background-color: #1A1E22;
             border-radius: 8px;
             margin-top: 15px;
+            margin-bottom: 20px;
         }
 
         .tab-button {
@@ -91,7 +104,7 @@
             display: none;
             padding: 6px 12px;
             border-top: none;
-            background-color: #1E242B; /* Dark content background */
+            background-color: #1E242B;
             border-radius: 0 0 8px 8px;
         }
 
@@ -112,6 +125,7 @@
         ul {
             list-style-type: '🤖';
             padding-left: 20px;
+            margin-bottom: 15px;
         }
 
         li {
@@ -119,11 +133,21 @@
             margin-bottom: 5px;
         }
 
-        .use-cases p {
-            background-color: #1a2a3a;
-            border-left: 4px solid #3399ff;
+        .use-cases, .steps-to-start {
+            margin-bottom: 20px;
+        }
+
+        .use-cases p, .steps-to-start p {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933; /* Orange accent */
             padding: 10px;
             border-radius: 4px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
         }
 
         .resources ul {
@@ -132,17 +156,10 @@
         }
 
         .resources li {
-            background-color: #2A2A3A;
+            background-color: #1E242B;
             margin-bottom: 10px;
             padding: 10px;
             border-radius: 5px;
-        }
-
-        .concept-steps p {
-            background-color: #3A2A1A;
-            border-left: 4px solid #ff9933;
-            padding: 10px;
-            border-radius: 4px;
         }
 
         @media (max-width: 600px) {
@@ -155,127 +172,128 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="content-wrapper">
         <h1>Introduction to Coding</h1>
-        <div class="intro">
-            <p><strong>What is coding?</strong> Imagine you have a robot that makes coffee. How does it know when to start brewing, add sugar, or pour milk? You have to give it instructions, just like a recipe. Coding is the process of writing these instructions for computers so they can perform specific tasks.</p>
-            <p>Think of coding as writing a set of step-by-step commands for a computer, just like you would tell someone how to cook a dish.</p>
-        </div>
-    </div>
 
-    <div class="image-container">
-        <img src="https://i.ibb.co/L5w2WjS/image-4a3614.png" alt="A robot making coffee.">
-    </div>
-
-    <div class="container">
-        <h2>Why Learn Coding?</h2>
-        <ul>
-            <li><strong>Problem Solving</strong> - Coding is like solving puzzles. The more you code, the better your logical thinking becomes.</li>
-            <li><strong>Career Growth</strong> - Companies like Google, Microsoft, and Tesla rely on coding. It opens doors to high-paying jobs.</li>
-            <li><strong>Automation</strong> - Want to schedule emails, generate reports, or track expenses automatically? Coding can help!</li>
-            <li><strong>Creativity</strong> - Make games, websites, or even AI chatbots that talk like humans.</li>
-            <li><strong>Future-Proof Skill</strong> - As technology evolves, coding will always be in demand.</li>
-        </ul>
-    </div>
-
-    <div class="container">
-        <h2>Popular Programming Languages</h2>
-        <ul>
-            <li><strong>C:</strong> Used in making ATM software.</li>
-            <li><strong>C++:</strong> Used in game development (like PUBG).</li>
-            <li><strong>Python:</strong> Powers AI assistants like Siri and Alexa.</li>
-            <li><strong>Java:</strong> Runs mobile apps like WhatsApp.</li>
-        </ul>
-    </div>
-
-    <div class="container">
-        <h2>Code Examples (With Easy Understanding)</h2>
-        <div class="tab-container">
-            <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
-            <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
-            <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
-            <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+        <div class="introduction">
+            <h2 class="section-heading">What is coding?</h2>
+            <div class="intro-text">
+                <p>Imagine you have a robot that makes coffee. How does it know when to start brewing, add sugar, or pour milk? You have to give it instructions, just like a recipe. Coding is the process of writing these instructions for computers so they can perform specific tasks.</p>
+                <p>Think of coding as writing a set of step-by-step commands for a computer, just like you would tell someone how to cook a dish.</p>
+            </div>
         </div>
 
-        <div id="c-code" class="tab-content">
-            <h3>C Code Example - ATM Welcome Message</h3>
-            <pre><code>#include &lt;stdio.h&gt;
+
+        <div class="section-content">
+            <h2 class="section-heading">Why Learn Coding?</h2>
+            <ul>
+                <li><strong>Problem Solving</strong> - Coding is like solving puzzles. The more you code, the better your logical thinking becomes.</li>
+                <li><strong>Career Growth</strong> - Companies like Google, Microsoft, and Tesla rely on coding. It opens doors to high-paying jobs.</li>
+                <li><strong>Automation</strong> - Want to schedule emails, generate reports, or track expenses automatically? Coding can help!</li>
+                <li><strong>Creativity</strong> - Make games, websites, or even AI chatbots that talk like humans.</li>
+                <li><strong>Future-Proof Skill</strong> - As technology evolves, coding will always be in demand.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Popular Programming Languages</h2>
+            <ul>
+                <li><strong>C:</strong> Used in making ATM software.</li>
+                <li><strong>C++:</strong> Used in game development (like PUBG).</li>
+                <li><strong>Python:</strong> Powers AI assistants like Siri and Alexa.</li>
+                <li><strong>Java:</strong> Runs mobile apps like WhatsApp.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Code Examples (With Easy Understanding)</h2>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+            </div>
+
+            <div id="c-code" class="tab-content">
+                <h3>1. C Code Example - ATM Welcome Message</h3>
+                <pre><code>#include &lt;stdio.h&gt;
 int main() {
     printf("Welcome to Your ATM!\n");
     return 0;
 }</code></pre>
-            <p>This program displays a welcome message, just like an ATM screen when you insert a card.</p>
-        </div>
+                <p>This program displays a welcome message, just like an ATM screen when you insert a card.</p>
+            </div>
 
-        <div id="cpp-code" class="tab-content">
-            <h3>C++ Code Example - Simple Calculator</h3>
-            <pre><code>#include &lt;iostream&gt;
+            <div id="cpp-code" class="tab-content">
+                <h3>2. C++ Code Example - Simple Calculator</h3>
+                <pre><code>#include &lt;iostream&gt;
 using namespace std;
 int main() {
     int a = 10, b = 20;
     cout &lt;&lt; "Sum: " &lt;&lt; a + b &lt;&lt; endl;
     return 0;
 }</code></pre>
-            <p>Imagine a calculator app that adds two numbers and shows the result.</p>
-        </div>
+                <p>Imagine a calculator app that adds two numbers and shows the result.</p>
+            </div>
 
-        <div id="python-code" class="tab-content">
-            <h3>Python Code Example - AI Greeting Bot</h3>
-            <pre><code>name = input("Enter your name: ")
+            <div id="python-code" class="tab-content">
+                <h3>3. Python Code Example - AI Greeting Bot</h3>
+                <pre><code>name = input("Enter your name: ")
 print("Hello, " + name + "! Welcome to AI World!")</code></pre>
-            <p>Just like how Alexa or Google Assistant greets you, this program greets users based on input.</p>
-        </div>
+                <p>Just like how Alexa or Google Assistant greets you, this program greets users based on input.</p>
+            </div>
 
-        <div id="java-code" class="tab-content">
-            <h3>Java Code Example - Mobile App Notification</h3>
-            <pre><code>public class HelloWorld {
+            <div id="java-code" class="tab-content">
+                <h3>4. Java Code Example - Mobile App Notification</h3>
+                <pre><code>public class HelloWorld {
     public static void main(String[] args) {
         System.out.println("New message received!");
     }
 }</code></pre>
-            <p>This works like the notification system in WhatsApp when a message arrives.</p>
+                <p>This works like the notification system in WhatsApp when a message arrives.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="container use-cases">
-        <h2>Real-Time Use Cases of Coding</h2>
-        <p><strong>🚑 Healthcare:</strong> Automated patient records, AI for disease detection (e.g., detecting COVID from X-rays).</p>
-        <p><strong>🛍️ E-Commerce:</strong> AI-powered product recommendations (like Amazon suggesting products).</p>
-        <p><strong>💰 Finance:</strong> Fraud detection systems in banks (like detecting fake transactions).</p>
-        <p><strong>🎮 Gaming:</strong> Game engines like Unity and Unreal Engine are built using C++.</p>
-        <p><strong>📚 Education:</strong> Online learning platforms like Udemy or Coursera use Python and JavaScript.</p>
-    </div>
+        <div class="use-cases">
+            <h2 class="section-heading">Real-Time Use Cases of Coding</h2>
+            <p><strong>🚑 Healthcare:</strong> Automated patient records, AI for disease detection (e.g., detecting COVID from X-rays).</p>
+            <p><strong>🛍️ E-Commerce:</strong> AI-powered product recommendations (like Amazon suggesting products).</p>
+            <p><strong>💰 Finance:</strong> Fraud detection systems in banks (like detecting fake transactions).</p>
+            <p><strong>🎮 Gaming:</strong> Game engines like Unity and Unreal Engine are built using C++.</p>
+            <p><strong>📚 Education:</strong> Online learning platforms like Udemy or Coursera use Python and JavaScript.</p>
+        </div>
 
-    <div class="container concept-steps">
-        <h2>Steps to Start Coding</h2>
-        <p><strong>🔹 1-Hour Concept:</strong> Learn the basics of a programming language.</p>
-        <p><strong>🔹 45-Minute Concept:</strong> Write a small script to automate a task (e.g., rename multiple files at once).</p>
-        <p><strong>🔹 30-Minute Concept:</strong> Work on problem-solving challenges on LeetCode or HackerRank.</p>
-        <p><strong>🔹 10-Minute Concept:</strong> Run a simple Python script and understand how it works.</p>
-    </div>
+        <div class="steps-to-start">
+            <h2 class="section-heading">Steps to Start Coding</h2>
+            <p><strong>🔹 1-Hour Concept:</strong> Learn the basics of a programming language.</p>
+            <p><strong>🔹 45-Minute Concept:</strong> Write a small script to automate a task (e.g., rename multiple files at once).</p>
+            <p><strong>🔹 30-Minute Concept:</strong> Work on problem-solving challenges on LeetCode or HackerRank.</p>
+            <p><strong>🔹 10-Minute Concept:</strong> Run a simple Python script and understand how it works.</p>
+        </div>
 
-    <div class="container">
-        <h2>Conclusion</h2>
-        <p>Coding is like magic, you write a few lines, and something incredible happens! Whether you want to automate boring tasks, build the next Instagram, or create AI-powered tools, coding is your gateway to limitless possibilities. Start today, and who knows? Maybe your next project will change the world!</p>
-    </div>
+        <div class="conclusion">
+            <h2>Conclusion</h2>
+            <p>Coding is like magic, you write a few lines, and something incredible happens! Whether you want to automate boring tasks, build the next Instagram, or create AI-powered tools, coding is your gateway to limitless possibilities. Start today, and who knows? Maybe your next project will change the world!</p>
+        </div>
 
-    <div class="container resources">
-        <h2>Additional Resources</h2>
-        <ul>
-            <li><strong>freeCodeCamp:</strong> Hands-on coding tutorials.</li>
-            <li><strong>Codecademy:</strong> Interactive coding lessons.</li>
-            <li><strong>LeetCode & HackerRank:</strong> Best platforms for practice.</li>
-        </ul>
+        <div class="resources">
+            <h2 class="section-heading">Additional Resources</h2>
+            <ul>
+                <li><strong>freeCodeCamp:</strong> Hands-on coding tutorials.</li>
+                <li><strong>Codecademy:</strong> Interactive coding lessons.</li>
+                <li><strong>LeetCode & HackerRank:</strong> Best platforms for practice.</li>
+            </ul>
+        </div>
     </div>
 
     <script>
         function openCode(evt, codeName) {
             var i, tabcontent, tabbuttons;
-            tabcontent = document.getElementsByClassName("tab-content");
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
-            tabbuttons = document.getElementsByClassName("tab-button");
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
             for (i = 0; i < tabbuttons.length; i++) {
                 tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
             }
@@ -284,7 +302,13 @@ print("Hello, " + name + "! Welcome to AI World!")</code></pre>
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector('.tab-button').click();
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
         });
     </script>
 
