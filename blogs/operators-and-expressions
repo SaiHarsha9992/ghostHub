@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators and Expressions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;   /* keeps scroll functionality */
+            overflow-x: hidden;
+            scrollbar-width: none;  /* for Firefox */
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0; /* Light gray for text */
+            background-color: #0B0F11; /* Very dark background */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;   /* for Chrome, Safari, Edge */
+        }
+                
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0; /* Slightly lighter heading color */
+            font-weight: 700;
+            text-align: left; /* Align headings left as in the image */
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+             text-align: center; /* Main title centered */
+             margin-bottom: 40px;
+             font-size: 2.5em;
+        }
+
+        .section-heading {
+             font-size: 1.8em;
+             border-bottom: 1px solid #333; /* Subtle line below section headings */
+             padding-bottom: 10px;
+             margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content {
+            background-color: #0B0F11; /* Make these blend with body background */
+            padding: 0; /* Remove padding if you want it completely plain */
+            border-radius: 0; /* No rounded corners */
+            box-shadow: none; /* No shadow */
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF; /* Blue border accent */
+            padding-left: 15px;
+        }
+
+        /* Table styling for operators */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2A3138;
+        }
+
+        th {
+            background-color: #2A3138;
+            color: #F0F0F0;
+            font-weight: 700;
+        }
+
+        td {
+            color: #E0E0E0;
+        }
+
+        /* End table styling */
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B; /* Dark content background for code */
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖'; /* Using a robot emoji for list style */
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Operators and Expressions in Programming</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Introduction</h2>
+            <div class="intro-text">
+                <p>Operators are like superheroes—they help your code perform actions and make decisions! Expressions are their battle strategies, combining powers to solve problems. Understanding these concepts is crucial to becoming a programming wizard! 🧙‍♂️</p>
+                <p>This guide covers Arithmetic, Comparison, Logical, and Assignment Operators with funny, relatable examples in C, C++, Python, and Java.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. Arithmetic Operators - The Math Warriors 🧮</h2>
+            <p>Arithmetic operators perform mathematical operations like addition, subtraction, multiplication, and division.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>+</td>
+                        <td>Addition (🍕 + 🍕 = More Pizza!)</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>Subtraction (💰 - 💸 = 😭)</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Multiplication (🐰 * 🐰 = Many Rabbits!)</td>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>Division (🍕 / 2 = Sharing is caring!)</td>
+                    </tr>
+                    <tr>
+                        <td>%</td>
+                        <td>Modulus (Remainder of division - "Do I still have leftovers?")</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Example Codes:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-arithmetic')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-arithmetic')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-arithmetic')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-arithmetic')">Java</button>
+            </div>
+
+            <div id="c-arithmetic" class="tab-content">
+                <h3>C Code:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int pizza = 10, friends = 4;
+    printf("Total Pizza: %d\n", pizza);
+    printf("Each friend gets: %d\n", pizza / friends);
+    printf("Leftover Pizza: %d\n", pizza % friends);
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="cpp-arithmetic" class="tab-content">
+                <h3>C++ Code:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int pizza = 10, friends = 4;
+    cout &lt;&lt; "Total Pizza: " &lt;&lt; pizza &lt;&lt; endl;
+    cout &lt;&lt; "Each friend gets: " &lt;&lt; pizza / friends &lt;&lt; endl;
+    cout &lt;&lt; "Leftover Pizza: " &lt;&lt; pizza % friends &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="python-arithmetic" class="tab-content">
+                <h3>Python Code:</h3>
+                <pre><code>pizza = 10
+friends = 4
+print("Total Pizza:", pizza)
+print("Each friend gets:", pizza // friends)
+print("Leftover Pizza:", pizza % friends)</code></pre>
+            </div>
+
+            <div id="java-arithmetic" class="tab-content">
+                <h3>Java Code:</h3>
+                <pre><code>public class ArithmeticExample {
+    public static void main(String[] args) {
+        int pizza = 10, friends = 4;
+        System.out.println("Total Pizza: " + pizza);
+        System.out.println("Each friend gets: " + (pizza / friends));
+        System.out.println("Leftover Pizza: " + (pizza % friends));
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Comparison Operators - Who is Better? 🤔</h2>
+            <p>Comparison operators compare two values like a game show contestant deciding who's richer!</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>==</td>
+                        <td>Equal to ("Are both burgers the same?")</td>
+                    </tr>
+                    <tr>
+                        <td>!=</td>
+                        <td>Not equal to ("Is my code still buggy? 😭")</td>
+                    </tr>
+                    <tr>
+                        <td>></td>
+                        <td>Greater than ("Is my score better than yours?")</td>
+                    </tr>
+                    <tr>
+                        <td><</td>
+                        <td>Less than ("Did I lose? 😢")</td>
+                    </tr>
+                    <tr>
+                        <td>>=</td>
+                        <td>Greater than or equal to ("At least I passed, right?")</td>
+                    </tr>
+                    <tr>
+                        <td><=</td>
+                        <td>Less than or equal to ("Do I qualify for a discount?")</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Example Codes:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-comparison')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-comparison')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-comparison')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-comparison')">Java</button>
+            </div>
+
+            <div id="c-comparison" class="tab-content">
+                <h3>C Code:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int myMoney = 1000, friendMoney = 500;
+    printf("Am I richer? %d\n", myMoney > friendMoney);
+    printf("Are we equal? %d\n", myMoney == friendMoney);
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="cpp-comparison" class="tab-content">
+                <h3>C++ Code:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    bool myMoney = 1000, friendMoney = 500;
+    cout &lt;&lt; "Am I richer? " &lt;&lt; (myMoney > friendMoney) &lt;&lt; endl;
+    cout &lt;&lt; "Are we equal? " &lt;&lt; (myMoney == friendMoney) &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="python-comparison" class="tab-content">
+                <h3>Python Code:</h3>
+                <pre><code>my_money = 1000
+friend_money = 500
+print("Am I richer?", my_money > friend_money)
+print("Are we equal?", my_money == friend_money)</code></pre>
+            </div>
+
+            <div id="java-comparison" class="tab-content">
+                <h3>Java Code:</h3>
+                <pre><code>public class ComparisonExample {
+    public static void main(String[] args) {
+        int myMoney = 1000, friendMoney = 500;
+        System.out.println("Am I richer? " + (myMoney > friendMoney));
+        System.out.println("Are we equal? " + (myMoney == friendMoney));
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Logical Operators - The Brainy Thinkers 🧠</h2>
+            <p>Logical operators help us make complex decisions like whether to eat junk food or go to the gym! 🤷‍♂️</p>
+
+            <h3>Example Codes:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-logical')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-logical')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-logical')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-logical')">Java</button>
+            </div>
+
+            <div id="c-logical" class="tab-content">
+                <h3>C Code:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int pizzaAvailable = 1, gymOpen = 0;
+    printf("Eat Pizza AND Go to Gym: %d\n", pizzaAvailable && gymOpen);
+    printf("Eat Pizza OR Go to Gym: %d\n", pizzaAvailable || gymOpen);
+    printf("Not Eating Pizza: %d\n", !pizzaAvailable);
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="cpp-logical" class="tab-content">
+                <h3>C++ Code:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    bool pizzaAvailable = true, gymOpen = false;
+    cout &lt;&lt; "Eat Pizza AND Go to Gym: " &lt;&lt; (pizzaAvailable && gymOpen) &lt;&lt; endl;
+    cout &lt;&lt; "Eat Pizza OR Go to Gym: " &lt;&lt; (pizzaAvailable || gymOpen) &lt;&lt; endl;
+    cout &lt;&lt; "Not Eating Pizza: " &lt;&lt; (!pizzaAvailable) &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="python-logical" class="tab-content">
+                <h3>Python Code:</h3>
+                <pre><code>pizza_available = True
+gym_open = False
+print("Eat Pizza AND Go to Gym:", pizza_available and gym_open)
+print("Eat Pizza OR Go to Gym:", pizza_available or gym_open)
+print("Not Eating Pizza:", not pizza_available)</code></pre>
+            </div>
+
+            <div id="java-logical" class="tab-content">
+                <h3>Java Code:</h3>
+                <pre><code>public class LogicalExample {
+    public static void main(String[] args) {
+        boolean pizzaAvailable = true, gymOpen = false;
+        System.out.println("Eat Pizza AND Go to Gym: " + (pizzaAvailable && gymOpen));
+        System.out.println("Eat Pizza OR Go to Gym: " + (pizzaAvailable || gymOpen));
+        System.out.println("Not Eating Pizza: " + (!pizzaAvailable));
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Assignment Operators - The Magic Equal Sign ✨</h2>
+            <p>Assignment operators assign values to variables.</p>
+            <h3>Example Codes:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-assignment')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-assignment')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-assignment')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-assignment')">Java</button>
+            </div>
+
+            <div id="c-assignment" class="tab-content">
+                <h3>C Code:</h3>
+                <pre><code>int x = 10;
+x += 5;
+x -= 2;</code></pre>
+            </div>
+
+            <div id="cpp-assignment" class="tab-content">
+                <h3>C++ Code:</h3>
+                <pre><code>int x = 10;
+x += 5;
+x -= 2;</code></pre>
+            </div>
+
+            <div id="python-assignment" class="tab-content">
+                <h3>Python Code:</h3>
+                <pre><code>x = 10
+x += 5
+x -= 2</code></pre>
+            </div>
+
+            <div id="java-assignment" class="tab-content">
+                <h3>Java Code:</h3>
+                <pre><code>int x = 10;
+x += 5;
+x -= 2;</code></pre>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>Conclusion</h2>
+            <p>Understanding operators is easy and fun when you relate them to real life! Try experimenting with these examples, and soon you'll be a coding expert! 🚀🎉</p>
+            <p>Happy Coding! 🤖</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
