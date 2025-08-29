@@ -8,15 +8,22 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
 
         html, body {
+            overflow-y: scroll;   /* keeps scroll functionality */
+            overflow-x: hidden;
+            scrollbar-width: none;  /* for Firefox */
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.6;
             color: #E0E0E0; /* Light gray for text */
             background-color: #0B0F11; /* Very dark background */
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
         }
-
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;   /* for Chrome, Safari, Edge */
+        }
         .content-wrapper {
             max-width: 900px;
             margin: auto;
