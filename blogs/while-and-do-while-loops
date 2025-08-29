@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While and Do While Loops</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;   /* keeps scroll functionality */
+            overflow-x: hidden;
+            scrollbar-width: none;  /* for Firefox */
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0; /* Light gray for text */
+            background-color: #0B0F11; /* Very dark background */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;   /* for Chrome, Safari, Edge */
+        }
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+        
+        .section-heading {
+             font-size: 1.8em;
+             border-bottom: 1px solid #333;
+             padding-bottom: 10px;
+             margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2A3138;
+        }
+
+        th {
+            background-color: #2A3138;
+            color: #F0F0F0;
+            font-weight: 700;
+        }
+
+        td {
+            color: #E0E0E0;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>While and Do While Loops</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Introduction</h2>
+            <div class="intro-text">
+                <p>Loops are fundamental to programming, allowing developers to execute a block of code multiple times based on certain conditions. Today, we’ll explore the while and do-while loops in four popular programming languages: C, C++, Java, and Python. We’ll break down their syntax and show you real-world examples to solidify your understanding.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. The while Loop</h2>
+            <p>The **while** loop runs as long as the given condition evaluates to true. If the condition is false initially, the loop will not run at all.</p>
+            <h3>C & C++ Syntax:</h3>
+            <div class="syntax-box">
+                <pre><code>while (condition) {
+    // code to execute
+}</code></pre>
+            </div>
+            <h3>Python Syntax:</h3>
+            <div class="syntax-box">
+                <pre><code>while condition:
+    # code to execute</code></pre>
+            </div>
+            
+            <h3>Example: Counting from 1 to 5</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'ex1-c')">C & C++</button>
+                <button class="tab-button" onclick="openCode(event, 'ex1-java')">Java</button>
+                <button class="tab-button" onclick="openCode(event, 'ex1-python')">Python</button>
+            </div>
+            <div id="ex1-c" class="tab-content">
+                <h3>C & C++ Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int i = 1;
+    while (i &lt;= 5) {
+        printf("%d\n", i);
+        i++;
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex1-java" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        int i = 1;
+        while (i &lt;= 5) {
+            System.out.println(i);
+            i++;
+        }
+    }
+}</code></pre>
+            </div>
+            <div id="ex1-python" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>i = 1
+while i &lt;= 5:
+    print(i)
+    i += 1</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. The do-while Loop</h2>
+            <p>The **do-while** loop ensures that the block of code runs at least once, even if the condition is false initially. The condition is checked after the code execution.</p>
+            <h3>C & C++ Syntax:</h3>
+            <div class="syntax-box">
+                <pre><code>do {
+    // code to execute
+} while (condition);</code></pre>
+            </div>
+            <h3>Java Syntax:</h3>
+            <div class="syntax-box">
+                <pre><code>do {
+    // code to execute
+} while (condition);</code></pre>
+            </div>
+            <h3>Python Syntax:</h3>
+            <div class="syntax-box">
+                <p><strong>Note:</strong> Python does not have a direct do-while loop. However, we can simulate it using a while loop.</p>
+                <pre><code>while True:
+    # code to execute
+    if not condition:
+        break</code></pre>
+            </div>
+            
+            <h3>Example: User Input Validation</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'ex2-c')">C & C++</button>
+                <button class="tab-button" onclick="openCode(event, 'ex2-java')">Java</button>
+                <button class="tab-button" onclick="openCode(event, 'ex2-python')">Python</button>
+            </div>
+            <div id="ex2-c" class="tab-content">
+                <h3>C & C++ Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int age;
+    do {
+        printf("Enter your age: ");
+        scanf("%d", &amp;age);
+    } while (age &lt;= 0);
+    printf("Your age is: %d\n", age);
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex2-java" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int age;
+        do {
+            System.out.print("Enter your age: ");
+            age = scanner.nextInt();
+        } while (age &lt;= 0);
+        System.out.println("Your age is: " + age);
+    }
+}</code></pre>
+            </div>
+            <div id="ex2-python" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>age = 0
+while age &lt;= 0:
+    age = int(input("Enter your age: "))
+print(f"Your age is: {age}")</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-World Use Cases</h2>
+            <h3>While Loop Example: ATM Simulation</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'ex3-c')">C & C++</button>
+                <button class="tab-button" onclick="openCode(event, 'ex3-java')">Java</button>
+                <button class="tab-button" onclick="openCode(event, 'ex3-python')">Python</button>
+            </div>
+            <div id="ex3-c" class="tab-content">
+                <h3>C & C++ Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int pin = 1234, input;
+    printf("Enter your PIN: ");
+    while (scanf("%d", &amp;input) &amp;&amp; input != pin) {
+        printf("Incorrect PIN. Try again: ");
+    }
+    printf("Access granted!\n");
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex3-java" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int pin = 1234, input;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your PIN: ");
+        while ((input = scanner.nextInt()) != pin) {
+            System.out.print("Incorrect PIN. Try again: ");
+        }
+        System.out.println("Access granted!");
+    }
+}</code></pre>
+            </div>
+            <div id="ex3-python" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>pin = 1234
+input_pin = int(input("Enter your PIN: "))
+while input_pin != pin:
+    input_pin = int(input("Incorrect PIN. Try again: "))
+print("Access granted!")</code></pre>
+            </div>
+            <p><strong>Do-While Loop Example:</strong> Retry Mechanism</p>
+            <p>You can use a do-while loop to prompt the user for input until they get it right (useful for retry mechanisms).</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Key Differences Between while and do-while Loops</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>while Loop</th>
+                        <th>do-while Loop</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Condition Check</td>
+                        <td>Checked before the loop starts</td>
+                        <td>Checked after the loop starts</td>
+                    </tr>
+                    <tr>
+                        <td>Execution</td>
+                        <td>May not execute if the condition is false initially</td>
+                        <td>Always executes at least once</td>
+                    </tr>
+                    <tr>
+                        <td>Use Case</td>
+                        <td>Use when you’re unsure if the loop will run</td>
+                        <td>Use when the loop needs to run at least once</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+        <div class="conclusion">
+            <h2>Conclusion</h2>
+            <p>The while and do-while loops are fundamental to mastering control flow in programming. Understanding when and how to use each loop will help you write efficient, readable, and logical code. Whether validating input or running a process until a condition is met, these loops are your go-to tools.</p>
+            <p>By mastering these loops in C, C++, Java, and Python, you’re one step closer to becoming a proficient programmer.</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
