@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Loops</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;   /* keeps scroll functionality */
+            overflow-x: hidden;
+            scrollbar-width: none;  /* for Firefox */
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0; /* Light gray for text */
+            background-color: #0B0F11; /* Very dark background */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;   /* for Chrome, Safari, Edge */
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+             font-size: 1.8em;
+             border-bottom: 1px solid #333;
+             padding-bottom: 10px;
+             margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Mastering Loops: A Beginner’s Guide to the for Loop</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Introduction: The Repetition Challenge</h2>
+            <div class="intro-text">
+                <p>Imagine you’re exercising. Instead of doing just one push-up, your trainer tells you to do 10 push-ups. Instead of repeating the action manually, you follow the instruction to repeat it 10 times.</p>
+                <p>This idea of repetition exists in programming too! Instead of writing the same line of code again and again, we use loops. Loops let us repeat actions automatically—fast, efficient, and without cluttering our code.</p>
+                <p>One of the most common loops in programming is the for loop. Whether you’re counting numbers, processing data, or iterating through a list, the for loop is your go-to tool.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">The for Loop: Repeating with Control</h2>
+            <p>A for loop is like telling the computer:</p>
+            <p>👉 “Start at a point, repeat something, and stop when the condition is met.”</p>
+            <h3>General Syntax:</h3>
+            <div class="syntax-box">
+                <p><strong>Python</strong></p>
+                <pre><code>for item in sequence:
+    # Code to execute</code></pre>
+                <p><strong>C / C++ / Java</strong></p>
+                <pre><code>for(initialization; condition; update) {
+    // Code to execute
+}</code></pre>
+            </div>
+            
+            <h3 class="section-heading">Example 1: Printing Numbers from 1 to 5</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'ex1-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'ex1-c')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'ex1-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'ex1-java')">Java</button>
+            </div>
+
+            <div id="ex1-python" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>for i in range(1, 6):
+    print(i)</code></pre>
+            </div>
+            <div id="ex1-c" class="tab-content">
+                <h3>C Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        printf("%d\n", i);
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex1-cpp" class="tab-content">
+                <h3>C++ Example:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        cout &lt;&lt; i &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex1-java" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        for (int i = 1; i &lt;= 5; i++) {
+            System.out.println(i);
+        }
+    }
+}</code></pre>
+            </div>
+
+            <h3 class="section-heading">Example 2: Summing Numbers (1 to 10)</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'ex2-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'ex2-c')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'ex2-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'ex2-java')">Java</button>
+            </div>
+
+            <div id="ex2-python" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>total = 0
+for i in range(1, 11):
+    total += i
+print("Sum =", total)</code></pre>
+            </div>
+            <div id="ex2-c" class="tab-content">
+                <h3>C Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 10; i++) {
+        sum += i;
+    }
+    printf("Sum = %d\n", sum);
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex2-cpp" class="tab-content">
+                <h3>C++ Example:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 10; i++) {
+        sum += i;
+    }
+    cout &lt;&lt; "Sum = " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex2-java" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; i &lt;= 10; i++) {
+            sum += i;
+        }
+        System.out.println("Sum = " + sum);
+    }
+}</code></pre>
+            </div>
+
+            <h3 class="section-heading">Example 3: Iterating Over a Collection</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'ex3-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'ex3-c')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'ex3-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'ex3-java')">Java</button>
+            </div>
+
+            <div id="ex3-python" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)</code></pre>
+            </div>
+            <div id="ex3-c" class="tab-content">
+                <h3>C Example (using arrays):</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char *fruits[] = {"apple", "banana", "cherry"};
+    for (int i = 0; i &lt; 3; i++) {
+        printf("%s\n", fruits[i]);
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex3-cpp" class="tab-content">
+                <h3>C++ Example:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    string fruits[] = {"apple", "banana", "cherry"};
+    for (int i = 0; i &lt; 3; i++) {
+        cout &lt;&lt; fruits[i] &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div id="ex3-java" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        String[] fruits = {"apple", "banana", "cherry"};
+        for (int i = 0; i &lt; fruits.length; i++) {
+            System.out.println(fruits[i]);
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h3 class="section-heading">Bonus: Enhanced For Loops</h3>
+            <p>Some languages have a simpler syntax for looping directly through collections.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'bonus-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'bonus-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'bonus-java')">Java</button>
+            </div>
+            <div id="bonus-python" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>for fruit in fruits:
+    print(fruit)</code></pre>
+            </div>
+            <div id="bonus-cpp" class="tab-content">
+                <h3>C++ (range-based loop):</h3>
+                <pre><code>for (string fruit : fruits) {
+    cout &lt;&lt; fruit &lt;&lt; endl;
+}</code></pre>
+            </div>
+            <div id="bonus-java" class="tab-content">
+                <h3>Java (enhanced for loop):</h3>
+                <pre><code>for (String fruit : fruits) {
+    System.out.println(fruit);
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>Conclusion: Mastering Repetition with for</h2>
+            <p>Just like exercising multiple reps, for loops allow us to repeat tasks efficiently. From counting numbers to processing lists, they are one of the most powerful tools in programming.</p>
+            <p>Next time you see repetition in your code, think “loop it instead of writing it again!”</p>
+            <h3>Call to Action</h3>
+            <p>💡 What’s the most fun way you’ve used a loop in your projects? Share your example—or try writing your own for loop today!</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
