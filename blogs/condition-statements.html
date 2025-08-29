@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Conditional Logic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0; /* Light gray for text */
+            background-color: #0B0F11; /* Very dark background */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+        
+        .section-heading {
+             font-size: 1.8em;
+             border-bottom: 1px solid #333;
+             padding-bottom: 10px;
+             margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Mastering Conditional Logic: A Beginner's Guide to 'if' and 'else' Statements</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Introduction: The Decision-Making Challenge</h2>
+            <div class="intro-text">
+                <p>Imagine you’re getting ready for work. You check the weather, and suddenly, you’re faced with a decision: should you grab an umbrella or leave it behind? You make that decision based on a condition—if it’s raining, you’ll take an umbrella. If it’s sunny, you won’t.</p>
+                <p>This simple decision-making process mirrors a core concept in programming: We use 'if' and 'else' statements to make decisions in code. Whether you're building a game, designing a website, or working with data, 'if' and 'else' statements help your code decide what to do in different situations.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">The 'If' Statement: A Simple Decision</h2>
+            <p>Let’s go back to that morning scenario. The first step in making your decision is checking the weather — that's your condition. If the condition is true, you take action. In programming, this decision-making process is handled by the 'if' statement.</p>
+            <h3>Syntax:</h3>
+            <div class="syntax-box">
+                <pre><code>if condition:
+    # Code to execute if condition is true</code></pre>
+            </div>
+            
+            <h3>Example Codes:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-if')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'c-if')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-if')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'java-if')">Java</button>
+            </div>
+
+            <div id="python-if" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>weather = "raining"
+if weather == "raining":
+    print("Take the umbrella!")</code></pre>
+            </div>
+            
+            <div id="c-if" class="tab-content">
+                <h3>C Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char weather[] = "raining";
+    if (strcmp(weather, "raining") == 0) {
+        printf("Take the umbrella!\n");
+    }
+    return 0;
+}</code></pre>
+            </div>
+            
+            <div id="cpp-if" class="tab-content">
+                <h3>C++ Example:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    string weather = "raining";
+    if (weather == "raining") {
+        cout &lt;&lt; "Take the umbrella!" &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+            </div>
+            
+            <div id="java-if" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        String weather = "raining";
+        if (weather.equals("raining")) {
+            System.out.println("Take the umbrella!");
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">The 'Else' Statement: The Alternative Action</h2>
+            <p>What if it’s not raining? You need an alternative action. This is where the 'else' statement comes in. It provides an alternative path for when the 'if' condition is false.</p>
+            <h3>Syntax:</h3>
+            <div class="syntax-box">
+                <pre><code>if condition:
+    # Code if condition is true
+else:
+    # Code if condition is false</code></pre>
+            </div>
+            
+            <h3>Example Codes:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-else')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'c-else')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-else')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'java-else')">Java</button>
+            </div>
+
+            <div id="python-else" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>weather = "sunny"
+if weather == "raining":
+    print("Take the umbrella!")
+else:
+    print("No umbrella needed!")</code></pre>
+            </div>
+            
+            <div id="c-else" class="tab-content">
+                <h3>C Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char weather[] = "sunny";
+    if (strcmp(weather, "raining") == 0) {
+        printf("Take the umbrella!\n");
+    } else {
+        printf("No umbrella needed!\n");
+    }
+    return 0;
+}</code></pre>
+            </div>
+            
+            <div id="cpp-else" class="tab-content">
+                <h3>C++ Example:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    string weather = "sunny";
+    if (weather == "raining") {
+        cout &lt;&lt; "Take the umbrella!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "No umbrella needed!" &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+            </div>
+            
+            <div id="java-else" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        String weather = "sunny";
+        if (weather.equals("raining")) {
+            System.out.println("Take the umbrella!");
+        } else {
+            System.out.println("No umbrella needed!");
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Expanding the Logic: 'Elif' for Multiple Conditions</h2>
+            <p>What if you have more than two choices? The 'elif' (else if) statement allows you to handle multiple conditions.</p>
+            
+            <h3>Example Codes:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-elif')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'c-elif')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-elif')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'java-elif')">Java</button>
+            </div>
+
+            <div id="python-elif" class="tab-content">
+                <h3>Python Example:</h3>
+                <pre><code>weather = "snowing"
+if weather == "raining":
+    print("Take the umbrella!")
+elif weather == "snowing":
+    print("Wear a coat!")
+else:
+    print("No umbrella needed!")</code></pre>
+            </div>
+            
+            <div id="c-elif" class="tab-content">
+                <h3>C Example:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char weather[] = "snowing";
+    if (strcmp(weather, "raining") == 0) {
+        printf("Take the umbrella!\n");
+    } else if (strcmp(weather, "snowing") == 0) {
+        printf("Wear a coat!\n");
+    } else {
+        printf("No umbrella needed!\n");
+    }
+    return 0;
+}</code></pre>
+            </div>
+            
+            <div id="cpp-elif" class="tab-content">
+                <h3>C++ Example:</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    string weather = "snowing";
+    if (weather == "raining") {
+        cout &lt;&lt; "Take the umbrella!" &lt;&lt; endl;
+    } else if (weather == "snowing") {
+        cout &lt;&lt; "Wear a coat!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "No umbrella needed!" &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+            </div>
+            
+            <div id="java-elif" class="tab-content">
+                <h3>Java Example:</h3>
+                <pre><code>public class Main {
+    public static void main(String[] args) {
+        String weather = "snowing";
+        if (weather.equals("raining")) {
+            System.out.println("Take the umbrella!");
+        } else if (weather.equals("snowing")) {
+            System.out.println("Wear a coat!");
+        } else {
+            System.out.println("No umbrella needed!");
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>Conclusion: Mastering Conditional Logic</h2>
+            <p>Just like deciding whether to take an umbrella or not, 'if' and 'else' statements are essential for making decisions in your code. Whether you're checking if a user is logged in, determining if a number is positive or negative, or even deciding on the weather, these basic conditional statements form the foundation of decision-making in programming.</p>
+            <p>Next time you write code, think of it like preparing for your day. Check your conditions, make a choice, and see how powerful 'if' and 'else' can be in building dynamic applications.</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
