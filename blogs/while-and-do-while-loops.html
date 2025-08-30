@@ -424,6 +424,58 @@ print("Access granted!")</code></pre>
                 }
             });
         });
+        document.addEventListener("mouseup", function () {
+  const selection = window.getSelection();
+  const text = selection.toString().trim();
+
+  if (text.length > 0) {
+    const rect = selection.getRangeAt(0).getBoundingClientRect();
+    showAskGhostAIPopup(
+      window.scrollX + rect.left,
+      window.scrollY + rect.bottom + 8,
+      text
+    );
+  } else {
+    hideAskGhostAIPopup();
+  }
+});
+
+function showAskGhostAIPopup(x, y, text) {
+  let popup = document.getElementById("ask-ghostai-popup");
+  if (!popup) {
+    popup = document.createElement("div");
+    popup.id = "ask-ghostai-popup";
+    popup.innerText = "Ask ghostAI";
+    popup.style.position = "absolute";
+    popup.style.padding = "14px 22px";   // 🔹 Bigger button
+    popup.style.background = "#000000";  // Black background
+    popup.style.color = "white";         // White text
+    popup.style.borderRadius = "10px";   // Slightly more rounded
+    popup.style.cursor = "pointer";
+    popup.style.fontSize = "16px";       // 🔹 Bigger font
+    popup.style.zIndex = 9999;
+    popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+    popup.style.border = "2px solid white"; // 🔹 White border
+    document.body.appendChild(popup);
+
+
+    popup.addEventListener("click", function () {
+      const encoded = encodeURIComponent(popup.dataset.text);
+      window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+    });
+
+  }
+
+  popup.dataset.text = text; // <-- always update text
+  popup.style.left = x + "px";
+  popup.style.top = y + "px";
+  popup.style.display = "block";
+}
+
+function hideAskGhostAIPopup() {
+  const popup = document.getElementById("ask-ghostai-popup");
+  if (popup) popup.style.display = "none";
+}
     </script>
 
 </body>
