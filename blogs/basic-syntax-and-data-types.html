@@ -446,10 +446,10 @@ function showAskGhostAIPopup(x, y, text) {
     document.body.appendChild(popup);
 
     popup.addEventListener("click", function () {
-      localStorage.setItem("ghostAI_selected", popup.dataset.text);
-      // 🔹 Open in new window/tab
-      window.open("http://localhost:3000/ghostAI?fromSelection=1", "_blank");
+      const encoded = encodeURIComponent(popup.dataset.text);
+      window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
     });
+
   }
 
   popup.dataset.text = text; // <-- always update text
