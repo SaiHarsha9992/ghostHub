@@ -435,15 +435,17 @@ function showAskGhostAIPopup(x, y, text) {
     popup.id = "ask-ghostai-popup";
     popup.innerText = "Ask ghostAI";
     popup.style.position = "absolute";
-    popup.style.padding = "10px 16px";
-    popup.style.background = "#000000";
-    popup.style.color = "white";
-    popup.style.borderRadius = "8px";
+    popup.style.padding = "14px 22px";   // 🔹 Bigger button
+    popup.style.background = "#000000";  // Black background
+    popup.style.color = "white";         // White text
+    popup.style.borderRadius = "10px";   // Slightly more rounded
     popup.style.cursor = "pointer";
-    popup.style.fontSize = "14px";
+    popup.style.fontSize = "16px";       // 🔹 Bigger font
     popup.style.zIndex = 9999;
-    popup.style.boxShadow = "0px 2px 6px rgba(0,0,0,0.3)";
+    popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+    popup.style.border = "2px solid white"; // 🔹 White border
     document.body.appendChild(popup);
+
 
     popup.addEventListener("click", function () {
       const encoded = encodeURIComponent(popup.dataset.text);
