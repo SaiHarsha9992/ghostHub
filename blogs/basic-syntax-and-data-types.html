@@ -411,7 +411,49 @@ print(f"Rounded USD: {rounded_usd}")</code></pre>
                 }
             });
         });
+
+        document.addEventListener("mouseup", function (e) {
+  const selectedText = window.getSelection().toString().trim();
+
+  // Remove existing button if any
+  let existingBtn = document.getElementById("ghostAI-btn");
+  if (existingBtn) existingBtn.remove();
+
+  if (selectedText.length > 0) {
+    // Create button
+    const button = document.createElement("button");
+    button.innerText = "Ask GhostAI";
+    button.id = "ghostAI-btn";
+    button.style.position = "absolute";
+    button.style.top = e.pageY + "px";
+    button.style.left = e.pageX + "px";
+    button.style.zIndex = "9999";
+    button.style.padding = "6px 12px";
+    button.style.background = "#007bff";
+    button.style.color = "#fff";
+    button.style.border = "none";
+    button.style.borderRadius = "6px";
+    button.style.cursor = "pointer";
+    button.style.fontFamily = "inherit";
+    document.body.appendChild(button);
+
+    // On click → save to localStorage and redirect
+    button.addEventListener("click", () => {
+      localStorage.setItem("ghostAI_selected", selectedText);
+      window.top.location.href = "/ghostAi?fromSelection=1";
+    });
+  }
+});
+
+// Optional: remove button if user clicks elsewhere
+document.addEventListener("click", function (e) {
+  if (e.target.id !== "ghostAI-btn") {
+    const btn = document.getElementById("ghostAI-btn");
+    if (btn) btn.remove();
+  }
+});
     </script>
+
 
 </body>
 </html>
