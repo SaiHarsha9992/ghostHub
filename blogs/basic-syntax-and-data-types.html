@@ -412,46 +412,55 @@ print(f"Rounded USD: {rounded_usd}")</code></pre>
             });
         });
 
-        document.addEventListener("mouseup", function (e) {
-  const selectedText = window.getSelection().toString().trim();
+document.addEventListener("mouseup", function () {
+      const selection = window.getSelection();
+      const text = selection.toString().trim();
 
-  // Remove existing button if any
-  let existingBtn = document.getElementById("ghostAI-btn");
-  if (existingBtn) existingBtn.remove();
-
-  if (selectedText.length > 0) {
-    // Create button
-    const button = document.createElement("button");
-    button.innerText = "Ask GhostAI";
-    button.id = "ghostAI-btn";
-    button.style.position = "absolute";
-    button.style.top = e.pageY + "px";
-    button.style.left = e.pageX + "px";
-    button.style.zIndex = "9999";
-    button.style.padding = "6px 12px";
-    button.style.background = "#007bff";
-    button.style.color = "#fff";
-    button.style.border = "none";
-    button.style.borderRadius = "6px";
-    button.style.cursor = "pointer";
-    button.style.fontFamily = "inherit";
-    document.body.appendChild(button);
-
-    // On click → save to localStorage and redirect
-    button.addEventListener("click", () => {
-      localStorage.setItem("ghostAI_selected", selectedText);
-      window.top.location.href = "/ghostAi?fromSelection=1";
+      if (text.length > 0) {
+        const rect = selection.getRangeAt(0).getBoundingClientRect();
+        showAskGhostAIPopup(
+          window.scrollX + rect.left,
+          window.scrollY + rect.bottom + 8,
+          text
+        );
+      } else {
+        hideAskGhostAIPopup();
+      }
     });
-  }
-});
 
-// Optional: remove button if user clicks elsewhere
-document.addEventListener("click", function (e) {
-  if (e.target.id !== "ghostAI-btn") {
-    const btn = document.getElementById("ghostAI-btn");
-    if (btn) btn.remove();
-  }
-});
+    function showAskGhostAIPopup(x, y, text) {
+      let popup = document.getElementById("ask-ghostai-popup");
+      if (!popup) {
+        popup = document.createElement("div");
+        popup.id = "ask-ghostai-popup";
+        popup.innerText = "Ask GhostAI";
+        popup.style.position = "absolute";
+        popup.style.padding = "6px 12px";
+        popup.style.background = "#111827";
+        popup.style.color = "white";
+        popup.style.borderRadius = "8px";
+        popup.style.cursor = "pointer";
+        popup.style.fontSize = "14px";
+        popup.style.zIndex = 9999;
+        popup.style.boxShadow = "0px 2px 6px rgba(0,0,0,0.3)";
+        document.body.appendChild(popup);
+
+        popup.addEventListener("click", function () {
+          localStorage.setItem("ghostAI_selected", popup.dataset.text);
+          window.location.href = "/ghostAI?fromSelection=1";
+        });
+      }
+
+      popup.dataset.text = text; // <-- always update text
+      popup.style.left = x + "px";
+      popup.style.top = y + "px";
+      popup.style.display = "block";
+    }
+
+    function hideAskGhostAIPopup() {
+      const popup = document.getElementById("ask-ghostai-popup");
+      if (popup) popup.style.display = "none";
+    }
     </script>
 
 
