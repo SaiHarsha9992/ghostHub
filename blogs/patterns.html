@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patterns</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Patterns</h1>
+        
+        <div class="introduction">
+            <h2 class="section-heading">Real-Life Example of Patterns</h2>
+            <div class="intro-text">
+                <p>Think about chairs in a movie theater. They are arranged in rows and columns. Each row might have more or fewer seats depending on the theater layout. You could describe the seating arrangement to someone without even drawing it just by explaining the number of seats in each row.</p>
+                <p>Another example: Stacking bricks in a wall — you repeat the same brick in a sequence, layer by layer.</p>
+                <p>In programming, stars, numbers, or letters are our “bricks”.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Why Programmers Learn Pattern Printing</h2>
+            <p>Pattern problems teach:</p>
+            <ul>
+                <li><strong>Loops</strong> (repeat actions)</li>
+                <li><strong>Nested loops</strong> (loops inside loops)</li>
+                <li>How to think in grids (rows × columns)</li>
+                <li>Breaking problems into small steps</li>
+            </ul>
+            <div class="real-life-example">
+                <p>These skills apply to:</p>
+                <ul>
+                    <li>Drawing shapes in games</li>
+                    <li>Generating reports in tables</li>
+                    <li>Printing invoices or receipts</li>
+                    <li>Any repeated structure in UI or output</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Example Problem: Right-Angled Triangle</h2>
+            <p>We want to print:</p>
+            <pre><code>*
+**
+***
+****
+*****</code></pre>
+            <p>This is like stacking blocks — first row = 1 block, second = 2, and so on.</p>
+            
+            <h3>Code Examples:</h3>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-patterns')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-patterns')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-patterns')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-patterns')">Java</button>
+            </div>
+
+            <div id="c-patterns" class="tab-content">
+                <h3>C: Right-Angled Triangle</h3>
+                <pre><code>#include <stdio.h>
+int main() {
+    int n = 5;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="cpp-patterns" class="tab-content">
+                <h3>C++: Right-Angled Triangle</h3>
+                <pre><code>#include <iostream>
+using namespace std;
+int main() {
+    int n = 5;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            cout << "*";
+        }
+        cout << "\n";
+    }
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="python-patterns" class="tab-content">
+                <h3>Python: Right-Angled Triangle</h3>
+                <pre><code>n = 5
+for i in range(1, n+1):
+    print("*" * i)</code></pre>
+            </div>
+
+            <div id="java-patterns" class="tab-content">
+                <h3>Java: Right-Angled Triangle</h3>
+                <pre><code>public class Triangle {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">How to Think About It</h2>
+            <p><strong>Step 1:</strong> Number of rows = n</p>
+            <p><strong>Step 2:</strong> For each row i → print i stars</p>
+            <p><strong>Step 3:</strong> After each row, go to a new line</p>
+            <p>This thinking works for any pattern — just change the rules for how many spaces/stars/numbers to print.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-Time Applications</h2>
+            <ul>
+                <li>Game development: designing 2D maps (like Tetris blocks)</li>
+                <li>Web layouts: table rows and columns</li>
+                <li>Data visualization: printing charts in text</li>
+                <li>Receipt printing: repeating dashes, stars, or separators</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Your Practice Roadmap</h2>
+            <h3>✅ Easy Patterns to Try</h3>
+            <pre><code>Square
+*****
+*****
+*****</code></pre>
+            <pre><code>Inverted Triangle
+*****
+****
+***
+**
+*</code></pre>
+            <pre><code>Pyramid
+
+  *
+ ***
+*****</code></pre>
+            <pre><code>Number Triangle
+1
+12
+123</code></pre>
+
+            <h3>📚 Recommended Articles & Blogs</h3>
+            <div class="resources">
+                <ul>
+                    <li>GeeksforGeeks – Pattern Printing in C, C++, Java, Python</li>
+                    <li>Programiz – Loops and Patterns</li>
+                    <li>JavaTpoint – Star Pattern Programs</li>
+                </ul>
+            </div>
+
+            <h3>🎥 Recommended Courses (Free & Paid)</h3>
+            <div class="resources">
+                <ul>
+                    <li>freeCodeCamp YouTube – “C Programming Full Course for Beginners” (covers loops & patterns)</li>
+                    <li>CodeWithHarry (YouTube) – Hindi/English explanations of pattern programs</li>
+                    <li>Udemy – “Programming for Absolute Beginners” (look for C, Python, Java beginner courses)</li>
+                </ul>
+            </div>
+            
+            <h3>🏋️ Practice Exercises</h3>
+            <div class="resources">
+                <ul>
+                    <li>Write a program to print a hollow square of stars.</li>
+                    <li>Print numbers in a pyramid form.</li>
+                    <li>Create a checkerboard pattern.</li>
+                    <li>Print the alphabet in triangle form.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Final Tip</h2>
+            <p>“Patterns are the gym workout for your brain.” You may not build a real app with star patterns, but you will train your brain to think step-by-step — and that skill is what makes you a better programmer. 🎯</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
