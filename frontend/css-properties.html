@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Properties</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li::before {
+            content: '●';
+            padding-right: 8px;
+            color: #00A6FF;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .practice-list {
+            list-style-type: '📝';
+            padding: 0;
+        }
+
+        .practice-list li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">CSS Properties</h1>
+
+        <div class="introduction">
+            <p>CSS properties let you style your HTML elements. They define how elements look, where they appear, and how they behave.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. What is a CSS Property?</h2>
+            <p>A CSS property is the thing you want to change in an element, like color, size, spacing, or position.</p>
+            <p>Syntax:</p>
+            <pre><code>selector {
+  property: value;
+}</code></pre>
+            <p>Example:</p>
+            <pre><code>p {
+  color: blue;
+  font-size: 18px;
+}</code></pre>
+            <p>Here:</p>
+            <ul>
+                <li><strong>p</strong> → selector (which element to style)</li>
+                <li><strong>color</strong>, <strong>font-size</strong> → properties (what you want to change)</li>
+                <li><strong>blue</strong>, <strong>18px</strong> → values (how you want it to look)</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Common CSS Properties</h2>
+            <ul>
+                <li><strong>Display</strong><br>Controls how an element is shown on the page.</li>
+                <li><strong>Background</strong><br>Adds color or image behind an element.</li>
+                <li><strong>Border</strong><br>Adds edges around elements.</li>
+                <li><strong>Font</strong><br>Controls text style like font type, size, weight, and style.</li>
+                <li><strong>Color</strong><br>Changes text color.</li>
+                <li><strong>Margin</strong><br>Controls space outside an element.</li>
+                <li><strong>Padding</strong><br>Controls space inside an element between content and border.</li>
+                <li><strong>Position</strong><br>Controls where an element appears on the page.</li>
+                <li><strong>White-Space</strong><br>Controls how text wraps inside an element.</li>
+                <li><strong>Height and Width</strong><br>Defines size of an element.</li>
+                <li><strong>Overflow</strong><br>Controls what happens when content is too big for its container.</li>
+                <li><strong>Shadow</strong><br>Adds shadows to elements or text.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Why We Need CSS Properties</h2>
+            <ul>
+                <li>To style HTML content and make it visually appealing.</li>
+                <li>To control spacing and layout efficiently.</li>
+                <li>To improve readability and user experience.</li>
+                <li>To create modern and responsive designs.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Advantages of CSS Properties</h2>
+            <ul>
+                <li>Separate content and design → cleaner HTML.</li>
+                <li>Reusable styles for multiple elements.</li>
+                <li>Easy updates and maintenance.</li>
+                <li>Makes website look professional and consistent.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Mini Practice Task 📝</h2>
+            <p><strong>Task:</strong> Create a “Profile Card” for a person.</p>
+            <p><strong>Instructions (Descriptive):</strong></p>
+            <div class="resources">
+                <ul class="practice-list">
+                    <li>Add a container for the card with a background color and some padding.</li>
+                    <li>Include a heading for the person’s name and a paragraph for their role.</li>
+                    <li>Add a button or link for contact.</li>
+                    <li>Use borders, shadows, and rounded corners to make the card visually appealing.</li>
+                    <li>Experiment with margin, padding, font styles, colors, and text alignment to make it look neat and modern.</li>
+                </ul>
+            </div>
+            <p>✅ This task helps you practice using multiple CSS properties together to create a simple but attractive component.</p>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Conclusion</h2>
+            <p>CSS properties are the core tools to style your website. By learning properties like color, font, spacing, position, and shadows, you can design beautiful and functional webpages. Mastering them makes your CSS skills strong and prepares you for advanced styling, layouts, and effects.</p>
+        </div>
+    </div>
+</body>
+</html>
