@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling HTML Elements</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li::before {
+            content: '●';
+            padding-right: 8px;
+            color: #00A6FF;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .practice-list {
+            list-style-type: '📝';
+            padding: 0;
+        }
+
+        .practice-list li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Styling HTML Elements</h1>
+        <p>Styling HTML elements is the core part of making a webpage look attractive. In this blog, we’ll cover how to style text, images, lists, tables, forms, and links using CSS.</p>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. CSS Text</h2>
+            <p>CSS lets you style text in many ways, including:</p>
+            <ul>
+                <li><strong>Font type</strong> – change the font family.</li>
+                <li><strong>Font size</strong> – make text bigger or smaller.</li>
+                <li><strong>Font weight</strong> – make text bold or light.</li>
+                <li><strong>Font style</strong> – italic, normal, or oblique.</li>
+                <li><strong>Text color</strong> – change the text color.</li>
+                <li><strong>Text alignment</strong> – left, right, center, or justify.</li>
+                <li><strong>Text decoration</strong> – underline, overline, line-through, or none.</li>
+                <li><strong>Text transformation</strong> – uppercase, lowercase, capitalize.</li>
+                <li><strong>Letter spacing & line height</strong> – adjust spacing for readability.</li>
+            </ul>
+            <p><strong>Tip:</strong> Use a combination of font, size, color, and alignment to make your text readable and visually appealing.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. CSS Images</h2>
+            <p>You can style images using CSS:</p>
+            <ul>
+                <li><strong>Width and height</strong> – control image size.</li>
+                <li><strong>Borders & border-radius</strong> – add borders or make circular images.</li>
+                <li><strong>Box-shadow</strong> – create a shadow effect.</li>
+                <li><strong>Opacity</strong> – make images transparent or semi-transparent.</li>
+                <li><strong>Hover effects</strong> – change appearance when the user hovers over an image.</li>
+            </ul>
+            <p><strong>Tip:</strong> Always maintain image aspect ratio to avoid distortion.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. CSS Lists</h2>
+            <p>CSS helps style both ordered (<code>&lt;ol&gt;</code>) and unordered (<code>&lt;ul&gt;</code>) lists:</p>
+            <ul>
+                <li>Change <strong>list-style</strong>: <code>none</code>, <code>disc</code>, <code>circle</code>, <code>square</code>, <code>decimal</code>, etc.</li>
+                <li>Adjust <strong>margin</strong> and <strong>padding</strong> to control spacing.</li>
+                <li>Customize bullet or number appearance using CSS.</li>
+                <li>Use inline or horizontal lists for navigation menus.</li>
+            </ul>
+            <p><strong>Tip:</strong> Lists are useful for menus, steps, or any grouped content.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Practice: CSS Colors and Fonts Quiz 📝</h2>
+            <ul>
+                <li>Try styling headings, paragraphs, or quotes with different font families.</li>
+                <li>Experiment with colors for headings, paragraphs, and links.</li>
+                <li>Test text alignment, decoration, and transformations.</li>
+            </ul>
+            <p>✅ This helps reinforce your knowledge of text styling.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. CSS Tables</h2>
+            <p>Tables can be styled to look professional and readable:</p>
+            <ul>
+                <li><strong>Borders</strong> – add solid, dotted, or double borders.</li>
+                <li><strong>Padding</strong> – space inside table cells.</li>
+                <li><strong>Text alignment</strong> – align content inside cells.</li>
+                <li><strong>Background color</strong> – highlight headers or rows.</li>
+                <li><strong>Hover effects</strong> – change row background when hovered.</li>
+            </ul>
+            <p><strong>Tip:</strong> Well-styled tables improve readability of data on webpages.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. CSS Forms</h2>
+            <p>Forms can be styled for better user experience:</p>
+            <ul>
+                <li>Style input fields: width, padding, border, border-radius.</li>
+                <li>Style buttons: color, background, border, hover effects.</li>
+                <li>Style labels and placeholders for clarity.</li>
+                <li>Group elements neatly with margin and padding.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Practice: CSS Forms Quiz 📝</h2>
+            <ul>
+                <li>Create a simple form with name, email, and message fields.</li>
+                <li>Style input boxes and submit buttons to look modern.</li>
+                <li>Adjust colors, fonts, and spacing to make it clean and readable.</li>
+            </ul>
+            <p>✅ This practice teaches you form design and usability.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">8. CSS Links</h2>
+            <p>Links are important in webpages and can be styled differently:</p>
+            <ul>
+                <li>Change color for normal, hover, active, and visited states.</li>
+                <li>Use text decoration: <code>underline</code>, <code>none</code>, <code>overline</code>, etc.</li>
+                <li>Style hover effects to improve interactivity.</li>
+            </ul>
+            <p><strong>Tip:</strong> Well-styled links improve navigation and user experience.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">9. Mini Practice Task 📝</h2>
+            <p><strong>Task:</strong> Create a simple personal webpage mockup including:</p>
+            <div class="resources">
+                <ul class="practice-list">
+                    <li>Heading and paragraphs with different fonts, colors, and sizes.</li>
+                    <li>An image with borders, shadows, or hover effects.</li>
+                    <li>A list of your hobbies or skills, styled as horizontal or vertical.</li>
+                    <li>A table showing your daily schedule or favorite items.</li>
+                    <li>A form for contact with styled inputs and a submit button.</li>
+                    <li>Links to other pages or sections with hover effects.</li>
+                </ul>
+            </div>
+            <p>✅ This task helps combine all the element-specific CSS styling skills you’ve learned so far.</p>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">10. Conclusion</h2>
+            <p>Styling HTML elements with CSS is what makes your webpage look polished and professional. By mastering text, images, lists, tables, forms, and links, you can create visually appealing, readable, and user-friendly websites.</p>
+        </div>
+    </div>
+</body>
+</html>
