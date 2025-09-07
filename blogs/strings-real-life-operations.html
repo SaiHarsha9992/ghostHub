@@ -132,62 +132,165 @@
 <body>
 
     <div class="content-wrapper">
-        <h1 class="section-heading">Strings</h1>
-        
-     
-        
+        <h1 class="section-heading">🔤 String Operations in Programming (with C, C++, Python, and Java Examples)</h1>
+        <div class="intro-text">
+            <p>Strings are one of the most widely used data types in programming. They represent sequences of characters such as words, sentences, or even symbols. Almost every programming language provides built-in ways to work with strings.</p>
+            <p>In this blog, we’ll explore common string operations and see how they are implemented in C, C++, Python, and Java.</p>
+        </div>
         
         <div class="section-content">
-            <h2 class="section-heading">2. Real-Time Applications of Strings</h2>
-            <p>Strings are the foundation of:</p>
+            <h2 class="section-heading">✨ Common String Operations</h2>
+            <p>Here are some of the most useful operations on strings:</p>
             <ul>
-                <li><strong>Web forms</strong> – Email validation, password strength checks.</li>
-                <li><strong>Chatbots</strong> – Parsing and understanding user queries.</li>
-                <li><strong>Search engines</strong> – Matching user search with database results.</li>
-                <li><strong>Data cleaning</strong> – Removing unwanted spaces, punctuation in datasets.</li>
+                <li><strong>Concatenation</strong> – Joining two strings together.</li>
+                <li><strong>Finding Length</strong> – Counting the number of characters.</li>
+                <li><strong>Substring Extraction</strong> – Extracting a part of the string.</li>
+                <li><strong>Changing Case</strong> – Converting to uppercase or lowercase.</li>
+                <li><strong>Searching</strong> – Checking if a substring exists in a string.</li>
+                <li><strong>Comparison</strong> – Comparing two strings.</li>
             </ul>
-            <div class="real-life-example">
-                <ul>
-                    <li><strong>Example:</strong> When you search "Laptop under 50000" on Amazon, the system uses string search + comparison to fetch relevant products.</li>
-                </ul>
-            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🔹 String Operations in C</h2>
+            <p>In C, strings are arrays of characters terminated by <code>\0</code>. Most string functions are in <code><string.h></code>.</p>
+            <pre><code>#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() {
+    char str1[50] = "Hello";
+    char str2[] = " World";
+
+    // Concatenation
+    strcat(str1, str2);
+    printf("Concatenation: %s\n", str1);
+
+    // Length
+    printf("Length: %lu\n", strlen(str1));
+
+    // Substring (manually extracting first 5 chars)
+    char sub[6];
+    strncpy(sub, str1, 5);
+    sub[5] = '\0';
+    printf("Substring: %s\n", sub);
+
+    // Changing case (to uppercase)
+    for(int i=0; str1[i]; i++) {
+        str1[i] = toupper(str1[i]);
+    }
+    printf("Uppercase: %s\n", str1);
+
+    // Searching
+    if (strstr(str1, "WORLD")) {
+        printf("Found WORLD in string\n");
+    }
+
+    return 0;
+}</code></pre>
         </div>
 
         <div class="section-content">
-            <h2 class="section-heading">3. Recommendations for Learning Strings</h2>
-            <p>Want to master strings? Here are some resources:</p>
-            <h3>📖 Articles & Blogs</h3>
-            <ul>
-                <li>GeeksforGeeks – Strings in C, C++, Java, Python</li>
-                <li>JavaTPoint – String Handling in Java</li>
-                <li>Codeforces Blogs – String Manipulation in Competitive Programming</li>
-            </ul>
-            <h3>🎓 Courses</h3>
-            <ul>
-                <li>CS50 by Harvard (C strings deep dive).</li>
-                <li>Python for Everybody (University of Michigan).</li>
-                <li>Java Masterclass on Udemy.</li>
-            </ul>
-            <h3>📝 Exercises</h3>
-            <div class="resources">
-                <ul>
-                    <li>Reverse a string without built-in functions.</li>
-                    <li>Check if a string is a palindrome.</li>
-                    <li>Count vowels and consonants.</li>
-                    <li>Find the most frequent character in a string.</li>
-                    <li>Implement a simple search feature using strings.</li>
-                </ul>
-            </div>
+            <h2 class="section-heading">🔹 String Operations in C++</h2>
+            <p>In C++, we have the <code>std::string</code> class which makes string handling easier.</p>
+            <pre><code>#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string str1 = "Hello";
+    string str2 = " World";
+
+    // Concatenation
+    string result = str1 + str2;
+    cout << "Concatenation: " << result << endl;
+
+    // Length
+    cout << "Length: " << result.length() << endl;
+
+    // Substring
+    cout << "Substring (0-5): " << result.substr(0, 5) << endl;
+
+    // Changing case (to lowercase)
+    transform(result.begin(), result.end(), result.begin(), ::tolower);
+    cout << "Lowercase: " << result << endl;
+
+    // Searching
+    if (result.find("world") != string::npos) {
+        cout << "Found 'world' in string" << endl;
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 String Operations in Python</h2>
+            <p>In Python, strings are immutable objects with rich built-in methods.</p>
+            <pre><code># Concatenation
+str1 = "Hello"
+str2 = " World"
+result = str1 + str2
+print("Concatenation:", result)
+
+# Length
+print("Length:", len(result))
+
+# Substring
+print("Substring (0-5):", result[0:5])
+
+# Changing case
+print("Uppercase:", result.upper())
+print("Lowercase:", result.lower())
+
+# Searching
+if "World" in result:
+    print("Found 'World' in string")
+
+# Comparison
+print("Equal?", str1 == str2)</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 String Operations in Java</h2>
+            <p>Java provides the <code>String</code> class, which is immutable, and methods in the <code>String</code> class.</p>
+            <pre><code>public class StringOperations {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = " World";
+
+        // Concatenation
+        String result = str1 + str2;
+        System.out.println("Concatenation: " + result);
+
+        // Length
+        System.out.println("Length: " + result.length());
+
+        // Substring
+        System.out.println("Substring (0-5): " + result.substring(0, 5));
+
+        // Changing case
+        System.out.println("Uppercase: " + result.toUpperCase());
+        System.out.println("Lowercase: " + result.toLowerCase());
+
+        // Searching
+        if (result.contains("World")) {
+            System.out.println("Found 'World' in string");
+        }
+
+        // Comparison
+        System.out.println("Equal? " + str1.equals(str2));
+    }
+}</code></pre>
         </div>
         
-        <hr>
-        
         <div class="conclusion">
-            <h2 class="section-heading">Final Recap</h2>
-            <ul>
-                <li><strong>Part 1:</strong> Learned the basics — what strings are, why they matter, real-life uses, and input/output in C, C++, Python, Java.</li>
-                <li><strong>Part 2:</strong> Explored string operations, real-time applications, and resources for mastering them.</li>
-            </ul>
+            <h2 class="section-heading">📝 Conclusion</h2>
+            <p>In C, strings are handled as character arrays with functions from <code><string.h></code>.</p>
+            <p>In C++, <code>std::string</code> provides easy methods like <code>.length()</code>, <code>.substr()</code>, <code>.find()</code>.</p>
+            <p>In Python, strings are immutable and have many built-in methods (<code>upper()</code>, <code>lower()</code>, <code>in</code>).</p>
+            <p>In Java, the <code>String</code> class offers a rich set of methods for manipulation.</p>
+            <p>👉 No matter the language, string operations are essential in handling text, making them a key skill for every programmer.</p>
         </div>
     </div>
 </body>
