@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Paragraphs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">HTML Paragraphs – Structuring Text Content</h1>
+        <div class="introduction">
+            <h2 class="section-heading">1. What is a Paragraph in HTML?</h2>
+            <div class="intro-text">
+                <p>A paragraph in HTML is a block of text grouped together using the <code>&lt;p&gt;</code> tag. Just like in books or articles, paragraphs in HTML make the content easy to read and well-structured.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Syntax of Paragraph Tag</h2>
+            <pre><code>&lt;p&gt;This is a paragraph in HTML.&lt;/p&gt;</code></pre>
+            <p>✔ The text inside <code>&lt;p&gt;...&lt;/p&gt;</code> is treated as a paragraph.</p>
+            <p>✔ Browsers automatically add space before and after each paragraph.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Example of Multiple Paragraphs</h2>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Paragraph Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;My First Webpage&lt;/h2&gt;
+  &lt;p&gt;HTML is the building block of web pages. It helps structure content.&lt;/p&gt;
+  &lt;p&gt;CSS adds beauty and colors to a page, while JavaScript adds functionality.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Line Breaks in Paragraphs</h2>
+            <p>Sometimes, you don’t want a new paragraph but just a line break. For that, we use the <code>&lt;br&gt;</code> tag.</p>
+            <pre><code>&lt;p&gt;
+Web development is fun.&lt;br&gt;
+It allows creativity.&lt;br&gt;
+It creates career opportunities.
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Nested Formatting in Paragraphs</h2>
+            <p>You can also use bold, italic, underline inside paragraphs.</p>
+            <pre><code>&lt;p&gt;
+HTML is &lt;b&gt;easy&lt;/b&gt; to learn and &lt;i&gt;very important&lt;/i&gt; for every web developer.
+&lt;/p&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Real-Time Example</h2>
+            <div class="real-life-example">
+                <p>Think of paragraphs in a newspaper:</p>
+                <ul>
+                    <li>Each news article is divided into paragraphs for readability.</li>
+                    <li>Similarly, HTML paragraphs make your website’s text neat and professional.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">✅ Conclusion</h2>
+            <ul>
+                <li>Use <code>&lt;p&gt;</code> for paragraphs.</li>
+                <li>Use <code>&lt;br&gt;</code> for line breaks.</li>
+                <li>Combine paragraphs with text formatting for better readability.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
