@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Links</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">HTML Links – Connecting Web Pages</h1>
+        <div class="introduction">
+            <h2 class="section-heading">1. What are Links in HTML?</h2>
+            <div class="intro-text">
+                <p>● Links (also called **Hyperlinks**) are used to connect one webpage to another.</p>
+                <p>● They are created using the **&lt;a&gt; (anchor) tag**.</p>
+                <p>● Clicking a link will take the user to another page, section, or even a file.</p>
+                <p>👉 Example:</p>
+                <pre><code>&lt;a href="https://google.com"&gt;Visit Google&lt;/a&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Syntax</h2>
+            <pre><code>&lt;a href="URL"&gt;Link Text&lt;/a&gt;</code></pre>
+            <p>✔ `**href**` (Hypertext Reference) is the attribute that stores the destination URL.</p>
+            <p>✔ The text inside `&lt;a&gt; ... &lt;/a&gt;` is what the user clicks.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Types of Links</h2>
+            <p><strong>🔹 1. Absolute Link</strong></p>
+            <p>● Full web address.</p>
+            <pre><code>&lt;a href="https://www.wikipedia.org"&gt;Wikipedia&lt;/a&gt;</code></pre>
+
+            <p><strong>🔹 2. Relative Link</strong></p>
+            <p>● Used to link to pages within the same project.</p>
+            <pre><code>&lt;a href="about.html"&gt;About Us&lt;/a&gt;</code></pre>
+            
+            <p><strong>🔹 3. Email Link</strong></p>
+            <pre><code>&lt;a href="mailto:example@gmail.com"&gt;Send Email&lt;/a&gt;</code></pre>
+
+            <p><strong>🔹 4. Telephone Link</strong></p>
+            <pre><code>&lt;a href="tel:+911234567890"&gt;Call Us&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Opening Links in New Tab</h2>
+            <p>Use the `target="_blank"` attribute.</p>
+            <pre><code>&lt;a href="https://openai.com" target="_blank"&gt;OpenAI Website&lt;/a&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Adding a Tooltip to a Link</h2>
+            <p>Use the `title` attribute to show extra information on hover.</p>
+            <pre><code>&lt;a href="https://github.com" title="Visit GitHub"&gt;GitHub&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Create a link to Google.</li>
+                    <li>Make a link that opens in a new tab.</li>
+                    <li>Add an email link with your mail ID.</li>
+                    <li>Link to another page in the same project.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">7. Conclusion</h2>
+            <ul>
+                <li>Links are made with the `&lt;a&gt;` tag.</li>
+                <li>`href` defines the destination.</li>
+                <li>`target="_blank"` opens links in a new tab.</li>
+                <li>Links can connect websites, project pages, emails, or phone numbers.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
