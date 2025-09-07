@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables and Data Types in C</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Variables and Data Types in C</h1>
+        <div class="intro-text">
+            <p>In C you use variables to store information like numbers or characters. But C is different because you have to specify the type of data a variable will hold before you use it. This is like labeling your storage boxes so you know exactly what goes inside.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">📦 What is a Variable in C?</h2>
+            <p>A variable in C is a named memory location used to store data. You have to declare a variable by giving it a data type and a name before you can store a value in it.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code>int age = 20;
+
+char initial = 'G';</code></pre>
+            <p>Here, <code>age</code> is a variable storing the integer value 20, and <code>initial</code> is a variable storing the character 'G'.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔢 C Data Types</h2>
+            <p>C has a variety of data types that define the kind of data a variable can hold and the amount of memory it will occupy.</p>
+            <h3>1. Basic Data Types</h3>
+            <ul>
+                <li><strong>int:</strong> Used for whole numbers (integers) without decimal points, like 10, -5, or 100.</li>
+                <li><strong>float:</strong> Used for single-precision floating-point numbers with decimal points, like 3.14 or 0.99.</li>
+                <li><strong>double:</strong> Used for double-precision floating-point numbers. They provide more precision than <code>float</code>, so they're used for more accurate calculations.</li>
+                <li><strong>char:</strong> Used for single characters, like 'A', 'z', or '7'.</li>
+            </ul>
+            <h3>2. Derived Data Types</h3>
+            <p>These are built from the basic data types.</p>
+            <ul>
+                <li><strong>Arrays:</strong> A collection of variables of the same type, like a list of ages.</li>
+                <li><strong>Pointers:</strong> A special variable that stores the memory address of another variable. This is a powerful feature in C that allows for direct memory manipulation.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🌍 Real-Life Examples of Variables</h2>
+            <ul>
+                <li><strong>GPS app:</strong> It uses <code>float</code> or <code>double</code> variables to store latitude and longitude coordinates.</li>
+                <li><strong>Text editor:</strong> It uses a <code>char</code> variable to store each character you type.</li>
+                <li><strong>Calculator:</strong> It uses <code>int</code> or <code>float</code> variables to store the numbers you are performing calculations on.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">💻 Example Code</h2>
+            <div class="tab-container">
+                <button class="tab-button active" onclick="openCode(event, 'c-vars-example')">C</button>
+            </div>
+            <div id="c-vars-example" class="tab-content" style="display: block;">
+                <pre><code>#include <stdio.h>
+
+int main() {
+    // Declaring and initializing variables
+    int student_id = 101;
+    float average_score = 95.5;
+    char grade = 'A';
+
+    // Printing the values
+    printf("Student ID: %d\n", student_id);
+    printf("Average Score: %.2f\n", average_score);
+    printf("Grade: %c\n", grade);
+
+    return 0;
+}</code></pre>
+            </div>
+            <p>In this code, we declare variables with specific data types (<code>int</code>, <code>float</code>, <code>char</code>) and then use <code>printf()</code> with format specifiers (<code>%d</code>, <code>%.2f</code>, <code>%c</code>) to print their values.</p>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">✅ Summary</h2>
+            <ul>
+                <li>Variables in C are labeled memory containers.</li>
+                <li>You must specify a data type when you declare a variable.</li>
+                <li>Data types like <code>int</code>, <code>float</code>, <code>double</code>, and <code>char</code> tell the compiler what kind of data the variable can hold.</li>
+                <li>C's strong typing helps the compiler manage memory efficiently, which is why C is so fast.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
