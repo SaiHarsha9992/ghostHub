@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Java?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">🗂️ Variables and Data Types in Java</h1>
+        <div class="intro-text">
+            <p>When you use your phone, you save contacts, photos, or notes. Similarly, in Java, we also store information—like numbers, names, or results. To do this, we use variables.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">📦 What is a Variable?</h2>
+            <p>A variable is like a container (box) where you keep something for later use.</p>
+            <ul>
+                <li><strong>Example:</strong> You keep sugar in a jar and rice in a bag.</li>
+                <li>In Java, we keep data (like numbers or words) in a variable, but we must mention its type before storing it.</li>
+            </ul>
+            <pre><code>String name = "ghost";
+int age = 20;</code></pre>
+            <p>Here:</p>
+            <ul>
+                <li><strong><code>name</code></strong> is a variable storing the word “ghost”.</li>
+                <li><strong><code>age</code></strong> is a variable storing the number 20.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🔢 Data Types in Java</h2>
+            <p>Different types of data need different kinds of containers. Java gives us data types to store them.</p>
+            <h3>Numbers (Integers & Floats)</h3>
+            <ul>
+                <li><strong>Integers</strong> = whole numbers → <code>10</code>, <code>-5</code>, <code>100</code></li>
+                <li><strong>Floating-point</strong> = decimal numbers → <code>3.14</code>, <code>0.99</code>, <code>-2.5</code></li>
+            </ul>
+            <pre><code>int x = 10; // integer
+double pi = 3.14; // decimal number</code></pre>
+
+            <h3>Strings (Text)</h3>
+            <p>Anything inside quotes " " is a string.</p>
+            <pre><code>String name = "ghost";
+String quote = "Learning Java is fun!";</code></pre>
+
+            <h3>Boolean (True/False)</h3>
+            <p>Used for decisions.</p>
+            <pre><code>boolean isStudent = true;
+boolean isAdult = false;</code></pre>
+
+            <h3>(Optional) char (Single Character)</h3>
+            <p>Stores a single letter, digit, or symbol.</p>
+            <pre><code>char grade = 'A';</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🌍 Real-Life Examples of Variables</h2>
+            <ul>
+                <li><strong>Bank App:</strong> <code>balance = ₹2000</code> → changes after transactions.</li>
+                <li><strong>Game:</strong> <code>playerName = "Tom"</code>, <code>score = 1500</code>.</li>
+                <li><strong>Shopping Site:</strong> <code>itemPrice = 499</code>, <code>inStock = true</code>.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">💻 Example Code</h2>
+            <pre><code>public class UserDetails {
+    public static void main(String[] args) {
+        String name = "ghost";
+        int age = 20;
+        double height = 5.10;
+        boolean isStudent = true;
+
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Height: " + height);
+        System.out.println("Student? " + isStudent);
+    }
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🎮 Quick Practice</h2>
+            <div class="resources">
+                <ul>
+                    <li>✅ Create variables for your name, age, and favorite food. Print them.</li>
+                    <li>✅ Write a program to store 3 numbers and print their sum.</li>
+                    <li>✅ Create a variable <code>isRaining</code> and set it to <code>true</code>. Print it.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">✅ Summary:</h2>
+            <ul>
+                <li><strong>Variables</strong> = containers for storing information.</li>
+                <li><strong>Data Types</strong> = numbers, text, True/False values, single characters.</li>
+                <li>Used everywhere: banking apps, games, shopping websites.</li>
+            </ul>
+            <h2 class="section-heading">👉 Next Blog:</h2>
+            <p>Java Operators – Doing Calculations and Decisions</p>
+        </div>
+    </div>
+</body>
+</html>
