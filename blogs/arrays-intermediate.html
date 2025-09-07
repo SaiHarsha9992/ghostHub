@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays For Intermediate</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Arrays For Intermediate Learners</h1>
+        
+        <div class="introduction">
+            <h2 class="section-heading">At this stage, you already know how to create, access, update, insert, delete, and search arrays. The next step is problem-solving using arrays.</h2>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. Basic Problem-Solving with Arrays</h2>
+            <p>Here are some classic problems you should master first:</p>
+
+            <h3>Problem 1: Find the Maximum and Minimum</h3>
+            <p>👉 Strategy: Traverse once, keep track of current max and min.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'cpp-minmax')">C++</button>
+            </div>
+            <div id="cpp-minmax" class="tab-content">
+                <h3>C++: Find Max and Min</h3>
+                <pre><code>#include <iostream>
+using namespace std;
+int main() {
+    int arr[] = {12, 5, 9, 34, 7};
+    int n = 5, maxi = arr[0], mini = arr[0];
+    for(int i = 1; i < n; i++) {
+        maxi = max(maxi, arr[i]);
+        mini = min(mini, arr[i]);
+    }
+    cout << "Max = " << maxi << ", Min = " << mini;
+    return 0;
+}</code></pre>
+            </div>
+
+            <h3>Problem 2: Reverse an Array</h3>
+            <p>👉 Strategy: Swap elements from start and end moving inward.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-reverse')">Python</button>
+            </div>
+            <div id="python-reverse" class="tab-content">
+                <h3>Python: Reverse Array</h3>
+                <pre><code>arr = [1, 2, 3, 4, 5]
+i, j = 0, len(arr)-1
+while i < j:
+    arr[i], arr[j] = arr[j], arr[i]
+    i += 1
+    j -= 1
+print("Reversed:", arr)</code></pre>
+            </div>
+
+            <h3>Problem 3: Find the Second Largest Element</h3>
+            <p>👉 Strategy: Keep two variables: largest and second largest.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'java-secondlargest')">Java</button>
+            </div>
+            <div id="java-secondlargest" class="tab-content">
+                <h3>Java: Second Largest Element</h3>
+                <pre><code>public class SecondLargest {
+    public static void main(String[] args) {
+        int arr[] = {10, 20, 5, 8, 30};
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+        for (int num : arr) {
+            if (num > first) {
+                second = first;
+                first = num;
+            } else if (num > second && num != first) {
+                second = num;
+            }
+        }
+        System.out.println("Second Largest = " + second);
+    }
+}</code></pre>
+            </div>
+            
+            <h3>Problem 4: Sum of Elements</h3>
+            <p>👉 Strategy: Use a loop or prefix sum for multiple queries.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-sum')">C</button>
+            </div>
+            <div id="c-sum" class="tab-content">
+                <h3>C: Sum of Elements</h3>
+                <pre><code>#include <stdio.h>
+int main() {
+    int arr[] = {2, 4, 6, 8}, sum = 0;
+    for (int i = 0; i < 4; i++) sum += arr[i];
+    printf("Total Sum = %d", sum);
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Basic Strategies for Array Problem-Solving</h2>
+            <p>Here are some battle-tested strategies you should follow when solving array problems:</p>
+            <ul>
+                <li><strong>Understand the problem clearly</strong>
+                    <p>Identify input size (n) and constraints. Example: n &lt;= 10^5 → O(n²) solution may not work.</p>
+                </li>
+                <li><strong>Start with brute force</strong>
+                    <p>Don’t rush to optimize. First, write the simplest solution. Example: To check duplicates → nested loops.</p>
+                </li>
+                <li><strong>Optimize step by step</strong>
+                    <p>Replace brute force with sorting or hash maps if possible. Example: Duplicates → sort array → check neighbors.</p>
+                </li>
+                <li><strong>Use two-pointer technique</strong>
+                    <p>Useful for problems like reversing arrays, pair sum, sliding window.</p>
+                </li>
+                <li><strong>Think about prefix sums / cumulative arrays</strong>
+                    <p>Great for subarray sum queries.</p>
+                </li>
+                <li><strong>Draw examples</strong>
+                    <p>Always try with small inputs manually before coding.</p>
+                </li>
+                <li><strong>Check edge cases</strong>
+                    <p>Empty array, single element, all equal elements, very large inputs.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Example: Problem-Solving Walkthrough</h2>
+            <p>Problem: Find if a given array has two numbers that add up to a target sum.</p>
+            <p>Input: arr = [2, 7, 11, 15], target = 9</p>
+            <p>Output: Yes (2 + 7 = 9)</p>
+
+            <h3>👉 Strategy:</h3>
+            <ul>
+                <li><strong>Brute Force</strong> → Check all pairs (O(n²))</li>
+                <li><strong>Optimized</strong> → Sort array + two pointers (O(n log n))</li>
+                <li><strong>More Optimized</strong> → Use hash set (O(n))</li>
+            </ul>
+
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-sum')">Python (Hash Set Approach)</button>
+            </div>
+            <div id="python-sum" class="tab-content">
+                <h3>Python: Two Sum</h3>
+                <pre><code>arr = [2, 7, 11, 15]
+target = 9
+seen = set()
+
+for num in arr:
+    if target - num in seen:
+        print("Found:", num, target-num)
+        break
+    seen.add(num)</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Practice Problems (Intermediate)</h2>
+            <div class="resources">
+                <ul>
+                    <li>Rotate an array by k positions.</li>
+                    <li>Find missing number in array of size n-1 (1 to n).</li>
+                    <li>Count frequency of each element.</li>
+                    <li>Check if an array is a palindrome.</li>
+                    <li>Merge two sorted arrays into one.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <p>Keep practicing these problems and strategies, and you'll be well on your way to mastering arrays! Happy coding! 🚀</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
