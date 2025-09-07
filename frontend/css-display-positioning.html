@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display and Positioning</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li::before {
+            content: '●';
+            padding-right: 8px;
+            color: #00A6FF;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .practice-list {
+            list-style-type: '📝';
+            padding: 0;
+        }
+
+        .practice-list li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">CSS Display and Positioning</h1>
+        <p>CSS display and position properties help control how elements appear and where they are placed on a webpage.</p>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. CSS Display</h2>
+            <p><strong>Block:</strong> Takes full width, starts on a new line.</p>
+            <pre><code>div {
+  display: block;
+}</code></pre>
+            <p><strong>Inline:</strong> Takes only the width needed, stays on the same line.</p>
+            <pre><code>span {
+  display: inline;
+}</code></pre>
+            <p><strong>Inline-Block:</strong> Like inline but can set width/height.</p>
+            <pre><code>button {
+  display: inline-block;
+  width: 100px;
+}</code></pre>
+            <p><strong>None:</strong> Hides the element.</p>
+            <pre><code>p {
+  display: none;
+}</code></pre>
+            <p><strong>Flex:</strong> Align child elements easily.</p>
+            <pre><code>nav {
+  display: flex;
+  justify-content: space-between;
+}</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. CSS Positioning</h2>
+            <p><strong>Static</strong> (default)<br>
+            <pre><code>div {
+  position: static; /* normal flow */
+}</code></pre>
+            <p><strong>Relative</strong> (moves relative to original position)<br>
+            <pre><code>div {
+  position: relative;
+  top: 10px;  /* moves down 10px */
+  left: 20px; /* moves right 20px */
+}</code></pre>
+            <p><strong>Absolute</strong> (moves relative to nearest positioned ancestor)<br>
+            <pre><code>div {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}</code></pre>
+            <p><strong>Fixed</strong> (stays on screen even when scrolling)<br>
+            <pre><code>header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: lightblue;
+}</code></pre>
+            <p><strong>Sticky</strong> (behaves like relative until scrolling, then fixed)<br>
+            <pre><code>h2 {
+  position: sticky;
+  top: 0; /* sticks to top when scrolling */
+  background-color: yellow;
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Mini Practice Task 📝</h2>
+            <div class="resources">
+                <ul class="practice-list">
+                    <li>Create a header using <code>position: fixed</code> that stays visible while scrolling.</li>
+                    <li>Create a section heading using <code>position: sticky</code> that sticks when you scroll down.</li>
+                    <li>Create a small box using <code>position: absolute</code> and place it inside a container.</li>
+                    <li>Experiment with relative to move elements slightly from their normal position.</li>
+                </ul>
+            </div>
+            <p>✅ This practice helps understand how each positioning property behaves.</p>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">4. Conclusion</h2>
+            <ul>
+                <li><strong>Static</strong> → default flow</li>
+                <li><strong>Relative</strong> → relative movement</li>
+                <li><strong>Absolute</strong> → exact placement inside container</li>
+                <li><strong>Fixed</strong> → stays visible on scroll</li>
+                <li><strong>Sticky</strong> → scrolls normally until threshold</li>
+            </ul>
+            <p>Mastering display and position gives full control over layout and element placement.</p>
+        </div>
+    </div>
+</body>
+</html>
