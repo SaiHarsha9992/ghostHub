@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Operators</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">☕ Java Operators</h1>
+        <div class="intro-text">
+            <p>In our daily life, we use symbols like +, -, *, / for calculations.</p>
+            <ul>
+                <li>You add money to your wallet → +</li>
+                <li>You subtract expenses → -</li>
+                <li>You multiply items → *</li>
+                <li>You divide pizza slices among friends → /</li>
+            </ul>
+            <p>In Java, these symbols (and more) are called **operators**. They help us perform actions on values and variables.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🔹 1. Arithmetic Operators (Basic Math)</h2>
+            <p>These are the operators you already know from school.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>+</code></td>
+                        <td>Addition</td>
+                        <td><code>10 + 5</code></td>
+                        <td><code>15</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>-</code></td>
+                        <td>Subtraction</td>
+                        <td><code>10 - 5</code></td>
+                        <td><code>5</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>*</code></td>
+                        <td>Multiplication</td>
+                        <td><code>10 * 5</code></td>
+                        <td><code>50</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>/</code></td>
+                        <td>Division (decimal/int)</td>
+                        <td><code>10 / 5</code></td>
+                        <td><code>2</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>%</code></td>
+                        <td>Modulus (remainder)</td>
+                        <td><code>10 % 3</code></td>
+                        <td><code>1</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>👉 Real-life example:</p>
+            <ul>
+                <li>Adding prices of fruits in a bill.</li>
+                <li>Dividing total chocolates among kids.</li>
+            </ul>
+            <pre><code>int applePrice = 50;
+int bananaPrice = 20;
+int total = applePrice + bananaPrice;
+System.out.println("Total Bill: " + total); // 70</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🔹 2. Assignment Operators</h2>
+            <p>Assignment means putting a value into a variable.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Example</th>
+                        <th>Same As</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>=</code></td>
+                        <td><code>x = 5</code></td>
+                        <td><code>x = 5</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>+=</code></td>
+                        <td><code>x += 3</code></td>
+                        <td><code>x = x + 3</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>-=</code></td>
+                        <td><code>x -= 2</code></td>
+                        <td><code>x = x - 2</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>*=</code></td>
+                        <td><code>x *= 2</code></td>
+                        <td><code>x = x * 2</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>/=</code></td>
+                        <td><code>x /= 2</code></td>
+                        <td><code>x = x / 2</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>👉 Real-life example:</p>
+            <ul>
+                <li>Bank balance increases after deposit → <code>balance += amount</code>.</li>
+                <li>Game score increases after hitting target → <code>score += 10</code>.</li>
+            </ul>
+            <pre><code>int score = 0;
+score += 10;
+System.out.println("Current Score: " + score); // 10</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 3. Comparison (Relational) Operators</h2>
+            <p>Used to compare two values. The result is always <code>true</code> or <code>false</code>.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>==</code></td>
+                        <td>Equal to</td>
+                        <td><code>10 == 10</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>!=</code></td>
+                        <td>Not equal to</td>
+                        <td><code>10 != 5</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>></code></td>
+                        <td>Greater than</td>
+                        <td><code>10 > 5</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code><</code></td>
+                        <td>Less than</td>
+                        <td><code>5 < 10</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>>=</code></td>
+                        <td>Greater or equal</td>
+                        <td><code>10 >= 10</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code><=</code></td>
+                        <td>Less or equal</td>
+                        <td><code>5 <= 10</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>👉 Real-life example:</p>
+            <ul>
+                <li>Checking if your marks are equal to pass marks.</li>
+                <li>Checking if your age is greater than 18.</li>
+            </ul>
+            <pre><code>int age = 20;
+System.out.println(age >= 18); // true
+System.out.println(age == 18); // false</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 4. Logical Operators</h2>
+            <p>Used to combine conditions.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&&</code></td>
+                        <td>AND (both true)</td>
+                        <td><code>(5 > 2 && 10 > 5)</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>||</code></td>
+                        <td>OR (one true)</td>
+                        <td><code>(5 > 10 || 10 > 2)</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>!</code></td>
+                        <td>NOT (reverse)</td>
+                        <td><code>!(5 > 2)</code></td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>👉 Real-life example:</p>
+            <ul>
+                <li>A student passes if <code>marks > 35</code> and <code>attendance > 75</code>.</li>
+                <li>You get free delivery if <code>order > 500</code> or you are a premium member.</li>
+            </ul>
+            <pre><code>int marks = 80;
+int attendance = 90;
+System.out.println(marks > 35 && attendance > 75); // true</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 5. Bitwise Operators (Working with bits)</h2>
+            <p>Computers store numbers in bits (0s and 1s). Bitwise operators work on these bits.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                        <th>Example (a=5, b=3)</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&</code></td>
+                        <td>AND</td>
+                        <td><code>5 & 3 → 101 & 011</code></td>
+                        <td><code>1</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>|</code></td>
+                        <td>OR</td>
+                        <td><code>5 | 3 → 101 | 011</code></td>
+                        <td><code>7</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>^</code></td>
+                        <td>XOR</td>
+                        <td><code>5 ^ 3 → 101 ^ 011</code></td>
+                        <td><code>6</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>~</code></td>
+                        <td>NOT</td>
+                        <td><code>~5</code></td>
+                        <td><code>-6</code></td>
+                    </tr>
+                    <tr>
+                        <td><code><<</code></td>
+                        <td>Left Shift</td>
+                        <td><code>5 << 1</code></td>
+                        <td><code>10</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>>></code></td>
+                        <td>Right Shift</td>
+                        <td><code>5 >> 1</code></td>
+                        <td><code>2</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>👉 Real-life example:</p>
+            <ul>
+                <li><code>&</code> → Two switches ON at the same time.</li>
+                <li><code><<</code> → Like multiplying by 2.</li>
+                <li><code>>></code> → Like dividing by 2.</li>
+            </ul>
+            <pre><code>int a = 5; // binary 101
+int b = 3; // binary 011
+System.out.println(a & b); // 1
+System.out.println(a | b); // 7</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 6. Identity Operators (Not in Java)</h2>
+            <p>In Python, <code>is</code> / <code>is not</code> check if two variables are the same object in memory.</p>
+            <p>👉 In Java, we don’t have <code>is</code>. Instead:</p>
+            <ul>
+                <li>Use <code>==</code> to compare primitive values (like <code>int</code>, <code>char</code>, <code>boolean</code>).</li>
+                <li>Use <code>.equals()</code> to compare objects (like <code>Strings</code>).</li>
+            </ul>
+            <pre><code>String x = new String("hello");
+String y = new String("hello");
+
+System.out.println(x == y); // false (different memory)
+System.out.println(x.equals(y)); // true (same value)</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 7. Membership Operators (Not in Java)</h2>
+            <p>In Python, <code>in</code> / <code>not in</code> check if something exists in a sequence.</p>
+            <p>👉 In Java, we do this using methods:</p>
+            <ul>
+                <li>For strings → <code>contains()</code></li>
+                <li>For lists → <code>contains()</code> from <code>Collections</code></li>
+            </ul>
+            <pre><code>String word = "banana";
+System.out.println(word.contains("na")); // true
+System.out.println(!word.contains("z")); // true</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">📝 Quick Practice</h2>
+            <div class="resources">
+                <ul>
+                    <li>✅ Write a program to calculate the sum, difference, product, and remainder of any two numbers.</li>
+                    <li>✅ Store a number in a variable and increase it by 10 using <code>+=</code>.</li>
+                    <li>✅ Compare two ages and print if one is greater.</li>
+                    <li>✅ Check: Is <code>10 > 5</code> and <code>20 > 15</code>?</li>
+                    <li>✅ Try <code>5 & 3</code>, <code>5 | 3</code>, and <code>5 ^ 3</code>.</li>
+                    <li>✅ Compare two strings using <code>==</code> and <code>.equals()</code>.</li>
+                    <li>✅ Check if <code>"Java"</code> is inside <code>"I love Java programming"</code>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">✅ Summary:</h2>
+            <ul>
+                <li><strong>Arithmetic</strong> → basic math (<code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code>)</li>
+                <li><strong>Assignment</strong> → store/update values (<code>=</code>, <code>+=</code>, <code>-=</code> …)</li>
+                <li><strong>Comparison</strong> → compare values (<code>==</code>, <code>!=</code>, <code>></code>, <code><</code> …)</li>
+                <li><strong>Logical</strong> → combine conditions (<code>&&</code>, <code>||</code>, <code>!</code>)</li>
+                <li><strong>Bitwise</strong> → work on binary bits (<code>&</code> <code>|</code> <code>^</code> <code>~</code> <code><<</code> <code>>></code>)</li>
+                <li><strong>Identity</strong> → in Java, use <code>==</code> for primitives, <code>.equals()</code> for objects</li>
+                <li><strong>Membership</strong> → in Java, use <code>contains()</code> methods</li>
+            </ul>
+            <p>👉 Operators in Java are like tools we already use in daily life: adding bills, checking conditions, flipping switches, or searching in a list.</p>
+        </div>
+    </div>
+</body>
+</html>
