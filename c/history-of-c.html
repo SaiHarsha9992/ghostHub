@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of C</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">History of C</h1>
+        <div class="intro-text">
+            <p>C has a rich history that explains its widespread use today. Its story began decades ago, shaping the foundation of modern computing.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🧑‍💻 The Beginning</h2>
+            <ul>
+                <li><strong>Year:</strong> 1972</li>
+                <li><strong>Person:</strong> Dennis Ritchie, an American computer scientist 👨‍🔬.</li>
+                <li><strong>Place:</strong> Bell Labs in the United States.</li>
+            </ul>
+            <p>Dennis Ritchie wanted to create a simple, efficient, and portable language to develop the UNIX operating system. He needed a language that was powerful enough to interact with a computer's hardware directly, unlike earlier languages. C was designed to be a significant improvement over its predecessor, the B language.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">📜 Why the Name “C”?</h2>
+            <p>The name C is not a tribute to anything grand; it’s a simple, logical progression.</p>
+            <ul>
+                <li>The language that came before C was called "B".</li>
+                <li>Following the alphabetical order, the next logical name was "C". It was short, easy to remember, and stuck.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">⏳ The Early Years</h2>
+            <ul>
+                <li><strong>1978:</strong> Brian Kernighan and Dennis Ritchie published "The C Programming Language", the first definitive book on C. This book, often called the "K&R C," served as the informal standard for the language for many years.</li>
+                <li><strong>1980s:</strong> C became incredibly popular. Many companies and universities adopted it for system programming and software development. It was used to write operating systems, compilers, and application software.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🏆 Standardization</h2>
+            <p>As C's popularity grew, different versions of the language began to appear, causing compatibility problems. To solve this, a committee was formed to create a universal standard.</p>
+            <ul>
+                <li><strong>1989:</strong> The American National Standards Institute (ANSI) created the first official standard for C, known as "ANSI C" or "C89". This ensured that C code written on one computer would work the same way on another.</li>
+                <li><strong>1999:</strong> A revised standard, "C99", was released, adding new features and improving the language. More updates have followed, with the latest being "C18".</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🌍 Where We Are Now</h2>
+            <p>Today, C remains a cornerstone of the programming world. It is the language of choice for tasks that demand speed and efficiency, like developing operating system kernels, embedded systems, and high-performance gaming engines. C's legacy is immense; it directly influenced the creation of C++, C#, Java, and many other languages we use today.</p>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">✅ In Short</h2>
+            <ul>
+                <li><strong>1972:</strong> Dennis Ritchie created C at Bell Labs.</li>
+                <li><strong>1978:</strong> "The C Programming Language" book was published, establishing a de facto standard.</li>
+                <li><strong>1989:</strong> The ANSI C standard was created to ensure consistency.</li>
+                <li><strong>Today:</strong> C is still a fundamental language used for system-level programming and is the basis for many other languages.</li>
+            </ul>
+            <p>The history of C is a testament to its power and enduring relevance. 🚀</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
