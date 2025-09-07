@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced String Handling in Programming</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Advanced String Handling in C, C++, Python, and Java</h1>
+        <div class="intro-text">
+            <p>In the previous blog, we discussed basic string methods like concatenation, length, substring, and case conversion. Now, let’s move to advanced string concepts that are crucial for real-world applications such as data parsing, text processing, validation, and optimization.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🔹 Advanced String Handling in C</h2>
+            <p>In C, strings are character arrays, so advanced operations require manual handling.</p>
+            <h3>1. Tokenization (strtok)</h3>
+            <p>Used to split strings into tokens (words).</p>
+            <pre><code>#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "Hello,World,Strings,In,C";
+    char *token = strtok(str, ",");
+
+    while (token != NULL) {
+        printf("Token: %s\n", token);
+        token = strtok(NULL, ",");
+    }
+    return 0;
+}</code></pre>
+            <h3>2. String Formatting (sprintf)</h3>
+            <pre><code>#include <stdio.h>
+
+int main() {
+    char buffer[100];
+    int age = 20;
+    sprintf(buffer, "I am %d years old", age);
+    printf("%s\n", buffer);
+    return 0;
+}</code></pre>
+            <h3>3. Dynamic Strings</h3>
+            <p>Since C has no dynamic strings, we use <code>malloc()</code> and <code>realloc()</code>.</p>
+            <pre><code>#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    char *str = malloc(20);
+    strcpy(str, "Hello");
+    str = realloc(str, 40);
+    strcat(str, " World");
+    printf("%s\n", str);
+    free(str);
+    return 0;
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 Advanced String Handling in C++</h2>
+            <p>C++ offers rich advanced features via <code>std::string</code> and <code>stringstream</code>.</p>
+            <h3>1. String Streams (stringstream)</h3>
+            <p>Great for parsing and formatting.</p>
+            <pre><code>#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+    string input = "100 200 300";
+    stringstream ss(input);
+    int x;
+    while (ss >> x) {
+        cout << "Number: " << x << endl;
+    }
+    return 0;
+}</code></pre>
+            <h3>2. Regular Expressions (<regex>)</h3>
+            <pre><code>#include <iostream>
+#include <regex>
+using namespace std;
+
+int main() {
+    string text = "My email is test@example.com";
+    regex pattern(R"(\w+@\w+\.\w+)");
+    smatch match;
+
+    if (regex_search(text, match, pattern)) {
+        cout << "Found email: " << match[0] << endl;
+    }
+    return 0;
+}</code></pre>
+            <h3>3. Mutable vs Immutable</h3>
+            <p>C++ <code>std::string</code> is mutable, unlike Java/Python strings. You can change characters directly:</p>
+            <pre><code>string str = "Hello";
+str[0] = 'J';
+cout << str; // Jello</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 Advanced String Handling in Python</h2>
+            <p>Python is extremely powerful with advanced string manipulation.</p>
+            <h3>1. Regular Expressions (re module)</h3>
+            <pre><code>import re
+
+text = "Contact: user@example.com, phone: +91-9876543210"
+
+# Find email
+email = re.findall(r"\w+@\w+\.\w+", text)
+print("Emails:", email)
+
+# Find phone
+phone = re.findall(r"\+\d{2}-\d{10}", text)
+print("Phones:", phone)</code></pre>
+            <h3>2. String Formatting (f-strings, .format())</h3>
+            <pre><code>name = "Harsha"
+age = 20
+
+print(f"My name is {name}, I am {age} years old")
+print("My name is {}, I am {} years old".format(name, age))</code></pre>
+            <h3>3. Raw Strings</h3>
+            <p>Useful for regex paths (<code>r"..."</code>).</p>
+            <pre><code>path = r"C:\Users\Harsha\Desktop"
+print(path)  # C:\Users\Harsha\Desktop</code></pre>
+            <h3>4. Mutable Strings (list conversion / io.StringIO)</h3>
+            <pre><code>from io import StringIO
+
+s = StringIO("Hello")
+s.write(" World")
+print(s.getvalue())</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🔹 Advanced String Handling in Java</h2>
+            <p>Java provides powerful libraries for advanced string operations.</p>
+            <h3>1. Regular Expressions (Pattern, Matcher)</h3>
+            <pre><code>import java.util.regex.*;
+
+public class RegexExample {
+    public static void main(String[] args) {
+        String text = "Email: test@example.com";
+        Pattern p = Pattern.compile("\\w+@\\w+\\.\\w+");
+        Matcher m = p.matcher(text);
+
+        if (m.find()) {
+            System.out.println("Found: " + m.group());
+        }
+    }
+}</code></pre>
+            <h3>2. StringBuilder (Mutable Strings)</h3>
+            <p><code>String</code> in Java is immutable. For efficiency, use <code>StringBuilder</code>.</p>
+            <pre><code>public class BuilderExample {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World");
+        sb.insert(5, " Beautiful");
+        sb.delete(5, 15);
+        System.out.println(sb);
+    }
+}</code></pre>
+            <h3>3. String Formatting</h3>
+            <pre><code>public class FormatExample {
+    public static void main(String[] args) {
+        String name = "Harsha";
+        int age = 20;
+
+        String result = String.format("My name is %s and I am %d years old", name, age);
+        System.out.println(result);
+    }
+}</code></pre>
+            <h3>4. Tokenization (String.split(), StringTokenizer)</h3>
+            <pre><code>import java.util.StringTokenizer;
+
+public class TokenExample {
+    public static void main(String[] args) {
+        String text = "Hello,World,Java";
+        StringTokenizer st = new StringTokenizer(text, ",");
+
+        while (st.hasMoreTokens()) {
+            System.out.println("Token: " + st.nextToken());
+        }
+    }
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">📊 Advanced Comparison Across Languages</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>C (<code>string.h</code>)</th>
+                        <th>C++ (<code>std::string</code>)</th>
+                        <th>Python (<code>str</code>, <code>re</code>)</th>
+                        <th>Java (<code>String</code>, <code>Regex</code>)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Regex Support</strong></td>
+                        <td>❌ (manual libs needed)</td>
+                        <td>✅ <code><regex></code></td>
+                        <td>✅ <code>re</code> module</td>
+                        <td>✅ <code>Pattern</code>, <code>Matcher</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mutable Strings</strong></td>
+                        <td>✅ (<code>char[]</code>)</td>
+                        <td>✅ (<code>std::string</code>)</td>
+                        <td>❌ (use list/<code>StringIO</code>)</td>
+                        <td>✅ (<code>StringBuilder</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tokenization</strong></td>
+                        <td><code>strtok()</code></td>
+                        <td><code>stringstream</code></td>
+                        <td><code>.split()</code></td>
+                        <td><code>.split()</code>, <code>StringTokenizer</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>String Formatting</strong></td>
+                        <td><code>sprintf()</code></td>
+                        <td><code>ostringstream</code></td>
+                        <td>f-string, <code>.format()</code></td>
+                        <td><code>String.format()</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unicode Handling</strong></td>
+                        <td>Manual (<code>wchar_t</code>)</td>
+                        <td>Partial</td>
+                        <td>✅ Full Unicode</td>
+                        <td>✅ Full Unicode</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">📝 Conclusion</h2>
+            <p><strong>C:</strong> Advanced handling uses <code>strtok</code>, <code>sprintf</code>, and manual memory management.</p>
+            <p><strong>C++:</strong> Offers <code>std::string</code>, <code>stringstream</code>, and <code><regex></code> for advanced parsing.</p>
+            <p><strong>Python:</strong> Extremely powerful with <code>re</code>, f-strings, and Unicode support.</p>
+            <p><strong>Java:</strong> Provides Regex, <code>StringBuilder</code>, and <code>StringTokenizer</code> for robust text processing.</p>
+            <p>👉 Advanced string handling is essential for building parsers, compilers, text analyzers, and real-world applications like email/phone validation, log analysis, and formatting tools.</p>
+        </div>
+    </div>
+</body>
+</html>
