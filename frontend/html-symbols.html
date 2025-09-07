@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Symbols</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">HTML Symbols</h1>
+        <div class="introduction">
+            <h2 class="section-heading">1. What are HTML Symbols?</h2>
+            <div class="intro-text">
+                <p>● HTML provides many special symbols (mathematical, currency, arrows, etc.) using entities.</p>
+                <p>● These symbols are not typed directly on the keyboard.</p>
+                <p>● They are written as `&amp;name;` or `&amp;#number;`.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Common Symbol Categories</h2>
+            <p><strong>🔹 Mathematical Symbols</strong></p>
+            <pre><code>&lt;p&gt;10 &times; 5 = 50&lt;/p&gt; &lt;!-- Multiplication --&gt;
+&lt;p&gt;20 &divide; 4 = 5&lt;/p&gt; &lt;!-- Division --&gt;
+&lt;p&gt;5 &plus; 3 = 8&lt;/p&gt;   &lt;!-- Plus --&gt;
+&lt;p&gt;9 &minus; 4 = 5&lt;/p&gt;   &lt;!-- Minus --&gt;
+&lt;p&gt;10 &le; 20&lt;/p&gt;   &lt;!-- Less than or equal --&gt;
+&lt;p&gt;15 &ge; 10&lt;/p&gt;   &lt;!-- Greater than or equal --&gt;</code></pre>
+
+            <p><strong>🔹 Currency Symbols</strong></p>
+            <pre><code>&lt;p&gt;Dollar: &amp;#36;100&lt;/p&gt;
+&lt;p&gt;Rupee: &amp;#8377;500&lt;/p&gt;
+&lt;p&gt;Euro: &amp;euro;50&lt;/p&gt;
+&lt;p&gt;Pound: &amp;pound;40&lt;/p&gt;
+&lt;p&gt;Yen: &amp;yen;2000&lt;/p&gt;</code></pre>
+
+            <p><strong>🔹 Arrow Symbols</strong></p>
+            <pre><code>&lt;p&gt;Left Arrow: &amp;larr;&lt;/p&gt;
+&lt;p&gt;Right Arrow: &amp;rarr;&lt;/p&gt;
+&lt;p&gt;Up Arrow: &amp;uarr;&lt;/p&gt;
+&lt;p&gt;Down Arrow: &amp;darr;&lt;/p&gt;
+&lt;p&gt;Double Arrow: &amp;harr;&lt;/p&gt;</code></pre>
+
+            <p><strong>🔹 Other Useful Symbols</strong></p>
+            <pre><code>&lt;p&gt;Copyright: &amp;copy; 2025&lt;/p&gt;
+&lt;p&gt;Trademark: &amp;trade;&lt;/p&gt;
+&lt;p&gt;Registered: &amp;reg;&lt;/p&gt;
+&lt;p&gt;Heart: &amp;hearts;&lt;/p&gt;
+&lt;p&gt;Star: &amp;#9733;&lt;/p&gt;
+&lt;p&gt;Checkmark: &amp;#10004;&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Example Webpage with Symbols</h2>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;HTML Symbols Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;HTML Symbols&lt;/h2&gt;
+
+&lt;p&gt;Math: 10 &amp;times; 5 = 50&lt;/p&gt;
+&lt;p&gt;Currency: &amp;#36;100, &amp;#8377;500, &amp;euro;50&lt;/p&gt;
+&lt;p&gt;Arrows: &amp;larr; &amp;rarr; &amp;uarr; &amp;darr;&lt;/p&gt;
+&lt;p&gt;Special: &amp;copy; &amp;reg; &amp;trade; &amp;hearts; &amp;#9733; &amp;#10004;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Show the equation 5 &le; 10 &ge; 2.</li>
+                    <li>Write your name followed by a &hearts; symbol.</li>
+                    <li>Display `₹`, `$`, `€` in one line.</li>
+                    <li>Insert arrows showing &larr; &rarr; &uarr; &darr;.</li>
+                    <li>Add &copy; and &reg; in a footer text.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">5. Conclusion</h2>
+            <ul>
+                <li>HTML symbols are written using entities.</li>
+                <li>Categories: Math, Currency, Arrows, Special Characters.</li>
+                <li>Format: `&amp;name;` or `&amp;#number;`.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
