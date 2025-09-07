@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is C?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">What is C?</h1>
+        <div class="intro-text">
+            <p>When you hear the word C, you might think of the letter. But in the world of computers, C is a powerful and foundational programming language. It is often called the "mother language" 🤱 because many other popular languages, like Python, Java, and C++, were either written in C or heavily influenced by it. C gives instructions to a computer at a very low level, similar to how a car engine works 🚗—you don't see the complexity, but it's what makes everything run.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">✨ Why is C Special?</h2>
+            <p>There are hundreds of programming languages, so why is C still so important? C is special because it's:</p>
+            <ul>
+                <li><strong>Fast and Efficient:</strong> C code runs very quickly ⚡ because it's compiled directly into machine code that the computer's processor can execute. This makes it ideal for operating systems, game engines, and performance-critical applications.</li>
+                <li><strong>Portable:</strong> Code written in C can be run on many different types of computers and operating systems with minimal changes. This is why it's used to develop software for diverse devices, from tiny embedded systems to supercomputers. 💻</li>
+                <li><strong>Flexible:</strong> C gives programmers a lot of direct control over a computer's memory and hardware. This flexibility allows for the creation of powerful software that wouldn't be possible with higher-level languages.</li>
+                <li><strong>Foundation:</strong> Learning C helps you understand how computers work at a more fundamental level, providing a solid base for learning other programming languages. 📚</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🌍 Who Uses C?</h2>
+            <p>C is everywhere, even if you don't realize it:</p>
+            <ul>
+                <li><strong>Operating Systems:</strong> The core of Windows, Linux, and macOS is written in C. 🖥️</li>
+                <li><strong>Embedded Systems:</strong> The software in your microwave, car, or TV remote control is often written in C. 🎮</li>
+                <li><strong>Databases:</strong> Many popular databases like MySQL and Oracle are built using C.</li>
+                <li><strong>Game Development:</strong> Parts of many game engines are written in C for maximum performance.</li>
+                <li><strong>System Tools:</strong> Compilers, text editors, and other core tools for programmers are frequently built in C.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">💻 A Small Example</h2>
+            <p>Here's how a simple C program looks:</p>
+            <div class="tab-container">
+                <button class="tab-button active" onclick="openCode(event, 'c-example')">C</button>
+            </div>
+            <div id="c-example" class="tab-content" style="display: block;">
+                <h3>C → syntax::</h3>
+                <pre><code>#include <stdio.h>
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}</code></pre>
+            </div>
+            <p>When you run this program, your computer will show:</p>
+            <pre><code>Hello, World!</code></pre>
+            <p>That's it! It takes a few more lines than Python, but it's a small glimpse into how C code is structured.</p>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">✅ In short:</h2>
+            <p>C is a fast, powerful, and essential programming language that provides a foundation for modern computing. It is used to build the core systems and software that run our world. 🚀</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
