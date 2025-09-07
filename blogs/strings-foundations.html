@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Strings</h1>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Part 1: Foundations of Strings</h2>
+            <h3>1. Introduction</h3>
+            <p>Strings are sequences of characters — think of them as text you use in real life: names, messages, or file names.</p>
+            <div class="real-life-example">
+                <ul>
+                    <li><strong>Example in real life:</strong></li>
+                    <li>Your Instagram username → "ghostcoder25"</li>
+                    <li>A WhatsApp message → "Hey! How are you?"</li>
+                    <li>Both are strings!</li>
+                </ul>
+            </div>
+            
+            <h3>2. Why Strings Matter</h3>
+            <p>Strings are everywhere in software:</p>
+            <ul>
+                <li>Displaying text in apps and websites.</li>
+                <li>Reading and writing file names.</li>
+                <li>Sending API responses over the internet.</li>
+                <li>Handling user inputs like usernames and passwords.</li>
+            </ul>
+            <p>Without strings, software would be like a phone without a speaker — no communication.</p>
+            
+            <h3>3. Real-Life Example</h3>
+            <p>Imagine you run a feedback system:</p>
+            <ul>
+                <li><strong>Input Name:</strong> "Ghost Coder"</li>
+                <li><strong>Feedback:</strong> "Loved the product! Will recommend."</li>
+            </ul>
+            <p>These inputs are stored as strings, which you can:</p>
+            <ul>
+                <li>Save in a database.</li>
+                <li>Search using keywords.</li>
+                <li>Analyze for sentiment (positive/negative).</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Strings in Programming Languages</h2>
+            <p>Let’s see how different programming languages scan and print strings.</p>
+            
+            <h3>C Language</h3>
+            <pre><code>#include <stdio.h>
+
+int main() {
+    char name[20];
+    printf("Enter your name: ");
+    scanf("%s", name);  // Input string
+    printf("Hello, %s!\n", name);  // Output string
+    return 0;
+}</code></pre>
+
+            <h3>C++ Language</h3>
+            <pre><code>#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string name;
+    cout << "Enter your name: ";
+    cin >> name;  // Input string
+    cout << "Hello, " << name << "!" << endl;
+    return 0;
+}</code></pre>
+
+            <h3>Python</h3>
+            <pre><code>name = input("Enter your name: ")
+print("Hello,", name + "!")</code></pre>
+
+            <h3>Java</h3>
+            <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+        System.out.println("Hello, " + name + "!");
+    }
+}</code></pre>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">👉 At this point, you’ve learned:</h2>
+            <ul>
+                <li>What strings are</li>
+                <li>Why they’re important</li>
+                <li>How to take input/output in different languages.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
