@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Arrays</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Advanced Level of Arrays</h1>
+        <div class="intro-text">
+            <p>At this stage, arrays become algorithmic tools. Almost every FAANG/MNC interview tests you with array-based problems because:</p>
+            <ul>
+                <li>They test problem-solving strategies.</li>
+                <li>They build the base for DP, Greedy, Graphs.</li>
+                <li>They show how well you optimize code under constraints.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🔥 Top 10 Advanced Array Interview Problems</h2>
+
+            <h3>1. Maximum Subarray Sum (Kadane’s Algorithm)</h3>
+            <p>👉 Famous because it tests optimization (O(n) instead of brute-force O(n²)).</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-kadane')">Python</button>
+            </div>
+            <div id="python-kadane" class="tab-content">
+                <h3>Python: Maximum Subarray Sum</h3>
+                <pre><code>arr = [-2,1,-3,4,-1,2,1,-5,4]
+max_sum = curr_sum = arr[0]
+for x in arr[1:]:
+    curr_sum = max(x, curr_sum + x)
+    max_sum = max(max_sum, curr_sum)
+print("Max Subarray Sum:", max_sum)</code></pre>
+            </div>
+
+            <h3>2. Trapping Rain Water</h3>
+            <p>👉 Classic problem testing prefix/suffix max logic.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'java-rainwater')">Java</button>
+            </div>
+            <div id="java-rainwater" class="tab-content">
+                <h3>Java: Trapping Rain Water</h3>
+                <pre><code>public class RainWater {
+    public static void main(String[] args) {
+        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+        int n = height.length;
+        int[] left = new int[n], right = new int[n];
+        
+        left[0] = height[0];
+        for (int i=1; i<n; i++) left[i] = Math.max(left[i-1], height[i]);
+        right[n-1] = height[n-1];
+        for (int i=n-2; i>=0; i--) right[i] = Math.max(right[i+1], height[i]);
+
+        int water = 0;
+        for (int i=0; i<n; i++) water += Math.min(left[i], right[i]) - height[i];
+        System.out.println("Trapped Water = " + water);
+    }
+}</code></pre>
+            </div>
+
+            <h3>3. Majority Element (Boyer–Moore Algorithm)</h3>
+            <p>👉 Clever voting algorithm in O(n), O(1).</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'cpp-majority')">C++</button>
+            </div>
+            <div id="cpp-majority" class="tab-content">
+                <h3>C++: Majority Element</h3>
+                <pre><code>#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    vector<int> arr = {2,2,1,1,1,2,2};
+    int candidate = 0, count = 0;
+    for (int num : arr) {
+        if (count == 0) candidate = num;
+        count += (num == candidate) ? 1 : -1;
+    }
+    cout << "Majority Element = " << candidate;
+    return 0;
+}</code></pre>
+            </div>
+
+            <h3>4. Maximum Product Subarray</h3>
+            <p>👉 Tests handling negatives and zero.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'java-maxprod')">Java</button>
+            </div>
+            <div id="java-maxprod" class="tab-content">
+                <h3>Java: Maximum Product Subarray</h3>
+                <pre><code>public class MaxProductSubarray {
+    public static void main(String[] args) {
+        int[] arr = {2,3,-2,4};
+        int maxProd = arr[0], minProd = arr[0], result = arr[0];
+        for (int i=1; i<arr.length; i++) {
+            if (arr[i] < 0) {
+                int temp = maxProd; 
+                maxProd = minProd; 
+                minProd = temp;
+            }
+            maxProd = Math.max(arr[i], maxProd * arr[i]);
+            minProd = Math.min(arr[i], minProd * arr[i]);
+            result = Math.max(result, maxProd);
+        }
+        System.out.println("Max Product = " + result);
+    }
+}</code></pre>
+            </div>
+
+            <h3>5. Rotate Matrix (90° In-Place)</h3>
+            <p>👉 Common in 2D array interviews.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-rotatematrix')">C</button>
+            </div>
+            <div id="c-rotatematrix" class="tab-content">
+                <h3>C: Rotate Matrix</h3>
+                <pre><code>#include <stdio.h>
+#define N 3
+int main() {
+    int mat[N][N] = {{1,2,3},{4,5,6},{7,8,9}};
+    for (int i=0;i<N;i++)
+        for (int j=i;j<N;j++) {
+            int temp = mat[i][j];
+            mat[i][j] = mat[j][i];
+            mat[j][i] = temp;
+        }
+    for (int i=0;i<N;i++)
+        for (int j=0;j<N/2;j++) {
+            int temp = mat[i][j];
+            mat[i][j] = mat[i][N-j-1];
+            mat[i][N-j-1] = temp;
+        }
+    for (int i=0;i<N;i++) {
+        for (int j=0;j<N;j++) printf("%d ",mat[i][j]);
+        printf("\n");
+    }
+    return 0;
+}</code></pre>
+            </div>
+
+            <h3>6. Find Duplicate Number (Floyd’s Tortoise & Hare)</h3>
+            <p>👉 Famous cycle detection trick.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-duplicate')">Python</button>
+            </div>
+            <div id="python-duplicate" class="tab-content">
+                <h3>Python: Find Duplicate Number</h3>
+                <pre><code>arr = [1,3,4,2,2]
+slow = fast = arr[0]
+while True:
+    slow = arr[slow]
+    fast = arr[arr[fast]]
+    if slow == fast:
+        break
+slow = arr[0]
+while slow != fast:
+    slow = arr[slow]
+    fast = arr[fast]
+print("Duplicate Number:", slow)</code></pre>
+            </div>
+
+            <h3>7. Minimum Jumps to Reach End</h3>
+            <p>👉 Greedy approach.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'cpp-minjumps')">C++</button>
+            </div>
+            <div id="cpp-minjumps" class="tab-content">
+                <h3>C++: Minimum Jumps to Reach End</h3>
+                <pre><code>#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    vector<int> arr = {2,3,1,1,4};
+    int jumps = 0, farthest = 0, end = 0;
+    for(int i=0;i<arr.size()-1;i++){
+        farthest = max(farthest, i + arr[i]);
+        if (i == end) {
+            jumps++;
+            end = farthest;
+        }
+    }
+    cout << "Min Jumps = " << jumps;
+    return 0;
+}</code></pre>
+            </div>
+
+            <h3>8. Median of Two Sorted Arrays</h3>
+            <p>👉 Classic divide & conquer.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-median')">Python (short version using merge)</button>
+            </div>
+            <div id="python-median" class="tab-content">
+                <h3>Python: Median of Two Sorted Arrays</h3>
+                <pre><code>def findMedianSortedArrays(nums1, nums2):
+    nums = sorted(nums1 + nums2)
+    n = len(nums)
+    if n % 2:
+        return nums[n // 2]
+    return (nums[n // 2 - 1] + nums[n // 2]) / 2
+
+print(findMedianSortedArrays([1,3],[2]))</code></pre>
+            </div>
+
+            <h3>9. Subarray Sum Equals K</h3>
+            <p>👉 Uses prefix sum + hashmap.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'java-subarraysum')">Java</button>
+            </div>
+            <div id="java-subarraysum" class="tab-content">
+                <h3>Java: Subarray Sum Equals K</h3>
+                <pre><code>import java.util.*;
+public class SubarraySum {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3};
+        int k = 3, sum = 0, count = 0;
+        Map<Integer,Integer> map = new HashMap<>();
+        map.put(0,1);
+        for (int num : arr) {
+            sum += num;
+            count += map.getOrDefault(sum - k, 0);
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+        System.out.println("Count = " + count);
+    }
+}</code></pre>
+            </div>
+
+            <h3>10. Longest Consecutive Sequence</h3>
+            <p>👉 Uses HashSet for O(n).</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'cpp-longest')">C++</button>
+            </div>
+            <div id="cpp-longest" class="tab-content">
+                <h3>C++: Longest Consecutive Sequence</h3>
+                <pre><code>#include <iostream>
+#include <unordered_set>
+#include <vector>
+using namespace std;
+int main() {
+    vector<int> nums = {100,4,200,1,3,2};
+    unordered_set<int> s(nums.begin(), nums.end());
+    int longest = 0;
+    for (int num : s) {
+        if (s.find(num - 1) == s.end()) {
+            int curr = num, streak = 1;
+            while (s.count(curr + 1)) {
+                curr++;
+                streak++;
+            }
+            longest = max(longest, streak);
+        }
+    }
+    cout << "Longest Consecutive Sequence = " << longest;
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🎯 Advanced Problem-Solving Strategies</h2>
+            <ul>
+                <li><strong>Sliding Window</strong> → Max subarray of size k, variable-length window.</li>
+                <li><strong>Prefix Sum & Hashing</strong> → Range queries, subarray sums.</li>
+                <li><strong>Two Pointers</strong> → Sorting + searching problems.</li>
+                <li><strong>Greedy</strong> → Jump Game, Interval Problems.</li>
+                <li><strong>Divide & Conquer</strong> → Median of two sorted arrays.</li>
+                <li><strong>Cycle Detection</strong> → Duplicates in arrays.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">📝 Recommended Resources</h2>
+            <h3>📖 Grokking the Coding Interview (Educative)</h3>
+            <h3>📖 Cracking the Coding Interview – Gayle Laakmann McDowell</h3>
+            <h3>🖥️ LeetCode Arrays Playlist</h3>
+            <h3>🌐 GeeksforGeeks Advanced Arrays</h3>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">🏋️ Exercises for You</h2>
+            <div class="resources">
+                <ul>
+                    <li>Implement Kadane’s algorithm with subarray indices.</li>
+                    <li>Solve "Maximum Sum Circular Subarray".</li>
+                    <li>Implement “Sort Colors” (Dutch National Flag).</li>
+                    <li>Find "3Sum" problem solution.</li>
+                    <li>Implement “Merge Intervals”.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">✅ With this, you now have:</h2>
+            <ul>
+                <li>Beginner → Basics & operations</li>
+                <li>Intermediate → Problem-solving strategies</li>
+                <li>Advanced → Famous interview questions + strategies</li>
+            </ul>
+            <p>This forms a complete arrays mastery path 🎯.</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
