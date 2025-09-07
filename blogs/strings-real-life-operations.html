@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Strings</h1>
+        
+     
+        
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Real-Time Applications of Strings</h2>
+            <p>Strings are the foundation of:</p>
+            <ul>
+                <li><strong>Web forms</strong> – Email validation, password strength checks.</li>
+                <li><strong>Chatbots</strong> – Parsing and understanding user queries.</li>
+                <li><strong>Search engines</strong> – Matching user search with database results.</li>
+                <li><strong>Data cleaning</strong> – Removing unwanted spaces, punctuation in datasets.</li>
+            </ul>
+            <div class="real-life-example">
+                <ul>
+                    <li><strong>Example:</strong> When you search "Laptop under 50000" on Amazon, the system uses string search + comparison to fetch relevant products.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Recommendations for Learning Strings</h2>
+            <p>Want to master strings? Here are some resources:</p>
+            <h3>📖 Articles & Blogs</h3>
+            <ul>
+                <li>GeeksforGeeks – Strings in C, C++, Java, Python</li>
+                <li>JavaTPoint – String Handling in Java</li>
+                <li>Codeforces Blogs – String Manipulation in Competitive Programming</li>
+            </ul>
+            <h3>🎓 Courses</h3>
+            <ul>
+                <li>CS50 by Harvard (C strings deep dive).</li>
+                <li>Python for Everybody (University of Michigan).</li>
+                <li>Java Masterclass on Udemy.</li>
+            </ul>
+            <h3>📝 Exercises</h3>
+            <div class="resources">
+                <ul>
+                    <li>Reverse a string without built-in functions.</li>
+                    <li>Check if a string is a palindrome.</li>
+                    <li>Count vowels and consonants.</li>
+                    <li>Find the most frequent character in a string.</li>
+                    <li>Implement a simple search feature using strings.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">Final Recap</h2>
+            <ul>
+                <li><strong>Part 1:</strong> Learned the basics — what strings are, why they matter, real-life uses, and input/output in C, C++, Python, Java.</li>
+                <li><strong>Part 2:</strong> Explored string operations, real-time applications, and resources for mastering them.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
