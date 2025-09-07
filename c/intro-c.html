@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The printf() Function</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Introduction to C: The printf() Function</h1>
+        <div class="intro-text">
+            <p>When you begin learning C, the first thing you'll do is make the computer display a message. This is done using a special function called <strong>printf()</strong>.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">🤔 Why Do We Use printf() in C?</h2>
+            <p>The <strong>printf()</strong> function is the primary way to output data to the screen. It is used for:</p>
+            <ul>
+                <li><strong>Showing Messages:</strong> Displaying simple messages like "Hello, World!" to the user.</li>
+                <li><strong>Displaying Values:</strong> Showing the value of variables, such as a user's age or a calculation result.</li>
+                <li><strong>Debugging:</strong> Helping programmers understand what their code is doing by printing out values at different points in the program.</li>
+            </ul>
+            <p>It acts as the voice of your program, allowing it to communicate with you.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">💻 How to Use printf() in C</h2>
+            <p>The <strong>printf()</strong> function is part of C's standard library. To use it, you first need to include the "standard input-output" library by writing <code>#include &lt;stdio.h&gt;</code>.</p>
+            <p>Here's a simple example:</p>
+            <div class="tab-container">
+                <button class="tab-button active" onclick="openCode(event, 'c-syntax-hello')">C</button>
+            </div>
+            <div id="c-syntax-hello" class="tab-content" style="display: block;">
+                <h3>C → Syntax::</h3>
+                <pre><code>#include <stdio.h>
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}</code></pre>
+            </div>
+            <p>When you run this program, the output on your screen will be:</p>
+            <pre><code>Hello, World</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">📌 Examples of Printing</h2>
+            <ul>
+                <li><strong>Printing a message:</strong>
+                    <pre><code>printf("Welcome to C programming!");</code></pre>
+                </li>
+                <li><strong>Printing numbers:</strong> You use special format specifiers like <code>%d</code> for integers and <code>%f</code> for floating-point numbers.
+                    <div class="tab-container">
+                        <button class="tab-button active" onclick="openCode(event, 'c-print-int')">C</button>
+                    </div>
+                    <div id="c-print-int" class="tab-content" style="display: block;">
+                        <pre><code>printf("%d", 10);</code></pre>
+                    </div>
+                </li>
+                <li><strong>Printing a variable:</strong>
+                    <div class="tab-container">
+                        <button class="tab-button active" onclick="openCode(event, 'c-print-var')">C</button>
+                    </div>
+                    <div id="c-print-var" class="tab-content" style="display: block;">
+                        <h3>C syntax →::</h3>
+                        <pre><code>int age = 20;
+printf("My age is %d", age);</code></pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">💡 Real-Life Situations Where printf() is Useful</h2>
+            <p>The <strong>printf()</strong> function is a foundational tool for C programs.</p>
+            <ul>
+                <li><strong>Command-Line Tools:</strong> Displaying instructions or results to the user in the terminal.</li>
+                <li><strong>Embedded Systems:</strong> Showing sensor readings on a tiny screen.</li>
+                <li><strong>Educational Programs:</strong> Providing feedback to students learning a new concept.</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">In short, printf() is how a C program shares information with us. It's the essential first step in building any C application.</h2>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
