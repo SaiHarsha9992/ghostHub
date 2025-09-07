@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Attributes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">HTML Attributes – Adding Extra Power to Tags</h1>
+        <div class="introduction">
+            <h2 class="section-heading">1. What is an Attribute?</h2>
+            <div class="intro-text">
+                <p>In HTML, a tag alone gives structure, but an attribute gives extra information about that tag.</p>
+                <p>Think of attributes as **adjectives** for HTML tags — they describe or modify the element.</p>
+                <p>Attributes always appear inside the opening tag.</p>
+                <p>👉 Example:</p>
+                <pre><code>&lt;a href="https://google.com"&gt;Visit Google&lt;/a&gt;</code></pre>
+                <p>Here,</p>
+                <ul>
+                    <li><code>&lt;a&gt;</code> is the tag (anchor tag for links).</li>
+                    <li><code>href="https://google.com"</code> is the attribute.</li>
+                    <li>It tells the browser where the link should go when clicked.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Why Do We Use Attributes?</h2>
+            <p>Without attributes, HTML is plain and basic. With attributes, we can:</p>
+            <ul>
+                <li>Add links to text or images (`href`)</li>
+                <li>Show images or videos (`src`)</li>
+                <li>Add alternative text for accessibility (`alt`)</li>
+                <li>Provide extra meaning like tooltips (`title`)</li>
+                <li>Control size and style (`width`, `height`, `style`)</li>
+                <li>Identify or group elements (`id`, `class`)</li>
+            </ul>
+            <p>📌 Example without attribute: `&lt;img&gt;`</p>
+            <p>👉 This shows nothing because the browser doesn’t know which image.</p>
+            <p>📌 Example with attribute:</p>
+            <pre><code>&lt;img src="car.jpg" alt="Red Car"&gt;</code></pre>
+            <p>👉 Now it shows the image and gives text if the image fails to load.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Components of an Attribute</h2>
+            <p>Every attribute has 3 parts:</p>
+            <ol>
+                <li><strong>Attribute Name</strong> → what property you want to set (like `href`, `src`, `id`)</li>
+                <li><strong>Equal Sign (=)</strong> → connects name and value</li>
+                <li><strong>Attribute Value</strong> → the actual setting, always inside quotes</li>
+            </ol>
+            <p>👉 Example:</p>
+            <pre><code>&lt;a href="https://example.com"&gt;Click Me&lt;/a&gt;</code></pre>
+            <ul>
+                <li>`href` → Attribute Name</li>
+                <li>`=` → Equal Sign</li>
+                <li>`"https://example.com"` → Attribute Value</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Types of Attributes</h2>
+            <p><strong>🔹 Global Attributes</strong></p>
+            <ul>
+                <li>Can be used with any HTML tag.</li>
+                <li>Examples:
+                    <ul>
+                        <li>`id` → gives a unique name to an element</li>
+                        <li>`class` → groups multiple elements together</li>
+                        <li>`style` → inline CSS for quick styling</li>
+                        <li>`title` → shows a tooltip on hover</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>👉 Example:</p>
+            <pre><code>&lt;p id="intro" class="highlight" title="This is a tooltip"&gt;Hello World&lt;/p&gt;</code></pre>
+            <p><strong>🔹 Specific Attributes</strong></p>
+            <ul>
+                <li>Work only with particular tags.</li>
+                <li>Examples:
+                    <ul>
+                        <li>`href` (only for `&lt;a&gt;`)</li>
+                        <li>`src`, `alt`, `width`, `height` (for `&lt;img&gt;`)</li>
+                        <li>`rows`, `cols` (for `&lt;textarea&gt;`)</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>👉 Example:</p>
+            <pre><code>&lt;img src="flower.png" alt="Beautiful Flower" width="200" height="150"&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Commonly Used Attributes with Examples</h2>
+            <p><strong>Example 1: Link with `href`</strong></p>
+            <pre><code>&lt;a href="https://github.com"&gt;My GitHub&lt;/a&gt;</code></pre>
+            <p>✔ Clicking the text opens GitHub in the browser.</p>
+
+            <p><strong>Example 2: Image with `src`, `alt`, and size</strong></p>
+            <pre><code>&lt;img src="car.jpg" alt="Sports Car" width="400" height="250"&gt;</code></pre>
+            <p>✔ Shows an image</p>
+            <p>✔ If the image is missing, the text “Sports Car” will appear</p>
+            <p>✔ The image is resized to 400px × 250px</p>
+
+            <p><strong>Example 3: Tooltip with `title`</strong></p>
+            <pre><code>&lt;p title="I am a tooltip"&gt;Hover over me!&lt;/p&gt;</code></pre>
+            <p>✔ When you hover the mouse, a small tooltip appears.</p>
+
+            <p><strong>Example 4: Using `id` and `class`</strong></p>
+            <pre><code>&lt;h1 id="main-title"&gt;Welcome to My Website&lt;/h1&gt;
+&lt;p class="highlight"&gt;This is an important note.&lt;/p&gt;
+&lt;p class="highlight"&gt;This is another important note.&lt;/p&gt;</code></pre>
+            <p>✔ `id="main-title"` uniquely identifies the heading</p>
+            <p>✔ `class="highlight"` groups multiple paragraphs together</p>
+
+            <p><strong>Example 5: Styling with `style`</strong></p>
+            <pre><code>&lt;p style="color: blue; font-size: 20px;"&gt;Styled Text&lt;/p&gt;</code></pre>
+            <p>✔ Changes the color and size of the text directly in HTML</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Rules for Using Attributes</h2>
+            <ul>
+                <li>✅ Always written inside the **opening tag**</li>
+                <li>✅ Values should be inside **double quotes `"`**</li>
+                <li>✅ You can use **multiple attributes** in the same tag</li>
+            </ul>
+            <p>👉 Example:</p>
+            <pre><code>&lt;img src="car.png" alt="Red Car" width="300" height="200"&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">7. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Create a link to your favorite website using `href`.</li>
+                    <li>Insert an image with `src`, `alt`, `width`, and `height`.</li>
+                    <li>Add a paragraph with a tooltip using `title`.</li>
+                    <li>Write two `&lt;p&gt;` tags with the same `class` and change their style using `style`.</li>
+                    <li>Give a heading an `id="main-heading"`.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">8. Conclusion</h2>
+            <ul>
+                <li>Attributes are like extra details for HTML tags.</li>
+                <li>Every attribute has a name + value.</li>
+                <li>Two types: **Global** (work everywhere) and **Specific** (tag-based).</li>
+                <li>Common attributes: `href`, `src`, `alt`, `id`, `class`, `style`, `title`, `width`, `height`.</li>
+                <li>With attributes, your web pages become more useful, interactive, and accessible.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
