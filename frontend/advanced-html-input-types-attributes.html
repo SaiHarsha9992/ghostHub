@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced HTML Input Types</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li::before {
+            content: '●';
+            padding-right: 8px;
+            color: #00A6FF;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .practice-list {
+            list-style-type: '📝';
+            padding: 0;
+        }
+
+        .practice-list li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Advanced HTML Input Types & Attributes</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. What are Advanced Input Types?</h2>
+            <div class="intro-text">
+                <ul>
+                    <li>HTML5 introduced new input types to make forms more powerful.</li>
+                    <li>These inputs help collect data like emails, dates, numbers, colors, etc.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Advanced Input Types</h2>
+            <p>🔹 Email Input</p>
+            <pre><code>&lt;label&gt;Email:&lt;/label&gt;
+&lt;input type="email" name="email"&gt;</code></pre>
+            <p>✔ Ensures the input looks like a valid email.</p>
+            <p>🔹 Number Input</p>
+            <pre><code>&lt;label&gt;Age:&lt;/label&gt;
+&lt;input type="number" name="age" min="1" max="100"&gt;</code></pre>
+            <p>✔ Accepts only numbers, with optional limits.</p>
+            <p>🔹 Date Input</p>
+            <pre><code>&lt;label&gt;Birthday:&lt;/label&gt;
+&lt;input type="date" name="dob"&gt;</code></pre>
+            <p>✔ Provides a calendar picker.</p>
+            <p>🔹 Time Input</p>
+            <pre><code>&lt;label&gt;Meeting Time:&lt;/label&gt;
+&lt;input type="time" name="meeting"&gt;</code></pre>
+            <p>🔹 Color Picker</p>
+            <pre><code>&lt;label&gt;Choose a Color:&lt;/label&gt;
+&lt;input type="color" name="favcolor"&gt;</code></pre>
+            <p>🔹 Range (Slider)</p>
+            <pre><code>&lt;label&gt;Volume:&lt;/label&gt;
+&lt;input type="range" name="volume" min="0" max="100"&gt;</code></pre>
+            <p>🔹 File Upload</p>
+            <pre><code>&lt;label&gt;Upload File:&lt;/label&gt;
+&lt;input type="file" name="myfile"&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Important Input Attributes</h2>
+            <p>🔹 <code>required</code></p>
+            <p>Makes a field mandatory.</p>
+            <pre><code>&lt;input type="text" name="username" required&gt;</code></pre>
+            <p>🔹 <code>placeholder</code></p>
+            <p>Shows a hint inside the input box.</p>
+            <pre><code>&lt;input type="text" name="city" placeholder="Enter your city"&gt;</code></pre>
+            <p>🔹 <code>readonly</code></p>
+            <p>Makes input uneditable.</p>
+            <pre><code>&lt;input type="text" value="India" readonly&gt;</code></pre>
+            <p>🔹 <code>disabled</code></p>
+            <p>Disables the input field.</p>
+            <pre><code>&lt;input type="text" value="Not Editable" disabled&gt;</code></pre>
+            <p>🔹 <code>maxlength</code></p>
+            <p>Limits characters in input.</p>
+            <pre><code>&lt;input type="text" name="pin" maxlength="6"&gt;</code></pre>
+            <p>🔹 <code>pattern</code></p>
+            <p>Ensures the input follows a specific rule (regular expression).</p>
+            <pre><code>&lt;input type="text" name="pin" pattern="[0-9]{6}" placeholder="6-digit PIN"&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Full Example</h2>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Advanced Input Types&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  
+&lt;h2&gt;Advanced Input Types & Attributes&lt;/h2&gt;
+  
+&lt;form&gt;
+  
+  &lt;label&gt;Email:&lt;/label&gt;
+  &lt;input type="email" name="email" required&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Age:&lt;/label&gt;
+  &lt;input type="number" name="age" min="18" max="60"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Birthday:&lt;/label&gt;
+  &lt;input type="date" name="dob"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Meeting Time:&lt;/label&gt;
+  &lt;input type="time" name="meeting"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Favorite Color:&lt;/label&gt;
+  &lt;input type="color" name="favcolor"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Volume:&lt;/label&gt;
+  &lt;input type="range" name="volume" min="0" max="100"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Upload File:&lt;/label&gt;
+  &lt;input type="file" name="myfile"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;PIN Code:&lt;/label&gt;
+  &lt;input type="text" name="pin" pattern="[0-9]{6}" placeholder="6-digit PIN"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;input type="submit" value="Submit"&gt;
+  
+&lt;/form&gt;
+  
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul class="practice-list">
+                    <li>Create a form with email, number, date, and file upload.</li>
+                    <li>Add a range slider for rating (1–10).</li>
+                    <li>Use <code>required</code> for a name field.</li>
+                    <li>Add a PIN code field with a 6-digit pattern.</li>
+                    <li>Insert a color picker for favorite color.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Conclusion</h2>
+            <ul>
+                <li>Advanced input types include: <code>email</code>, <code>number</code>, <code>date</code>, <code>time</code>, <code>color</code>, <code>range</code>, <code>file</code>.</li>
+                <li>Important attributes: <code>required</code>, <code>placeholder</code>, <code>readonly</code>, <code>disabled</code>, <code>maxlength</code>, <code>pattern</code>.</li>
+                <li>They make forms user-friendly and more secure.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
