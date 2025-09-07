@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays For Beginners</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Arrays For Beginners</h1>
+        
+        <div class="introduction">
+            <h2 class="section-heading">1. What is an Array?</h2>
+            <div class="intro-text">
+                <p>An array is a collection of elements of the same type stored in contiguous memory locations and accessed using an index.</p>
+                <p>💡 Think of an array like a row of lockers:</p>
+                <ul>
+                    <li><strong>Same type:</strong> All slots store similar items (e.g., books only, not books + fruits).</li>
+                    <li><strong>Indexed:</strong> Each locker has a unique number (0, 1, 2...).</li>
+                    <li><strong>Fixed size:</strong> The number of lockers is decided at creation.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Why Learn Arrays First?</h2>
+            <p>Arrays are the foundation for:</p>
+            <ul>
+                <li>Matrices</li>
+                <li>Strings</li>
+                <li>Advanced data structures like stacks, queues, heaps, hash tables</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Common Array Operations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Traversal</td>
+                        <td>Visiting each element</td>
+                    </tr>
+                    <tr>
+                        <td>Access</td>
+                        <td>Getting an element using index</td>
+                    </tr>
+                    <tr>
+                        <td>Update</td>
+                        <td>Changing value at a given index</td>
+                    </tr>
+                    <tr>
+                        <td>Insertion</td>
+                        <td>Adding a value at a specific index</td>
+                    </tr>
+                    <tr>
+                        <td>Deletion</td>
+                        <td>Removing a value from an index</td>
+                    </tr>
+                    <tr>
+                        <td>Search</td>
+                        <td>Finding a value in the array</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Operations</h2>
+
+            <h3>A. Traversal</h3>
+            <p>Visit each element and print it.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-traverse')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-traverse')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-traverse')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-traverse')">Java</button>
+            </div>
+            <div id="c-traverse" class="tab-content">
+                <h3>C: Traversal</h3>
+                <pre><code>#include <stdio.h>
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div id="cpp-traverse" class="tab-content">
+                <h3>C++: Traversal</h3>
+                <pre><code>#include <iostream>
+using namespace std;
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    for(int i : arr) {
+        cout << i << " ";
+    }
+    return 0;
+}</code></pre>
+            </div>
+            <div id="python-traverse" class="tab-content">
+                <h3>Python: Traversal</h3>
+                <pre><code>arr = [10, 20, 30, 40, 50]
+for num in arr:
+    print(num, end=" ")</code></pre>
+            </div>
+            <div id="java-traverse" class="tab-content">
+                <h3>Java: Traversal</h3>
+                <pre><code>public class TraverseArray {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}</code></pre>
+            </div>
+
+            <h3>B. Access</h3>
+            <p>Get element at index i.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-access')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-access')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-access')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-access')">Java</button>
+            </div>
+            <div id="c-access" class="tab-content">
+                <h3>C: Access</h3>
+                <pre><code>printf("Element at index 2: %d", arr[2]);</code></pre>
+            </div>
+            <div id="cpp-access" class="tab-content">
+                <h3>C++: Access</h3>
+                <pre><code>cout << "Element at index 2: " << arr[2];</code></pre>
+            </div>
+            <div id="python-access" class="tab-content">
+                <h3>Python: Access</h3>
+                <pre><code>print("Element at index 2:", arr[2])</code></pre>
+            </div>
+            <div id="java-access" class="tab-content">
+                <h3>Java: Access</h3>
+                <pre><code>System.out.println("Element at index 2: " + arr[2]);</code></pre>
+            </div>
+
+            <h3>C. Update</h3>
+            <p>Change value at index i.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-update')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-update')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-update')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-update')">Java</button>
+            </div>
+            <div id="c-update" class="tab-content">
+                <h3>C: Update</h3>
+                <pre><code>arr[2] = 99;</code></pre>
+            </div>
+            <div id="cpp-update" class="tab-content">
+                <h3>C++: Update</h3>
+                <pre><code>arr[2] = 99;</code></pre>
+            </div>
+            <div id="python-update" class="tab-content">
+                <h3>Python: Update</h3>
+                <pre><code>arr[2] = 99</code></pre>
+            </div>
+            <div id="java-update" class="tab-content">
+                <h3>Java: Update</h3>
+                <pre><code>arr[2] = 99;</code></pre>
+            </div>
+            
+            <h3>D. Insertion</h3>
+            <p>Insert element at a specific index (shifting elements).</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-insert')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-insert')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-insert')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-insert')">Java</button>
+            </div>
+            <div id="c-insert" class="tab-content">
+                <h3>C: Insertion</h3>
+                <pre><code>#include <stdio.h>
+int main() {
+    int arr[6] = {10, 20, 30, 40, 50};
+    int n = 5, pos = 2, val = 99;
+    for(int i = n; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[pos] = val;
+    n++;
+    for(int i = 0; i < n; i++) printf("%d ", arr[i]);
+    return 0;
+}</code></pre>
+            </div>
+            <div id="cpp-insert" class="tab-content">
+                <h3>C++: Insertion</h3>
+                <pre><code>#include <iostream>
+using namespace std;
+int main() {
+    int arr[6] = {10, 20, 30, 40, 50};
+    int n = 5, pos = 2, val = 99;
+    for(int i = n; i > pos; i--) arr[i] = arr[i-1];
+    arr[pos] = val;
+    n++;
+    for(int i = 0; i < n; i++) cout << arr[i] << " ";
+    return 0;
+}</code></pre>
+            </div>
+            <div id="python-insert" class="tab-content">
+                <h3>Python: Insertion</h3>
+                <pre><code>arr = [10, 20, 30, 40, 50]
+arr.insert(2, 99)
+print(arr)</code></pre>
+            </div>
+            <div id="java-insert" class="tab-content">
+                <h3>Java: Insertion</h3>
+                <pre><code>import java.util.Arrays;
+public class InsertArray {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50, 0};
+        int n = 5, pos = 2, val = 99;
+        for(int i = n; i > pos; i--) arr[i] = arr[i-1];
+        arr[pos] = val;
+        n++;
+        System.out.println(Arrays.toString(arr));
+    }
+}</code></pre>
+            </div>
+            
+            <h3>E. Deletion</h3>
+            <p>Remove element at a specific index (shifting elements).</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-delete')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-delete')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-delete')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-delete')">Java</button>
+            </div>
+            <div id="c-delete" class="tab-content">
+                <h3>C: Deletion</h3>
+                <pre><code>#include <stdio.h>
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int n = 5, pos = 2;
+    for(int i = pos; i < n-1; i++) arr[i] = arr[i+1];
+    n--;
+    for(int i = 0; i < n; i++) printf("%d ", arr[i]);
+    return 0;
+}</code></pre>
+            </div>
+            <div id="cpp-delete" class="tab-content">
+                <h3>C++: Deletion</h3>
+                <pre><code>#include <iostream>
+using namespace std;
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int n = 5, pos = 2;
+    for(int i = pos; i < n-1; i++) arr[i] = arr[i+1];
+    n--;
+    for(int i = 0; i < n; i++) cout << arr[i] << " ";
+    return 0;
+}</code></pre>
+            </div>
+            <div id="python-delete" class="tab-content">
+                <h3>Python: Deletion</h3>
+                <pre><code>arr = [10, 20, 30, 40, 50]
+arr.pop(2)
+print(arr)</code></pre>
+            </div>
+            <div id="java-delete" class="tab-content">
+                <h3>Java: Deletion</h3>
+                <pre><code>import java.util.Arrays;
+public class DeleteArray {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int n = arr.length, pos = 2;
+        for(int i = pos; i < n-1; i++) arr[i] = arr[i+1];
+        n--;
+        System.out.println(Arrays.toString(Arrays.copyOf(arr, n)));
+    }
+}</code></pre>
+            </div>
+            
+            <h3>F. Search</h3>
+            <p>Find an element’s index in an array.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-search')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-search')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-search')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-search')">Java</button>
+            </div>
+            <div id="c-search" class="tab-content">
+                <h3>C: Search</h3>
+                <pre><code>#include <stdio.h>
+int main() {
+    int arr[] = {10, 20, 30, 40, 50}, key = 30;
+    int n = sizeof(arr) / sizeof(arr[0]);
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == key) {
+            printf("Found at index %d", i);
+            return 0;
+        }
+    }
+    printf("Not found");
+    return 0;
+}</code></pre>
+            </div>
+            <div id="cpp-search" class="tab-content">
+                <h3>C++: Search</h3>
+                <pre><code>#include <iostream>
+using namespace std;
+int main() {
+    int arr[] = {10, 20, 30, 40, 50}, key = 30;
+    int n = sizeof(arr) / sizeof(arr[0]);
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == key) {
+            cout << "Found at index " << i;
+            return 0;
+        }
+    }
+    cout << "Not found";
+    return 0;
+}</code></pre>
+            </div>
+            <div id="python-search" class="tab-content">
+                <h3>Python: Search</h3>
+                <pre><code>arr = [10, 20, 30, 40, 50]
+key = 30
+if key in arr:
+    print("Found at index", arr.index(key))
+else:
+    print("Not found")</code></pre>
+            </div>
+            <div id="java-search" class="tab-content">
+                <h3>Java: Search</h3>
+                <pre><code>public class SearchArray {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int key = 30;
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == key) {
+                System.out.println("Found at index " + i);
+                return;
+            }
+        }
+        System.out.println("Not found");
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Real-Time Example</h2>
+            <div class="real-life-example">
+                <p>Problem: Track student scores in a class.</p>
+                <pre><code>scores = [85, 92, 78, 90, 88]
+print("Highest:", max(scores))
+print("Average:", sum(scores)/len(scores))</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Recommended Learning Resources</h2>
+            <h3>Articles</h3>
+            <div class="resources">
+                <ul>
+                    <li>GeeksforGeeks – Arrays</li>
+                    <li>W3Schools Array Tutorials</li>
+                    <li>Book: “Data Structures and Algorithm Analysis” – Mark Allen Weiss</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Exercises</h2>
+            <div class="resources">
+                <ul>
+                    <li>Find the second largest element in an array.</li>
+                    <li>Reverse an array in place.</li>
+                    <li>Rotate array by k positions.</li>
+                    <li>Count occurrences of each element.</li>
+                    <li>Merge two sorted arrays.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
