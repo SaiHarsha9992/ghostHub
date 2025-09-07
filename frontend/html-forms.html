@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li::before {
+            content: '●';
+            padding-right: 8px;
+            color: #00A6FF;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .practice-list {
+            list-style-type: '📝';
+            padding: 0;
+        }
+
+        .practice-list li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">HTML Forms</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. What are Forms in HTML?</h2>
+            <div class="intro-text">
+                <ul>
+                    <li>Forms are used to collect user input on a webpage.</li>
+                    <li>Created using the <code>&lt;form&gt;</code> tag.</li>
+                    <li>Common inputs: text box, password, radio buttons, checkboxes, dropdowns, buttons.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Basic Syntax</h2>
+            <pre><code>&lt;form action="submit.php" method="post"&gt;
+  &lt;!-- input fields here --&gt;
+&lt;/form&gt;</code></pre>
+            <p>✔ <code>action</code> → where the form data is sent.</p>
+            <p>✔ <code>method</code> → how data is sent (get or post).</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Common Input Types</h2>
+            <p>🔹 Text Field</p>
+            <pre><code>&lt;label&gt;Name:&lt;/label&gt;
+&lt;input type="text" name="username"&gt;</code></pre>
+            <p>🔹 Password Field</p>
+            <pre><code>&lt;label&gt;Password:&lt;/label&gt;
+&lt;input type="password" name="password"&gt;</code></pre>
+            <p>🔹 Radio Buttons</p>
+            <pre><code>&lt;p&gt;Gender:&lt;/p&gt;
+&lt;input type="radio" name="gender" value="male"&gt; Male
+&lt;input type="radio" name="gender" value="female"&gt; Female</code></pre>
+            <p>🔹 Checkboxes</p>
+            <pre><code>&lt;p&gt;Hobbies:&lt;/p&gt;
+&lt;input type="checkbox" name="hobby1" value="reading"&gt; Reading
+&lt;input type="checkbox" name="hobby2" value="music"&gt; Music</code></pre>
+            <p>🔹 Dropdown (Select)</p>
+            <pre><code>&lt;label&gt;Country:&lt;/label&gt;
+&lt;select name="country"&gt;
+  &lt;option value="india"&gt;India&lt;/option&gt;
+  &lt;option value="usa"&gt;USA&lt;/option&gt;
+  &lt;option value="uk"&gt;UK&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+            <p>🔹 Textarea</p>
+            <pre><code>&lt;label&gt;Message:&lt;/label&gt;
+&lt;textarea name="message" rows="4" cols="30"&gt;&lt;/textarea&gt;</code></pre>
+            <p>🔹 Button</p>
+            <pre><code>&lt;input type="submit" value="Submit"&gt;
+&lt;input type="reset" value="Reset"&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Example Form</h2>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;HTML Form Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  
+&lt;h2&gt;Registration Form&lt;/h2&gt;
+  
+&lt;form action="submit.php" method="post"&gt;
+  
+  &lt;label&gt;Full Name:&lt;/label&gt;
+  &lt;input type="text" name="fullname"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Email:&lt;/label&gt;
+  &lt;input type="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Password:&lt;/label&gt;
+  &lt;input type="password" name="password"&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;p&gt;Gender:&lt;/p&gt;
+  &lt;input type="radio" name="gender" value="male"&gt; Male
+  &lt;input type="radio" name="gender" value="female"&gt; Female &lt;br&gt;&lt;br&gt;
+  
+  &lt;p&gt;Hobbies:&lt;/p&gt;
+  &lt;input type="checkbox" name="hobby1" value="sports"&gt; Sports
+  &lt;input type="checkbox" name="hobby2" value="music"&gt; Music &lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Country:&lt;/label&gt;
+  &lt;select name="country"&gt;
+    &lt;option value="india"&gt;India&lt;/option&gt;
+    &lt;option value="usa"&gt;USA&lt;/option&gt;
+    &lt;option value="uk"&gt;UK&lt;/option&gt;
+  &lt;/select&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;label&gt;Message:&lt;/label&gt;&lt;br&gt;
+  &lt;textarea name="message" rows="4" cols="30"&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;input type="submit" value="Submit"&gt;
+  &lt;input type="reset" value="Reset"&gt;
+  
+&lt;/form&gt;
+  
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul class="practice-list">
+                    <li>Create a login form with username & password.</li>
+                    <li>Make a survey form with radio buttons & checkboxes.</li>
+                    <li>Add a country dropdown in your form.</li>
+                    <li>Insert a textarea for feedback.</li>
+                    <li>Use submit and reset buttons.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Conclusion</h2>
+            <ul>
+                <li>Forms collect user input using <code>&lt;form&gt;</code>.</li>
+                <li>Inputs: text, password, radio, checkbox, select, textarea, buttons.</li>
+                <li>Attributes: <code>action</code> (where to send), <code>method</code> (how to send).</li>
+                <li>Forms are the backbone of user interaction on websites.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
