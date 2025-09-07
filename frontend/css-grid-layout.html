@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li::before {
+            content: '●';
+            padding-right: 8px;
+            color: #00A6FF;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .practice-list {
+            list-style-type: '📝';
+            padding: 0;
+        }
+
+        .practice-list li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">CSS Grid</h1>
+        <p>CSS Grid is a powerful layout system that allows you to create two-dimensional layouts with rows and columns. It gives precise control over the placement and size of elements on a webpage.</p>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. What is CSS Grid?</h2>
+            <ul>
+                <li>CSS Grid divides a container into rows and columns.</li>
+                <li>Each item can be placed in a specific row and column.</li>
+                <li>Unlike Flexbox (1D layouts), Grid is perfect for complex 2D layouts.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Grid Container and Grid Items</h2>
+            <ul>
+                <li><strong>Grid Container</strong> → the parent element with <code>display: grid</code></li>
+                <li><strong>Grid Items</strong> → direct children inside the container</li>
+            </ul>
+            <p><strong>Example:</strong></p>
+            <pre><code>.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px;
+  gap: 10px;
+}</code></pre>
+            <p>✅ This creates a grid with 3 columns, 2 rows, and 10px gap between items.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Key Grid Properties</h2>
+            <p><strong>a) Grid Template Columns and Rows</strong></p>
+            <p>Define the number and size of columns and rows.</p>
+            <pre><code>.container {
+  display: grid;
+  grid-template-columns: 150px 150px 150px; /* 3 columns */
+  grid-template-rows: 100px 100px;          /* 2 rows */
+}</code></pre>
+            <p><strong>b) Gap</strong></p>
+            <p>Controls spacing between grid items.</p>
+            <pre><code>.container {
+  gap: 15px; /* both row and column gaps */
+}</code></pre>
+            <p><strong>c) Grid Column / Row for Items</strong></p>
+            <p>Place items in specific columns or rows.</p>
+            <pre><code>.item1 {
+  grid-column: 1 / 3; /* spans from column 1 to 2 */
+  grid-row: 1 / 2;    /* occupies row 1 */
+}</code></pre>
+            <p><strong>d) Auto-Fill and Auto-Fit</strong></p>
+            <p>Create dynamic grids that adjust based on screen size.</p>
+            <pre><code>.container {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Small Example</h2>
+            <pre><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 10px;
+}
+
+.item {
+  background-color: lightcoral;
+  height: 100px;
+}</code></pre>
+            <p>✅ This creates 3 columns where the middle column is twice as wide, with 10px gaps.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Mini Practice Task 📝</h2>
+            <p><strong>Objective:</strong> Create a simple card layout or gallery using CSS Grid.</p>
+            <p><strong>Instructions:</strong></p>
+            <div class="resources">
+                <ul class="practice-list">
+                    <li>Create a container with <code>display: grid</code>.</li>
+                    <li>Use <code>grid-template-columns</code> to create 3 or 4 columns.</li>
+                    <li>Add several items inside the grid.</li>
+                    <li>Adjust <code>gap</code> to create spacing between items.</li>
+                    <li>Experiment with <code>grid-column</code> to make some items span multiple columns.</li>
+                </ul>
+            </div>
+            <p>✅ This task helps you practice creating responsive and structured 2D layouts.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Why We Need CSS Grid</h2>
+            <ul>
+                <li>Perfect for complex 2D layouts</li>
+                <li>Easier than floats or positioning for rows and columns</li>
+                <li>Responsive design becomes simpler</li>
+                <li>Precise control over placement and sizing of items</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">7. Conclusion</h2>
+            <p>CSS Grid is a modern, powerful, and flexible layout system. By mastering properties like <code>grid-template-columns</code>, <code>grid-template-rows</code>, <code>gap</code>, and item placement, you can create structured, responsive, and visually appealing webpages easily.</p>
+        </div>
+    </div>
+</body>
+</html>
