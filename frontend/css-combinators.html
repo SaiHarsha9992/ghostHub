@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Combinators</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li::before {
+            content: '●';
+            padding-right: 8px;
+            color: #00A6FF;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">CSS Combinators</h1>
+
+        <div class="introduction">
+            <p>CSS combinators are special characters that explain the relationship between HTML elements. They help you apply styles more precisely, depending on how elements are related in the HTML structure.</p>
+            <p>There are four main combinators in CSS:</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. Descendant Combinator (space)</h2>
+            <p>The descendant combinator targets elements that are nested inside another element, at any level.</p>
+            <p><b>Syntax:</b></p>
+            <pre><code>parent descendant {
+  /* styles */
+}</code></pre>
+            <p><b>Example:</b></p>
+            <pre><code>&lt;div class="container"&gt;
+  &lt;p&gt;This is a paragraph inside container.&lt;/p&gt;
+&lt;/div&gt;
+
+.container p {
+  color: blue;
+}</code></pre>
+            <p>✅ This changes the text color of all <code>&lt;p&gt;</code> elements inside <code>.container</code> to blue.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Child Combinator ( &gt; )</h2>
+            <p>The child combinator targets elements that are direct children of a parent.</p>
+            <p><b>Syntax:</b></p>
+            <pre><code>parent &gt; child {
+  /* styles */
+}</code></pre>
+            <p><b>Example:</b></p>
+            <pre><code>&lt;div class="container"&gt;
+  &lt;p&gt;Direct child paragraph&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;Nested paragraph&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+.container &gt; p {
+  color: red;
+}</code></pre>
+            <p>✅ Only the direct <code>&lt;p&gt;</code> child of <code>.container</code> becomes red. The nested <code>&lt;p&gt;</code> inside another <code>&lt;div&gt;</code> is not affected.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Adjacent Sibling Combinator ( + )</h2>
+            <p>The adjacent sibling combinator selects an element that is immediately after another element, sharing the same parent.</p>
+            <p><b>Syntax:</b></p>
+            <pre><code>element1 + element2 {
+  /* styles */
+}</code></pre>
+            <p><b>Example:</b></p>
+            <pre><code>&lt;h2&gt;Heading&lt;/h2&gt;
+&lt;p&gt;This paragraph comes immediately after heading&lt;/p&gt;
+&lt;p&gt;This paragraph does not&lt;/p&gt;
+
+h2 + p {
+  font-weight: bold;
+}</code></pre>
+            <p>✅ Only the first <code>&lt;p&gt;</code> after <code>&lt;h2&gt;</code> becomes bold.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. General Sibling Combinator ( ~ )</h2>
+            <p>The general sibling combinator selects all elements that are siblings after a specific element.</p>
+            <p><b>Syntax:</b></p>
+            <pre><code>element1 ~ element2 {
+  /* styles */
+}</code></pre>
+            <p><b>Example:</b></p>
+            <pre><code>&lt;h2&gt;Heading&lt;/h2&gt;
+&lt;p&gt;Paragraph 1&lt;/p&gt;
+&lt;p&gt;Paragraph 2&lt;/p&gt;
+
+h2 ~ p {
+  color: green;
+}</code></pre>
+            <p>✅ Both <code>&lt;p&gt;</code> elements after <code>&lt;h2&gt;</code> turn green.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Quick Summary Table</h2>
+            <table>
+                <tr>
+                    <th>Combinator</th>
+                    <th>Symbol</th>
+                    <th>What it selects</th>
+                </tr>
+                <tr>
+                    <td>Descendant</td>
+                    <td>(space)</td>
+                    <td>Any nested element inside parent</td>
+                </tr>
+                <tr>
+                    <td>Child</td>
+                    <td>&gt;</td>
+                    <td>Direct child only</td>
+                </tr>
+                <tr>
+                    <td>Adjacent Sibling</td>
+                    <td>+</td>
+                    <td>Next element only</td>
+                </tr>
+                <tr>
+                    <td>General Sibling</td>
+                    <td>~</td>
+                    <td>All siblings after</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">Why Use Combinators?</h2>
+            <ul>
+                <li>Makes CSS more specific without adding extra classes.</li>
+                <li>Helps in styling complex HTML structures efficiently.</li>
+                <li>Keeps HTML clean and semantic.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
