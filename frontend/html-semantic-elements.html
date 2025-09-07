@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Semantic Elements</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Blog 9: HTML Semantic Elements</h1>
+        <div class="introduction">
+            <h2 class="section-heading">1. What are Semantic Elements?</h2>
+            <div class="intro-text">
+                <p>● Semantic elements are HTML tags that clearly describe their meaning and role in a webpage.</p>
+                <p>● They make the structure of a webpage more readable for both developers and browsers.</p>
+                <p>● Examples: `&lt;header&gt;`, `&lt;footer&gt;`, `&lt;article&gt;`, `&lt;section&gt;`, `&lt;nav&gt;`.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Why Use Semantic Elements?</h2>
+            <p>✔ Improves readability of code.</p>
+            <p>✔ Helps search engines (SEO) understand the page better.</p>
+            <p>✔ Provides better accessibility for screen readers.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Common Semantic Tags</h2>
+            <p><strong>🔹 `&lt;header&gt;`</strong></p>
+            <p>Represents the top section of a page or article.</p>
+            <pre><code>&lt;header&gt;
+  &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+  &lt;p&gt;Learning Semantic HTML&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+            
+            <p><strong>🔹 `&lt;nav&gt;`</strong></p>
+            <p>Defines navigation links.</p>
+            <pre><code>&lt;nav&gt;
+  &lt;a href="index.html"&gt;Home&lt;/a&gt; |
+  &lt;a href="about.html"&gt;About&lt;/a&gt; |
+  &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+            <p><strong>🔹 `&lt;section&gt;`</strong></p>
+            <p>Represents a section of content.</p>
+            <pre><code>&lt;section&gt;
+  &lt;h2&gt;About HTML&lt;/h2&gt;
+  &lt;p&gt;HTML is the structure of a webpage.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+            
+            <p><strong>🔹 `&lt;article&gt;`</strong></p>
+            <p>Represents independent content, like a blog post or news article.</p>
+            <pre><code>&lt;article&gt;
+  &lt;h2&gt;Blog Post Title&lt;/h2&gt;
+  &lt;p&gt;This is an article about semantic elements.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+            <p><strong>🔹 `&lt;aside&gt;`</strong></p>
+            <p>Represents side content (like a sidebar or extra notes).</p>
+            <pre><code>&lt;aside&gt;
+  &lt;h3&gt;Quick Note&lt;/h3&gt;
+  &lt;p&gt;HTML5 introduced many semantic elements.&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+
+            <p><strong>🔹 `&lt;footer&gt;`</strong></p>
+            <p>Defines the bottom section of a page or article.</p>
+            <pre><code>&lt;footer&gt;
+  &lt;p&gt;&copy; 2025 My Website | Contact: info@site.com&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Full Example</h2>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Semantic HTML Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;My Blog&lt;/h1&gt;
+    &lt;p&gt;Sharing knowledge on web development&lt;/p&gt;
+  &lt;/header&gt;
+  
+  &lt;nav&gt;
+    &lt;a href="index.html"&gt;Home&lt;/a&gt; |
+    &lt;a href="articles.html"&gt;Articles&lt;/a&gt; |
+    &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+  
+  &lt;section&gt;
+    &lt;article&gt;
+      &lt;h2&gt;What is Semantic HTML?&lt;/h2&gt;
+      &lt;p&gt;Semantic HTML helps make webpages more meaningful and accessible.&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/section&gt;
+  
+  &lt;aside&gt;
+    &lt;h3&gt;Tip&lt;/h3&gt;
+    &lt;p&gt;Use semantic tags instead of too many &lt;div&gt; tags.&lt;/p&gt;
+  &lt;/aside&gt;
+  
+  &lt;footer&gt;
+    &lt;p&gt;&copy; 2025 My Blog&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Create a webpage with a `&lt;header&gt;`, `&lt;nav&gt;`, `&lt;section&gt;`, and `&lt;footer&gt;`.</li>
+                    <li>Write an article inside `&lt;article&gt;`.</li>
+                    <li>Add a sidebar using `&lt;aside&gt;`.</li>
+                    <li>Place your email inside a footer.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Conclusion</h2>
+            <ul>
+                <li>Semantic tags describe the meaning of content.</li>
+                <li>Examples: `&lt;header&gt;`, `&lt;footer&gt;`, `&lt;article&gt;`, `&lt;section&gt;`, `&lt;nav&gt;`, `&lt;aside&gt;`.</li>
+                <li>They improve SEO, readability, and accessibility.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
