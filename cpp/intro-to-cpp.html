@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The cout Object</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+                
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">🖨️ Introduction to C++</h1>
+        <div class="intro-text">
+            <p>When you send a text message to a friend 📱, you type your message and press "send," and your friend's phone displays it. In C++, the <strong>cout</strong> object works in a similar way: you put data into it, and it sends that data to be displayed on your computer's screen.</p>
+            <p>In C++, your first step is to make the computer display a message. While C used <code>printf()</code>, C++ introduced a more powerful and safer way to do this with the <strong>cout</strong> object. The <strong>cout</strong> object is part of the <code><iostream></code> library, which handles input and output. Think of <strong>cout</strong> as an output stream, like a river carrying data to your screen. You use the <code><<</code> operator (called the stream insertion operator) to "push" data into this stream, and <strong>cout</strong> then displays it on the console.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">How to Use cout in C++</h2>
+            <p>To use <strong>cout</strong>, you first need to include the <code><iostream></code> library at the top of your program.</p>
+            <div class="tab-container">
+                <button class="tab-button active" onclick="openCode(event, 'cpp-cout-syntax')">C++ —> syntax</button>
+            </div>
+            <div id="cpp-cout-syntax" class="tab-content" style="display: block;">
+                <h3>C++ —> syntax</h3>
+                <pre><code>#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!";
+    return 0;
+}</code></pre>
+            </div>
+            <p>When you compile and run this program, it will print: Hello, World! You can also chain the <code><<</code> operator to print multiple things at once, making the code clean and easy to read.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Examples of Using cout</h2>
+            <p><strong>Printing a message:</strong></p>
+            <div class="tab-container">
+                <button class="tab-button active" onclick="openCode(event, 'cpp-cout-message')">C++ → syntax:</button>
+            </div>
+            <div id="cpp-cout-message" class="tab-content" style="display: block;">
+                <h3>C++ → syntax:</h3>
+                <pre><code>std::cout << "Welcome to C++!";</code></pre>
+            </div>
+            
+            <p><strong>Printing numbers:</strong> cout automatically understands different data types.</p>
+            <div class="tab-container">
+                <button class="tab-button active" onclick="openCode(event, 'cpp-cout-numbers')">C++ → syntax:</button>
+            </div>
+            <div id="cpp-cout-numbers" class="tab-content" style="display: block;">
+                <h3>C++ → syntax:</h3>
+                <pre><code>std::cout << 10;
+std::cout << 25 + 30; // It will also calculate</code></pre>
+            </div>
+            
+            <p><strong>Printing variables:</strong></p>
+            <div class="tab-container">
+                <button class="tab-button active" onclick="openCode(event, 'cpp-cout-variables')">C++ → syntax::</button>
+            </div>
+            <div id="cpp-cout-variables" class="tab-content" style="display: block;">
+                <h3>C++ → syntax::</h3>
+                <pre><code>int age = 20;
+std::cout << "My age is " << age << " years old.";</code></pre>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">💡 Real-Life Situations Where printf() is Useful</h2>
+            <p>Using <strong>cout</strong> is the simplest way to communicate with your program and see what it's doing.</p>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+        
+        document.addEventListener("mouseup", function () {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+
+            if (text.length > 0) {
+                const rect = selection.getRangeAt(0).getBoundingClientRect();
+                showAskGhostAIPopup(
+                    window.scrollX + rect.left,
+                    window.scrollY + rect.bottom + 8,
+                    text
+                );
+            } else {
+                hideAskGhostAIPopup();
+            }
+        });
+
+        function showAskGhostAIPopup(x, y, text) {
+            let popup = document.getElementById("ask-ghostai-popup");
+            if (!popup) {
+                popup = document.createElement("div");
+                popup.id = "ask-ghostai-popup";
+                popup.innerText = "Ask ghostAI";
+                popup.style.position = "absolute";
+                popup.style.padding = "14px 22px";
+                popup.style.background = "#000000";
+                popup.style.color = "white";
+                popup.style.borderRadius = "10px";
+                popup.style.cursor = "pointer";
+                popup.style.fontSize = "16px";
+                popup.style.zIndex = 9999;
+                popup.style.boxShadow = "0px 2px 8px rgba(0,0,0,0.5)";
+                popup.style.border = "2px solid white";
+                document.body.appendChild(popup);
+
+                popup.addEventListener("click", function () {
+                    const encoded = encodeURIComponent(popup.dataset.text);
+                    window.open("http://localhost:3000/ghostAI?text=" + encoded, "_blank");
+                });
+            }
+
+            popup.dataset.text = text;
+            popup.style.left = x + "px";
+            popup.style.top = y + "px";
+            popup.style.display = "block";
+        }
+
+        function hideAskGhostAIPopup() {
+            const popup = document.getElementById("ask-ghostai-popup");
+            if (popup) popup.style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
