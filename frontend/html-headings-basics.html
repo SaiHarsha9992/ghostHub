@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Headings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">HTML Headings – Organizing Your Webpage Titles</h1>
+        <div class="introduction">
+            <h2 class="section-heading">1. What are Headings in HTML?</h2>
+            <div class="intro-text">
+                <p>● Headings are used to define titles and subtitles on a webpage.</p>
+                <p>● They make text stand out and help in **SEO** (Search Engine Optimization).</p>
+                <p>● HTML has 6 levels of headings: <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>.</p>
+                <p>👉 Example (Full Code):</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Heading Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;This is Heading 1&lt;/h1&gt;
+  &lt;h2&gt;This is Heading 2&lt;/h2&gt;
+  &lt;h3&gt;This is Heading 3&lt;/h3&gt;
+  &lt;h4&gt;This is Heading 4&lt;/h4&gt;
+  &lt;h5&gt;This is Heading 5&lt;/h5&gt;
+  &lt;h6&gt;This is Heading 6&lt;/h6&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Output in Browser 🖼️</h2>
+            <p>When you run the above code, the browser will display:</p>
+            <ul>
+                <li>Heading 1 → **Largest**</li>
+                <li>Heading 6 → **Smallest**</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Why Use Different Headings?</h2>
+            <ul>
+                <li><code>&lt;h1&gt;</code> → **Main page title** (should appear only once per page).</li>
+                <li><code>&lt;h2&gt;</code> → **Section headings**.</li>
+                <li><code>&lt;h3&gt;</code> → **Sub-sections**.</li>
+                <li><code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code> → **Smaller headings or notes**.</li>
+            </ul>
+            <p>📌 Headings work like chapters and sub-chapters in a book. They give your webpage a clear structure.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Styling Headings with CSS (Optional)</h2>
+            <p>You can make headings more attractive using inline CSS.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Styled Headings&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 style="color: blue; text-align: center;"&gt;Main Title&lt;/h1&gt;
+  &lt;h2 style="color: green;"&gt;Section Title&lt;/h2&gt;
+  &lt;h3 style="font-family: Arial;"&gt;Subsection&lt;/h3&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Create all six headings `&lt;h1&gt;` to `&lt;h6&gt;`.</li>
+                    <li>Use `&lt;h1&gt;` for your name.</li>
+                    <li>Use `&lt;h2&gt;` for your college name.</li>
+                    <li>Use `&lt;h3&gt;` for your department name.</li>
+                    <li>Style one heading with `color: red;` using the `style` attribute.</li>
+                    <li>Take a screenshot of your output and paste it into your Word blog.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Conclusion</h2>
+            <ul>
+                <li>Headings make webpages organized and easy to read.</li>
+                <li>`&lt;h1&gt;` is the most important heading, `&lt;h6&gt;` is the least important.</li>
+                <li>Use headings in order, like a hierarchy, for better design and SEO.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
