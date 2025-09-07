@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Elements, Comments, and Basic Tags</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">HTML Elements, Comments, and Basic Tags</h1>
+        <div class="introduction">
+            <h2 class="section-heading">1. What are HTML Elements?</h2>
+            <div class="intro-text">
+                <p>An HTML element is the building block of a webpage.</p>
+                <p>It usually has:</p>
+                <ul>
+                    <li>Opening Tag</li>
+                    <li>Content</li>
+                    <li>Closing Tag</li>
+                </ul>
+                <p>👉 Example:</p>
+                <pre><code>&lt;p&gt;Hello World&lt;/p&gt;</code></pre>
+                <p>✔ Together, these form an HTML Element.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. What are HTML Tags?</h2>
+            <ul>
+                <li>Special keywords inside `&lt;&nbsp;&gt;`.</li>
+                <li>Most come in pairs (`&lt;p&gt; ... &lt;/p&gt;`).</li>
+                <li>Some are self-closing (`&lt;br&gt;`, `&lt;img&gt;`).</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. What are Comments?</h2>
+            <ul>
+                <li>Notes for developers (not visible in browser).</li>
+                <li>Written with `&lt;!-- --&gt;`.</li>
+            </ul>
+            <p>👉 Example:</p>
+            <pre><code>&lt;!-- This is a comment --&gt;
+&lt;p&gt;Hello World&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Why Use Comments?</h2>
+            <ul>
+                <li>To explain code</li>
+                <li>To organize sections</li>
+                <li>To temporarily disable code</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Basic HTML Tags</h2>
+            <p><strong>🔹 Headings</strong></p>
+            <pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;</code></pre>
+            <p><strong>🔹 Paragraphs</strong></p>
+            <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+            <p><strong>🔹 Line Breaks & Horizontal Rule</strong></p>
+            <pre><code>&lt;p&gt;Line 1&lt;br&gt;Line 2&lt;/p&gt;
+&lt;hr&gt;</code></pre>
+            <p><strong>🔹 Links</strong></p>
+            <pre><code>&lt;a href="https://google.com"&gt;Google&lt;/a&gt;</code></pre>
+            <p><strong>🔹 Images</strong></p>
+            <pre><code>&lt;img src="car.jpg" alt="Car Image"&gt;</code></pre>
+            <p><strong>🔹 Lists</strong></p>
+            <pre><code>&lt;ul&gt;
+  &lt;li&gt;Apple&lt;/li&gt;
+  &lt;li&gt;Mango&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Step 1&lt;/li&gt;
+  &lt;li&gt;Step 2&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            <p><strong>🔹 Tables</strong></p>
+            <pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Durga&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            <p><strong>🔹 Div & Span</strong></p>
+            <pre><code>&lt;div&gt;This is a block&lt;/div&gt;
+&lt;span&gt;This is inline&lt;/span&gt;</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Write your name in `&lt;h1&gt;`.</li>
+                    <li>Add a paragraph about your college.</li>
+                    <li>Insert an image with alt.</li>
+                    <li>Create a list of favorite foods.</li>
+                    <li>Build a 2×2 table.</li>
+                    <li>Add comments to separate sections.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">7. Conclusion</h2>
+            <ul>
+                <li>Elements = Tags + Content.</li>
+                <li>Comments keep code organized.</li>
+                <li>Basic tags (headings, paragraphs, links, images, lists, tables) help build simple webpages.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
