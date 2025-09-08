@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queues – Beginner Level</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Queues – Beginner Level</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. What is a Queue?</h2>
+            <p>A Queue is a linear data structure that follows the principle of **FIFO** (First In, First Out). The first element added is the first one to be removed. </p>
+            <p><strong>💡 Analogy:</strong> Think of a queue at a ticket counter:</p>
+            <ul>
+                <li>The first person in line is served first.</li>
+                <li>New people join at the end of the line.</li>
+                <li>You can’t skip the line!</li>
+            </ul>
+            <p><strong>Properties of a Queue:</strong></p>
+            <ul>
+                <li>**Enqueue:** Inserts an element at the rear.</li>
+                <li>**Dequeue:** Removes an element from the front.</li>
+                <li>**Peek/Front:** Views the first element without removing it.</li>
+                <li>**IsEmpty/IsFull:** Checks the current state of the queue.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Why Learn Queues?</h2>
+            <p>Queues are a fundamental concept with a wide range of applications:</p>
+            <ul>
+                <li>**CPU scheduling** in operating systems.</li>
+                <li>Managing **printer queues**.</li>
+                <li>**Call center** systems.</li>
+                <li>**Breadth-First Search (BFS)** in graphs.</li>
+                <li>**Message passing** in distributed systems.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Queue Operations (Beginner Level)</h2>
+            <ol>
+                <li>**Enqueue (Insert):** Adds an element to the back of the queue.</li>
+                <li>**Dequeue (Remove):** Removes and returns the element from the front of the queue.</li>
+                <li>**Peek (Front element):** Returns the element at the front of the queue without removing it.</li>
+                <li>**Display (Traverse):** Prints all elements in the queue.</li>
+            </ol>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Code Examples</h2>
+            <p>Here are implementations of a simple queue using arrays and lists.</p>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+            </div>
+            
+            <div id="c-code" class="tab-content">
+                <h3>C – Simple Queue Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+#define SIZE 5
+
+int queue[SIZE], front = -1, rear = -1;
+
+void enqueue(int val) {
+    if (rear == SIZE - 1) {
+        printf("Queue Overflow\n");
+    } else {
+        if (front == -1) front = 0;
+        queue[++rear] = val;
+    }
+}
+
+void dequeue() {
+    if (front == -1 || front > rear) {
+        printf("Queue Underflow\n");
+    } else {
+        printf("Dequeued: %d\n", queue[front++]);
+    }
+}
+
+void display() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+    } else {
+        for (int i = front; i <= rear; i++)
+            printf("%d ", queue[i]);
+        printf("\n");
+    }
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
+    dequeue();
+    display();
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-code" class="tab-content">
+                <h3>C++ – Using Arrays</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+using namespace std;
+#define SIZE 5
+
+class Queue {
+    int arr[SIZE], front, rear;
+public:
+    Queue() { front = -1; rear = -1; }
+
+    void enqueue(int val) {
+        if (rear == SIZE - 1) cout << "Queue Overflow\n";
+        else {
+            if (front == -1) front = 0;
+            arr[++rear] = val;
+        }
+    }
+
+    void dequeue() {
+        if (front == -1 || front > rear) cout << "Queue Underflow\n";
+        else cout << "Dequeued: " << arr[front++] << endl;
+    }
+
+    void display() {
+        if (front == -1 || front > rear) cout << "Queue Empty\n";
+        else {
+            for (int i = front; i <= rear; i++) cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    Queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+    q.dequeue();
+    q.display();
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="python-code" class="tab-content">
+                <h3>Python – Using List</h3>
+                <div class="syntax-box">
+                    <pre><code>queue = []
+
+def enqueue(val):
+    queue.append(val)
+
+def dequeue():
+    if not queue:
+        print("Queue Underflow")
+    else:
+        print("Dequeued:", queue.pop(0))
+
+def display():
+    if not queue:
+        print("Queue is empty")
+    else:
+        print(queue)
+
+enqueue(10)
+enqueue(20)
+enqueue(30)
+display()
+dequeue()
+display()</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Java – Queue with Array</h3>
+                <div class="syntax-box">
+                    <pre><code>class Queue {
+    int front, rear, size;
+    int arr[];
+
+    Queue(int capacity) {
+        front = rear = -1;
+        size = capacity;
+        arr = new int[size];
+    }
+
+    void enqueue(int val) {
+        if (rear == size - 1) {
+            System.out.println("Queue Overflow");
+        } else {
+            if (front == -1) front = 0;
+            arr[++rear] = val;
+        }
+    }
+
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue Underflow");
+        } else {
+            System.out.println("Dequeued: " + arr[front++]);
+        }
+    }
+
+    void display() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue Empty");
+        } else {
+            for (int i = front; i <= rear; i++) {
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Queue q = new Queue(5);
+        q.enqueue(10);
+        q.enqueue(20);
+        q.enqueue(30);
+        q.display();
+        q.dequeue();
+        q.display();
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Real-Life Example of Queues</h2>
+            <p>Queues are everywhere in our daily lives:</p>
+            <ul>
+                <li>**Bank Queue:** Customers are served in the order they arrive.</li>
+                <li>**Printer Queue:** The first document sent to the printer is printed first.</li>
+                <li>**Call Center:** The first caller in line gets the next available agent.</li>
+                <li>**Bus Queue:** The first person in the queue gets on the bus first.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Problem-Solving Strategies (Beginner)</h2>
+            <ul>
+                <li>Always check for **overflow** and **underflow** conditions before performing `enqueue` or `dequeue`.</li>
+                <li>Remember the **FIFO** principle. A queue is like a line at a shop.</li>
+                <li>Use `front` and `rear` pointers to keep track of the start and end of the queue.</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">7. Exercises</h2>
+            <ul>
+                <li>Implement a queue of a fixed size.</li>
+                <li>Write a program to reverse a queue (hint: use a stack).</li>
+                <li>Simulate a bank system where customers join and leave the queue.</li>
+                <li>Print the first element without dequeuing it.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">8. Recommended Resources</h2>
+            <ul>
+                <li>**Book:** 📖 *Data Structures Using C* by Reema Thareja</li>
+                <li>**Online Guide:** 🌐 GeeksforGeeks → Queue Basics</li>
+                <li>**Video Tutorials:** 🎥 Abdul Bari’s Queue lectures (YouTube)</li>
+                <li>**Practice:** 🚀 HackerRank “Queue Practice Problems”</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
