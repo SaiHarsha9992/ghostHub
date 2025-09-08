@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternary Search</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Ternary Search</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 1: Beginner's Guide to Ternary Search</h2>
+            <h3>What is Ternary Search?</h3>
+            <div class="intro-text">
+                <p>Ternary search is a **search algorithm** that operates on **sorted arrays** or **unimodal functions**. Its core idea is to split the array into **three parts** and recursively reduce the search space.</p>
+                <p>Time Complexity: $O(\log_3 n) \approx O(\log n)$, which is comparable to binary search in practice.</p>
+                <p>Steps:</p>
+                <ol>
+                    <li>Divide the array into 3 equal parts using two midpoints, <code>mid1</code> and <code>mid2</code>.</li>
+                    <li>Compare the target with <code>arr[mid1]</code> and <code>arr[mid2]</code>.</li>
+                    <li>Determine which segment contains the target and recurse into that segment.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-Life Example</h2>
+            <p>Imagine finding a particular song in a sorted music playlist by duration. Instead of checking each song (linear search) or splitting in half (binary search), ternary search allows you to divide the playlist into three parts. This is efficient when playlists are huge, like 10,000+ songs.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Ternary Search in Programming Languages</h2>
+
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-example')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-example')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-example')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-example')">Java</button>
+            </div>
+            
+            <div id="c-example" class="tab-content">
+                <h3>C Example</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+
+int ternarySearch(int arr[], int l, int r, int key) {
+    if (r >= l) {
+        int mid1 = l + (r - l) / 3;
+        int mid2 = r - (r - l) / 3;
+
+        if (arr[mid1] == key) return mid1;
+        if (arr[mid2] == key) return mid2;
+
+        if (key < arr[mid1])
+            return ternarySearch(arr, l, mid1 - 1, key);
+        else if (key > arr[mid2])
+            return ternarySearch(arr, mid2 + 1, r, key);
+        else
+            return ternarySearch(arr, mid1 + 1, mid2 - 1, key);
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {1, 3, 5, 7, 9, 11, 13};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int key = 7;
+    int result = ternarySearch(arr, 0, n - 1, key);
+    printf("Element found at index %d\n", result);
+    return 0;
+}</code></pre>
+            </div>
+
+            <div id="cpp-example" class="tab-content">
+                <h3>C++ Example</h3>
+                <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int ternarySearch(int l, int r, int key, int arr[]) {
+    if (r >= l) {
+        int mid1 = l + (r - l) / 3;
+        int mid2 = r - (r - l) / 3;
+
+        if (arr[mid1] == key) return mid1;
+        if (arr[mid2] == key) return mid2;
+
+        if (key < arr[mid1])
+            return ternarySearch(l, mid1 - 1, key, arr);
+        else if (key > arr[mid2])
+            return ternarySearch(mid2 + 1, r, key, arr);
+        else
+            return ternarySearch(mid1 + 1, mid2 - 1, key, arr);
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {1, 3, 5, 7, 9, 11, 13};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int key = 11;
+    int index = ternarySearch(0, n - 1, key, arr);
+    cout << "Element found at index " << index << endl;
+}</code></pre>
+            </div>
+
+            <div id="python-example" class="tab-content">
+                <h3>Python Example</h3>
+                <pre><code>def ternary_search(arr, l, r, key):
+    if r >= l:
+        mid1 = l + (r - l) // 3
+        mid2 = r - (r - l) // 3
+
+        if arr[mid1] == key:
+            return mid1
+        if arr[mid2] == key:
+            return mid2
+
+        if key < arr[mid1]:
+            return ternary_search(arr, l, mid1 - 1, key)
+        elif key > arr[mid2]:
+            return ternary_search(arr, mid2 + 1, r, key)
+        else:
+            return ternary_search(arr, mid1 + 1, mid2 - 1, key)
+    return -1
+
+arr = [1, 3, 5, 7, 9, 11, 13]
+key = 5
+print("Element found at index", ternary_search(arr, 0, len(arr) - 1, key))</code></pre>
+            </div>
+
+            <div id="java-example" class="tab-content">
+                <h3>Java Example</h3>
+                <pre><code>class TernarySearch {
+    static int ternarySearch(int l, int r, int key, int[] arr) {
+        if (r >= l) {
+            int mid1 = l + (r - l) / 3;
+            int mid2 = r - (r - l) / 3;
+
+            if (arr[mid1] == key) return mid1;
+            if (arr[mid2] == key) return mid2;
+
+            if (key < arr[mid1])
+                return ternarySearch(l, mid1 - 1, key, arr);
+            else if (key > arr[mid2])
+                return ternarySearch(mid2 + 1, r, key, arr);
+            else
+                return ternarySearch(mid1 + 1, mid2 - 1, key, arr);
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 3, 5, 7, 9, 11, 13};
+        int key = 9;
+        int index = ternarySearch(0, arr.length - 1, key, arr);
+        System.out.println("Element found at index " + index);
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>Part 2: Key Points for Beginners</h2>
+            <ul>
+                <li>Works only on **sorted arrays**.</li>
+                <li>Divides the array into three parts, which can be faster than binary search in some cases.</li>
+                <li>Can also be used for **unimodal functions** (finding the maximum or minimum).</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2>Part 3: Recommended Resources</h2>
+            <h3>Articles/Blogs:</h3>
+            <ul>
+                <li>GeeksforGeeks – “Ternary Search”</li>
+                <li>TutorialsPoint – “Ternary Search Algorithm”</li>
+            </ul>
+            <h3>Courses:</h3>
+            <ul>
+                <li>Coursera: Data Structures and Algorithms Specialization</li>
+                <li>Udemy: Mastering Algorithms in C, C++, Python, Java</li>
+            </ul>
+            <h3>Exercises:</h3>
+            <ul>
+                <li>Search for a number in a sorted array.</li>
+                <li>Find the maximum element in a unimodal array.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
