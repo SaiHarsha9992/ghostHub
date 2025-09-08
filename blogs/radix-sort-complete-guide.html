@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radix Sort</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Radix Sort – A Complete Guide</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">What is Radix Sort?</h2>
+            <p>Radix Sort is a non-comparison-based sorting algorithm that sorts numbers digit by digit, starting from either the least significant digit (LSD) or the most significant digit (MSD).  It uses a stable sub-sorting algorithm like Counting Sort at each digit place.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Why Radix Sort?</h2>
+            <ul>
+                <li>Works in $O(nk)$ time, where $n$ is the number of elements and $k$ is the number of digits.</li>
+                <li>Can be faster than $O(n \log n)$ algorithms like Merge Sort or Quick Sort in cases where $k$ is small.</li>
+                <li>**Key Property:** Radix Sort is **stable**, meaning equal elements maintain their relative order after sorting.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">How does it work?</h2>
+            <p>The core logic of Radix Sort involves these steps:</p>
+            <ol>
+                <li>Find the maximum number in the array to determine the number of digits.</li>
+                <li>Start sorting from the 1s place (Least Significant Digit).</li>
+                <li>Apply a stable sorting algorithm (like Counting Sort) based on the current digit.</li>
+                <li>Repeat this process for the 10s, 100s, 1000s, and so on, until the most significant digit is reached.</li>
+            </ol>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Step-by-Step Example</h2>
+            <p>Suppose we want to sort: <code>[170, 45, 75, 90, 802, 24, 2, 66]</code></p>
+            <ul>
+                <li><strong>Pass 1 (1s digit):</strong>
+                Sorted by last digit: <code>[170, 90, 802, 2, 24, 45, 75, 66]</code></li>
+                <li><strong>Pass 2 (10s digit):</strong>
+                Sorted by second digit: <code>[802, 2, 24, 45, 66, 170, 75, 90]</code></li>
+                <li><strong>Pass 3 (100s digit):</strong>
+                Sorted by third digit: <code>[2, 24, 45, 66, 75, 90, 170, 802]</code></li>
+            </ul>
+            <p>The array is now sorted! ✅</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Time Complexity</h2>
+            <ul>
+                <li>**Best, Worst, and Average Case:** $O(nk)$</li>
+                <li>**Space Complexity:** $O(n + k)$</li>
+            </ul>
+            <p>If $k$ (the number of digits) is small, Radix Sort is very efficient. But if numbers have too many digits, comparison-based sorts might be better.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Implementations</h2>
+
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+            </div>
+            
+            <div id="c-code" class="tab-content">
+                <h3>Radix Sort in C</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+
+int getMax(int arr[], int n) {
+    int max = arr[0];
+    for (int i = 1; i < n; i++)
+        if (arr[i] > max) max = arr[i];
+    return max;
+}
+
+void countingSort(int arr[], int n, int exp) {
+    int output[n];
+    int count[10] = {0};
+
+    for (int i = 0; i < n; i++)
+        count[(arr[i] / exp) % 10]++;
+
+    for (int i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    for (int i = n - 1; i >= 0; i--) {
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+    for (int i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+
+void radixSort(int arr[], int n) {
+    int max = getMax(arr, n);
+    for (int exp = 1; max / exp > 0; exp *= 10)
+        countingSort(arr, n, exp);
+}
+
+int main() {
+    int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    radixSort(arr, n);
+
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-code" class="tab-content">
+                <h3>Radix Sort in C++</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int getMax(vector<int>& arr) {
+    int maxVal = arr[0];
+    for (int x : arr) if (x > maxVal) maxVal = x;
+    return maxVal;
+}
+
+void countingSort(vector<int>& arr, int exp) {
+    int n = arr.size();
+    vector<int> output(n);
+    int count[10] = {0};
+
+    for (int i = 0; i < n; i++)
+        count[(arr[i] / exp) % 10]++;
+
+    for (int i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    for (int i = n - 1; i >= 0; i--) {
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+    for (int i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+
+void radixSort(vector<int>& arr) {
+    int maxVal = getMax(arr);
+    for (int exp = 1; maxVal / exp > 0; exp *= 10)
+        countingSort(arr, exp);
+}
+
+int main() {
+    vector<int> arr = {170, 45, 75, 90, 802, 24, 2, 66};
+    radixSort(arr);
+
+    cout << "Sorted array: ";
+    for (int x : arr) cout << x << " ";
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="python-code" class="tab-content">
+                <h3>Radix Sort in Python</h3>
+                <div class="syntax-box">
+                    <pre><code>def counting_sort(arr, exp):
+    n = len(arr)
+    output = [0] * n
+    count = [0] * 10
+
+    for i in range(n):
+        index = (arr[i] // exp) % 10
+        count[index] += 1
+
+    for i in range(1, 10):
+        count[i] += count[i - 1]
+
+    i = n - 1
+    while i >= 0:
+        index = (arr[i] // exp) % 10
+        output[count[index] - 1] = arr[i]
+        count[index] -= 1
+        i -= 1
+
+    for i in range(n):
+        arr[i] = output[i]
+
+def radix_sort(arr):
+    if not arr:
+        return
+    max_num = max(arr)
+    exp = 1
+    while max_num // exp > 0:
+        counting_sort(arr, exp)
+        exp *= 10
+
+arr = [170, 45, 75, 90, 802, 24, 2, 66]
+radix_sort(arr)
+print("Sorted array:", arr)</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Radix Sort in Java</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.util.*;
+
+public class RadixSort {
+    static int getMax(int[] arr) {
+        int max = arr[0];
+        for (int i : arr) if (i > max) max = i;
+        return max;
+    }
+
+    static void countingSort(int[] arr, int exp) {
+        int n = arr.length;
+        int[] output = new int[n];
+        int[] count = new int[10];
+
+        for (int i = 0; i < n; i++)
+            count[(arr[i] / exp) % 10]++;
+
+        for (int i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        for (int i = 0; i < n; i++)
+            arr[i] = output[i];
+    }
+
+    static void radixSort(int[] arr) {
+        int max = getMax(arr);
+        for (int exp = 1; max / exp > 0; exp *= 10)
+            countingSort(arr, exp);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {170, 45, 75, 90, 802, 24, 2, 66};
+        radixSort(arr);
+
+        System.out.print("Sorted array: ");
+        for (int i : arr) System.out.print(i + " ");
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">When to Use Radix Sort?</h2>
+            <p><strong>Best when:</strong></p>
+            <ul>
+                <li>Numbers/Strings have a fixed digit length.</li>
+                <li>You have a large dataset where a comparison sort ($O(n \log n)$) may struggle.</li>
+            </ul>
+            <p><strong>Not suitable when:</strong></p>
+            <ul>
+                <li>Numbers have a very large number of digits.</li>
+                <li>You are dealing with floating-point numbers or negative numbers (without modifications).</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">Final Thoughts</h2>
+            <p>Radix Sort is a powerful digit-based sorting algorithm that can outperform traditional comparison-based sorting when dealing with integers with limited digit size. It’s widely used in applications like sorting telephone directories, postal codes, dates, and large integer datasets.</p>
+            <p>This guide covered:</p>
+            <ul>
+                <li>✅ Explanation + step-by-step example</li>
+                <li>✅ Time complexity analysis</li>
+                <li>✅ Code in C, C++, Python, Java</li>
+                <li>✅ When to use Radix Sort</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
