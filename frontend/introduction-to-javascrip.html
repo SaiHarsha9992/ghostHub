@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to JavaScript</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        .check-list li::before {
+            content: '✅';
+            padding-right: 8px;
+        }
+
+        .cross-list li::before {
+            content: '❌';
+            padding-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Introduction to JavaScript</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. What is JavaScript? A Beginner’s Guide</h2>
+            <div class="intro-text">
+                <p>JavaScript (JS) is a programming language used to make web pages dynamic and interactive.</p>
+                <ul>
+                    <li>HTML → Structure (skeleton of the body)</li>
+                    <li>CSS → Style (clothes & looks)</li>
+                    <li>JavaScript → Behavior (actions & movements)</li>
+                </ul>
+            </div>
+            <p><strong>Example:</strong></p>
+            <pre><code>&lt;button onclick="alert('Hello, World!')"&gt;Click Me&lt;/button&gt;</code></pre>
+            <div class="real-life-example">
+                <ul>
+                    <li><strong>Note:</strong> When you click the button, a popup appears. This is JavaScript in action!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. History of JavaScript: From Netscape to Today</h2>
+            <ul>
+                <li>Created in 1995 by Brendan Eich at Netscape.</li>
+                <li>First called Mocha, then LiveScript, and finally JavaScript.</li>
+                <li>Today, it’s the most widely used programming language on the web.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. How to Use JavaScript in a Webpage</h2>
+            <p>There are 3 ways to add JavaScript:</p>
+            <h3>Inline JavaScript (inside HTML tag)</h3>
+            <pre><code>&lt;button onclick="alert('Hello!')"&gt;Click Me&lt;/button&gt;</code></pre>
+            <h3>Internal JavaScript (inside &lt;script&gt; tag)</h3>
+            <pre><code>&lt;script&gt;
+  document.write("Welcome to JavaScript!");
+&lt;/script&gt;</code></pre>
+            <h3>External JavaScript (separate file .js)</h3>
+            <p><strong>Create a file:</strong> <code>script.js</code></p>
+            <pre><code>alert("Hello from external JS file!");</code></pre>
+            <p><strong>Link it in HTML:</strong></p>
+            <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. How to Save JavaScript File</h2>
+            <ul>
+                <li>Save your file with a `.js` extension (example: `app.js`).</li>
+                <li>Use <code>&lt;script src="app.js"&gt;&lt;/script&gt;</code> inside your HTML file to connect.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Where Do We Use JavaScript?</h2>
+            <ul>
+                <li><strong>Websites</strong> → Menus, forms, animations</li>
+                <li><strong>Mobile Apps</strong> → Using frameworks like React Native</li>
+                <li><strong>Games</strong> → Online browser games</li>
+                <li><strong>Servers</strong> → Backend with Node.js</li>
+                <li><strong>Data Visualization</strong> → Charts & dashboards</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Advantages of JavaScript</h2>
+            <ul class="check-list">
+                <li>Easy to learn and use</li>
+                <li>Works in all browsers</li>
+                <li>Makes websites interactive</li>
+                <li>Large community support</li>
+                <li>Can be used for both frontend & backend</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Disadvantages of JavaScript</h2>
+            <ul class="cross-list">
+                <li>Runs on client-side, so sometimes security issues</li>
+                <li>Different browsers may behave differently</li>
+                <li>Large code may slow down the browser</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">8. Small Code Snippets</h2>
+            <p><strong>Print a message in the console:</strong></p>
+            <pre><code>console.log("Hello, Durga!");</code></pre>
+            <p><strong>Change content of a webpage:</strong></p>
+            <pre><code>&lt;p id="demo"&gt;Old Text&lt;/p&gt;
+ 
+&lt;script&gt;
+document.getElementById("demo").innerHTML = "New Text";
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">9. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Print your name using <code>console.log()</code>.</li>
+                    <li>Create a button that shows a message when clicked.</li>
+                    <li>Write an inline script that changes text color.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">10. Conclusion</h2>
+            <ul>
+                <li>JavaScript is the brain of a webpage, making it dynamic and user-friendly.</li>
+                <li>You can write it inline, internal, or external.</li>
+                <li>It has advantages (interactivity, versatility) but also disadvantages (security, browser compatibility).</li>
+                <li>Learning JavaScript is the first step toward becoming a real web developer.</li>
+            </ul>
+            <p>This forms a complete JavaScript mastery path 🎯.</p>
+        </div>
+    </div>
+</body>
+</html>
