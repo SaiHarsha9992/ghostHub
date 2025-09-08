@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucket Sort</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1A1E22;
+            color: #F0F0F0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1E22;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Bucket Sort – Complete Guide</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">What is Bucket Sort?</h2>
+            <p>Bucket Sort is a non-comparison-based, distribution-based sorting algorithm. It divides an array into several “buckets,” each holding a range of values. The values inside each bucket are then sorted using another algorithm (like Insertion Sort), and finally, the sorted buckets are concatenated to get the final sorted array. </p>
+            <p><strong>Why Bucket Sort?</strong></p>
+            <ul>
+                <li>Efficient when the input is **uniformly distributed**.</li>
+                <li>Can run in linear time under ideal conditions: $O(n + k)$ (where $n$ is the number of elements and $k$ is the number of buckets).</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">How it works?</h2>
+            <ol>
+                <li>Create an array of empty buckets.</li>
+                <li>Scatter elements into buckets based on a mapping function (e.g., `floor(value * num_buckets)`).</li>
+                <li>Sort each bucket individually.</li>
+                <li>Concatenate all buckets to get the final sorted array.</li>
+            </ol>
+            <p><strong>Key Property:</strong> Bucket Sort is stable if the sorting algorithm used within the buckets is also stable.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Step-by-Step Example</h2>
+            <p>Suppose we want to sort: <code>[0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.51]</code></p>
+            <p><strong>Step 1: Create buckets</strong></p>
+            <p>Let's create 5 buckets for values between 0 and 1:</p>
+            <p>Bucket 0: []<br>Bucket 1: []<br>Bucket 2: []<br>Bucket 3: []<br>Bucket 4: []</p>
+            
+            <p><strong>Step 2: Scatter elements</strong></p>
+            <p>Using the formula <code>bucket_index = floor(value * num_buckets)</code>:</p>
+            <ul>
+                <li>0.42 -> Bucket 2</li>
+                <li>0.32 -> Bucket 1</li>
+                <li>0.23 -> Bucket 1</li>
+                <li>0.52 -> Bucket 2</li>
+                <li>0.25 -> Bucket 1</li>
+                <li>0.47 -> Bucket 2</li>
+                <li>0.51 -> Bucket 2</li>
+            </ul>
+            <p>Buckets now:</p>
+            <p>Bucket 0: []<br>Bucket 1: [0.32, 0.23, 0.25]<br>Bucket 2: [0.42, 0.52, 0.47, 0.51]<br>Bucket 3: []<br>Bucket 4: []</p>
+            
+            <p><strong>Step 3: Sort each bucket</strong></p>
+            <p>Bucket 1 → `[0.23, 0.25, 0.32]`<br>Bucket 2 → `[0.42, 0.47, 0.51, 0.52]`</p>
+            
+            <p><strong>Step 4: Concatenate buckets</strong></p>
+            <p>Final sorted array: `[0.23, 0.25, 0.32, 0.42, 0.47, 0.51, 0.52]` ✅</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Time Complexity</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Case</th>
+                        <th>Time Complexity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Best</td>
+                        <td>$O(n + k)$</td>
+                    </tr>
+                    <tr>
+                        <td>Average</td>
+                        <td>$O(n + n^2/k + k)$</td>
+                    </tr>
+                    <tr>
+                        <td>Worst</td>
+                        <td>$O(n^2)$</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Space complexity = $O(n + k)$. Note: If all elements fall into a single bucket, complexity can degrade to $O(n^2)$.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Implementations</h2>
+
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+            </div>
+            
+            <div id="c-code" class="tab-content">
+                <h3>Bucket Sort in C</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+#include <stdlib.h>
+
+void insertionSort(float arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        float key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+void bucketSort(float arr[], int n) {
+    float buckets[n][n];
+    int bucketSizes[n];
+    for (int i = 0; i < n; i++) bucketSizes[i] = 0;
+
+    for (int i = 0; i < n; i++) {
+        int idx = n * arr[i];
+        buckets[idx][bucketSizes[idx]++] = arr[i];
+    }
+
+    for (int i = 0; i < n; i++)
+        insertionSort(buckets[i], bucketSizes[i]);
+
+    int k = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < bucketSizes[i]; j++)
+            arr[k++] = buckets[i][j];
+}
+
+int main() {
+    float arr[] = {0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.51};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    bucketSort(arr, n);
+    printf("Sorted array: ");
+    for (int i = 0; i < n; i++) printf("%.2f ", arr[i]);
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-code" class="tab-content">
+                <h3>Bucket Sort in C++</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void bucketSort(vector<float>& arr) {
+    int n = arr.size();
+    vector<vector<float>> buckets(n);
+
+    for (float x : arr) {
+        int idx = n * x;
+        buckets[idx].push_back(x);
+    }
+
+    for (int i = 0; i < n; i++)
+        sort(buckets[i].begin(), buckets[i].end());
+
+    int index = 0;
+    for (int i = 0; i < n; i++)
+        for (float x : buckets[i])
+            arr[index++] = x;
+}
+
+int main() {
+    vector<float> arr = {0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.51};
+    bucketSort(arr);
+    cout << "Sorted array: ";
+    for (float x : arr) cout << x << " ";
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="python-code" class="tab-content">
+                <h3>Bucket Sort in Python</h3>
+                <div class="syntax-box">
+                    <pre><code>def bucket_sort(arr):
+    n = len(arr)
+    buckets = [[] for _ in range(n)]
+
+    for x in arr:
+        index = int(n * x)
+        buckets[index].append(x)
+
+    for bucket in buckets:
+        bucket.sort()
+
+    sorted_arr = []
+    for bucket in buckets:
+        sorted_arr.extend(bucket)
+
+    return sorted_arr
+
+arr = [0.42, 0.32, 0.23, 0.52, 0.25, 0.47, 0.51]
+sorted_arr = bucket_sort(arr)
+print("Sorted array:", sorted_arr)</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Bucket Sort in Java</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.util.*;
+
+public class BucketSort {
+    public static void bucketSort(float[] arr) {
+        int n = arr.length;
+        List<Float>[] buckets = new ArrayList[n];
+        for (int i = 0; i < n; i++) buckets[i] = new ArrayList<>();
+
+        for (float num : arr) {
+            int idx = (int) (num * n);
+            buckets[idx].add(num);
+        }
+
+        for (List<Float> bucket : buckets)
+            Collections.sort(bucket);
+
+        int index = 0;
+        for (List<Float> bucket : buckets)
+            for (float num : bucket)
+                arr[index++] = num;
+    }
+
+    public static void main(String[] args) {
+        float[] arr = {0.42f, 0.32f, 0.23f, 0.52f, 0.25f, 0.47f, 0.51f};
+        bucketSort(arr);
+        System.out.print("Sorted array: ");
+        for (float num : arr) System.out.print(num + " ");
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">When to Use Bucket Sort?</h2>
+            <p><strong>Best for:</strong></p>
+            <ul>
+                <li>Floating-point numbers between 0 and 1 (or values that can be normalized).</li>
+                <li>**Uniformly distributed** datasets.</li>
+            </ul>
+            <p><strong>Not suitable for:</strong></p>
+            <ul>
+                <li>Highly skewed data.</li>
+                <li>Huge datasets with unknown distribution (might lead to uneven buckets).</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">Final Thoughts</h2>
+            <p>Bucket Sort is a highly intuitive, distribution-based sorting algorithm. Under the right conditions, it can achieve **linear time sorting**, outperforming traditional comparison-based sorts. It is frequently used in scientific computations, graphics, and numerical applications.</p>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
