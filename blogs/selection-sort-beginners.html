@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Selection Sort</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 1: Selection Sort for Beginners</h2>
+            <h3>What is Selection Sort?</h3>
+            <div class="intro-text">
+                <p>Selection Sort is a comparison-based sorting algorithm. It repeatedly selects the smallest (or largest) element from the unsorted portion of the array and places it in its correct position. </p>
+                <p><strong>Time complexity:</strong></p>
+                <ul>
+                    <li>Best case: $O(n^2)$</li>
+                    <li>Worst case: $O(n^2)$</li>
+                    <li>Space complexity: $O(1)$ (in-place sorting)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-Life Example of Selection Sort</h2>
+            <p>Imagine you are arranging books on a shelf by height:</p>
+            <ol>
+                <li>You scan the entire shelf and find the smallest book.</li>
+                <li>You place it in the first position.</li>
+                <li>Then, from the remaining books, you find the next smallest and place it second.</li>
+                <li>You repeat this process until all books are sorted.</li>
+            </ol>
+            <p>This manual "picking the smallest and placing it" is exactly what Selection Sort does.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Step-by-Step Working of Selection Sort</h2>
+            <p>Let’s say we have an array: <code>[29, 10, 14, 37, 13]</code></p>
+            <ul>
+                <li>Find the smallest element in the entire array → <code>10</code>. Swap it with the first element (<code>29</code>) → <code>[10, 29, 14, 37, 13]</code>.</li>
+                <li>From the remaining unsorted portion (<code>[29, 14, 37, 13]</code>), the smallest is <code>13</code>. Swap it with the first element of this portion (<code>29</code>) → <code>[10, 13, 14, 37, 29]</code>.</li>
+                <li>The next smallest is <code>14</code>, which is already in its correct position.</li>
+                <li>The next smallest from the remaining part (<code>[37, 29]</code>) is <code>29</code>. Swap it with <code>37</code> → <code>[10, 13, 14, 29, 37]</code>.</li>
+            </ul>
+            <p>The array is now sorted! ✅</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Code Examples</h2>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+            </div>
+            
+            <div id="c-code" class="tab-content">
+                <h3>C Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex])
+                minIndex = j;
+        }
+        int temp = arr[minIndex];
+        arr[minIndex] = arr[i];
+        arr[i] = temp;
+    }
+}
+int main() {
+    int arr[] = {29, 10, 14, 37, 13};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    selectionSort(arr, n);
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-code" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <utility>
+using namespace std;
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) minIndex = j;
+        }
+        swap(arr[i], arr[minIndex]);
+    }
+}
+int main() {
+    int arr[] = {29, 10, 14, 37, 13};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    selectionSort(arr, n);
+    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="python-code" class="tab-content">
+                <h3>Python Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>def selection_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
+
+arr = [29, 10, 14, 37, 13]
+print(selection_sort(arr))</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Java Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>public class SelectionSort {
+    static void selectionSort(int arr[]) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
+    public static void main(String[] args) {
+        int arr[] = {29, 10, 14, 37, 13};
+        selectionSort(arr);
+        for (int num : arr) System.out.print(num + " ");
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Advantages & Disadvantages</h2>
+            <ul>
+                <li>✅ **Simple** and easy to implement.</li>
+                <li>✅ Works well on **small datasets**.</li>
+                <li>❌ Inefficient for large datasets ($O(n^2)$).</li>
+                <li>❌ **Not adaptive** (does not get faster if partially sorted).</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">Beginner Resources</h2>
+            <ul>
+                <li><strong>Article:</strong> GeeksforGeeks Selection Sort Article</li>
+                <li><strong>Book:</strong> "Introduction to Algorithms" (CLRS) – Chapter on Sorting Basics</li>
+                <li><strong>Practice:</strong> HackerRank / LeetCode "Sorting" problems</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
