@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Efficiency</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1A1E22;
+            color: #F0F0F0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1E22;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Efficiency of Algorithms</h1>
+        <div class="introduction">
+            <h2 class="section-heading">Introduction</h2>
+            <div class="intro-text">
+                <p>In the world of computer science, writing correct code is just the first step. True software efficiency comes from writing algorithms that are fast, scalable, and resource-friendly. Understanding algorithm efficiency is crucial for solving real-world problems with large datasets, high-performance requirements, or limited hardware.</p>
+                <p>This guide explores:</p>
+                <ul>
+                    <li>**Time Complexity**</li>
+                    <li>**Space Complexity**</li>
+                    <li>**Optimizing Algorithms**</li>
+                    <li>**Comparing Algorithms**</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. Understanding Algorithm Efficiency</h2>
+            <p>Algorithm efficiency measures how much resources an algorithm consumes when solving a problem. The main resources considered are:</p>
+            <ul>
+                <li>**Time:** How long an algorithm takes to execute.</li>
+                <li>**Space:** How much memory an algorithm consumes during execution.</li>
+            </ul>
+            <p><strong>Why efficiency matters:</strong></p>
+            <ul>
+                <li><strong>Large datasets:</strong> Inefficient algorithms can be impractical for handling huge real-world data.</li>
+                <li><strong>Performance-critical applications:</strong> Games, AI, or finance require minimal latency.</li>
+                <li><strong>Scalability:</strong> Efficient algorithms scale better with increasing input size.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Time Complexity</h2>
+            <p>Time complexity estimates how the execution time of an algorithm grows with input size. It provides a way to predict performance without running the program on all possible inputs. </p>
+            <p><strong>Key Concepts:</strong></p>
+            <ul>
+                <li><strong>Worst-case complexity:</strong> Maximum time the algorithm takes for any input of size n.</li>
+                <li><strong>Best-case complexity:</strong> Minimum time the algorithm takes for input of size n.</li>
+                <li><strong>Average-case complexity:</strong> Expected time the algorithm takes for typical inputs.</li>
+            </ul>
+            <h3>Growth Rates (Big O Notation):</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Complexity</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$O(1)$</td>
+                        <td>Constant time, independent of input size</td>
+                        <td>Accessing an element in an array</td>
+                    </tr>
+                    <tr>
+                        <td>$O(\log n)$</td>
+                        <td>Logarithmic growth</td>
+                        <td>Binary search</td>
+                    </tr>
+                    <tr>
+                        <td>$O(n)$</td>
+                        <td>Linear growth</td>
+                        <td>Iterating through all elements</td>
+                    </tr>
+                    <tr>
+                        <td>$O(n \log n)$</td>
+                        <td>Log-linear growth</td>
+                        <td>Merge Sort, Heap Sort</td>
+                    </tr>
+                    <tr>
+                        <td>$O(n^2)$</td>
+                        <td>Quadratic growth</td>
+                        <td>Bubble Sort, Insertion Sort</td>
+                    </tr>
+                    <tr>
+                        <td>$O(2^n)$</td>
+                        <td>Exponential growth</td>
+                        <td>Recursive Fibonacci without optimization</td>
+                    </tr>
+                    <tr>
+                        <td>$O(n!)$</td>
+                        <td>Factorial growth</td>
+                        <td>Brute-force Traveling Salesman problem</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Space Complexity</h2>
+            <p>Space complexity measures the amount of memory an algorithm uses relative to input size. </p>
+            <p><strong>Components of Space Usage:</strong></p>
+            <ul>
+                <li><strong>Fixed Part:</strong> Memory required independent of input size (e.g., program instructions).</li>
+                <li><strong>Variable Part:</strong> Memory dependent on input size (e.g., arrays, recursion stack, temporary variables).</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Optimizing Algorithms</h2>
+            <p>Optimization is the process of improving algorithm efficiency to reduce execution time, memory usage, or both.</p>
+            <p><strong>Techniques for Optimization:</strong></p>
+            <ul>
+                <li><strong>Choose the right algorithm:</strong> Selecting an algorithm with better time complexity often yields the most significant improvement.</li>
+                <li><strong>Use appropriate data structures:</strong> Efficient structures like hash tables, heaps, and trees can reduce complexity.</li>
+                <li><strong>Avoid redundant computations:</strong> Techniques like memoization or dynamic programming save time by reusing results.</li>
+                <li><strong>Parallelism and concurrency:</strong> Divide work across multiple processors or threads to reduce execution time.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Comparison of Algorithms</h2>
+            <p>Choosing the right algorithm requires considering multiple factors. Here’s how algorithms are commonly compared:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Time Complexity</td>
+                        <td>How fast the algorithm runs for different input sizes.</td>
+                    </tr>
+                    <tr>
+                        <td>Space Complexity</td>
+                        <td>How much memory it consumes.</td>
+                    </tr>
+                    <tr>
+                        <td>Stability</td>
+                        <td>Whether the algorithm preserves the relative order of equal elements.</td>
+                    </tr>
+                    <tr>
+                        <td>Practical Performance</td>
+                        <td>Real-world performance may differ from theoretical complexity due to constants and other factors.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Best Practices for Algorithm Efficiency</h2>
+            <ul>
+                <li><strong>Analyze complexity before coding:</strong> Understand expected growth rates.</li>
+                <li><strong>Prioritize readability:</strong> Use simpler algorithms unless performance is critical.</li>
+                <li><strong>Test with realistic datasets:</strong> Ensure the algorithm scales as expected.</li>
+                <li><strong>Balance trade-offs:</strong> Faster runtime may require more memory, and vice versa.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">7. Key Takeaways</h2>
+            <ul>
+                <li>Time complexity predicts execution time; space complexity predicts memory usage.</li>
+                <li>Optimizing algorithms involves selecting the best approach and data structures for the problem.</li>
+                <li>Comparing algorithms requires considering complexity, stability, adaptability, and practical performance.</li>
+            </ul>
+            <p>Mastering algorithm efficiency is essential for becoming a skilled programmer and designing software that performs well under real-world constraints. </p>
+        </div>
+    </div>
+</body>
+</html>
