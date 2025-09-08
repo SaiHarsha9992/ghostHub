@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Pointers</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Two Pointers Technique</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 1: Two Pointers – Beginner’s Guide</h2>
+            <h3>1. Introduction</h3>
+            <p>In programming, solving problems quickly is as important as solving them correctly. Many times, brute-force solutions are too slow. That’s where the **Two Pointers Technique** comes in. It is one of the most common techniques used in array and string problems, often helping to reduce time complexity from $O(n^2)$ to $O(n)$.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. What is the Two Pointers Technique?</h2>
+            <p>The Two Pointers method uses two variables (pointers) that move across an array or string in a coordinated way to solve a problem.  </p>
+            <ul>
+                <li>One pointer starts from the left.</li>
+                <li>The other pointer starts from the right.</li>
+                <li>Depending on the logic, they either move towards each other or move in the same direction.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Syntax (General Pseudocode)</h2>
+            <div class="syntax-box">
+                <pre><code>left = 0
+right = n-1
+
+while left < right:
+    if condition satisfied:
+        do something
+    else:
+        move left/right pointer</code></pre>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Real-Life Example 📖</h2>
+            <p>Imagine searching for a word in a dictionary:
+            <ul>
+                <li>You start from the front page.</li>
+                <li>Your friend starts from the last page.</li>
+                <li>Both of you move inward until you find the word.</li>
+            </ul>
+            This is much faster than searching alone from one side. That’s two pointers in real life!</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Beginner Example: Check if a String is a Palindrome</h2>
+            <p><strong>Problem:</strong> A string is a palindrome if it reads the same forward and backward.</p>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+            </div>
+            
+            <div id="c-code" class="tab-content">
+                <h3>C Program</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+bool isPalindrome(char s[]) {
+    int left = 0, right = strlen(s) - 1;
+    while (left < right) {
+        if (s[left] != s[right]) return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+
+int main() {
+    char str[] = "madam";
+    printf("%s\n", isPalindrome(str) ? "Palindrome" : "Not Palindrome");
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="python-code" class="tab-content">
+                <h3>Python Program</h3>
+                <div class="syntax-box">
+                    <pre><code>def is_palindrome(s):
+    left, right = 0, len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+print("Palindrome" if is_palindrome("racecar") else "Not Palindrome")</code></pre>
+                </div>
+            </div>
+            <p>Instead of a brute-force approach that might check each possible substring ($O(n^2)$), this solution is solved in linear time, $O(n)$, using two pointers.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Where Beginners Use It?</h2>
+            <ul>
+                <li>Checking if a string is a Palindrome.</li>
+                <li>Reversing an array or a string.</li>
+                <li>Removing duplicates from a sorted array.</li>
+                <li>Finding a pair of elements in a sorted array that sums to a target value.</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">7. Conclusion (Part 1)</h2>
+            <p>Two pointers make our life easy when solving array and string problems. Instead of brute-force, we reduce time complexity significantly, making our code more efficient and scalable.</p>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
