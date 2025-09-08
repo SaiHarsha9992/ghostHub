@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked Lists Advanced</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1A1E22;
+            color: #F0F0F0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1E22;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Linked Lists</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2: Advanced Linked Lists</h2>
+            <p>You've learned the basics of a linked list as a series of nodes connected by references. Now let’s move into advanced operations and variations that make linked lists a powerful tool in real-world applications.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Advanced Types of Linked Lists</h2>
+            <p>Beyond the simple singly linked list, there are two common variations:</p>
+            <h3>Doubly Linked List (DLL)</h3>
+            <p>In a doubly linked list, each node has a reference to both the **next** and the **previous** node.  This makes it useful for bidirectional traversal, like a back and forward button in a browser.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'dll-cpp')">C++</button>
+            </div>
+            <div id="dll-cpp" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>class Node {
+public:
+    int data;
+    Node* next;
+    Node* prev;
+    Node(int val) {
+        data = val;
+        next = prev = NULL;
+    }
+};</code></pre>
+                </div>
+            </div>
+
+            <h3>Circular Linked List (CLL)</h3>
+            <p>In a circular linked list, the last node's `next` pointer connects back to the first node, forming a loop. This is useful in scenarios like round-robin scheduling for CPU tasks. </p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Key Advanced Operations</h2>
+            <p>Mastering these operations is crucial for using linked lists effectively:</p>
+            <ul>
+                <li>Insertion at the beginning, end, or middle of the list.</li>
+                <li>Deletion by a given value or position.</li>
+                <li>Reversing a Linked List.</li>
+                <li>Detecting a cycle (e.g., using **Floyd’s Cycle Detection Algorithm** with fast and slow pointers).</li>
+                <li>Merging two sorted linked lists.</li>
+                <li>Finding the middle element of a list in $O(n)$ time using two pointers (one slow, one fast).</li>
+            </ul>
+            <p><strong>Example: Reverse a Linked List (C++)</strong></p>
+            <div class="syntax-box">
+                <pre><code>Node* reverse(Node* head) {
+    Node* prev = NULL;
+    Node* curr = head;
+    Node* next = NULL;
+
+    while(curr != NULL) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Real-Life Advanced Examples</h2>
+            <ul>
+                <li>**Undo/Redo:** The feature in applications like MS Word is often implemented with a Doubly Linked List to quickly traverse back and forth.</li>
+                <li>**Round-robin scheduling:** Used in operating systems, this is a classic application for a Circular Linked List.</li>
+                <li>**LRU Cache:** A Least Recently Used (LRU) Cache is often implemented using a combination of a Doubly Linked List and a HashMap for efficient access and updates.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Complexity Comparison</h2>
+            <p>It's important to know when to use an array versus a linked list by comparing their complexities. </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Array</th>
+                        <th>Linked List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Access (random)</td>
+                        <td>$O(1)$</td>
+                        <td>$O(n)$</td>
+                    </tr>
+                    <tr>
+                        <td>Insertion (start/mid)</td>
+                        <td>$O(n)$</td>
+                        <td>$O(1)$ if pointer is known</td>
+                    </tr>
+                    <tr>
+                        <td>Deletion (start/mid)</td>
+                        <td>$O(n)$</td>
+                        <td>$O(1)$ if pointer is known</td>
+                    </tr>
+                    <tr>
+                        <td>Memory Use</td>
+                        <td>Fixed</td>
+                        <td>Dynamic</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Advanced Recommendations</h2>
+            <ul>
+                <li>**Book:** 📖 *Data Structures and Algorithms in Java* – Robert Lafore</li>
+                <li>**Courses:** 🧑‍💻 Coursera – UC San Diego Data Structures Specialization</li>
+                <li>**Blogs:** 📂 GeeksforGeeks “Linked List Advanced Problems”</li>
+                <li>**Exercises:** 🏋️ Implement an LRU Cache, Cycle Detection, and a Palindrome Linked List.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
