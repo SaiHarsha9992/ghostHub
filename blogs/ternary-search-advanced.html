@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Ternary Search</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1A1E22;
+            color: #F0F0F0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1E22;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Ternary Search</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2: Advanced Ternary Search</h2>
+            <h3>1. When to Use Ternary Search?</h3>
+            <div class="intro-text">
+                <p>Ternary search is a powerful tool for more than just simple array searching. It is especially useful for:</p>
+                <ul>
+                    <li>Finding the maximum or minimum in **unimodal functions** (a common pattern in competitive programming).</li>
+                    <li>Situations where binary search comparisons are computationally costly.</li>
+                    <li>Large data sets where dividing the search space by three can slightly reduce recursion depth.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Real-Life Advanced Example</h2>
+            <p><strong>Scenario:</strong> Optimizing the profit function in a business, where profit depends on a variable like price. A profit function is often unimodal; it increases as you raise the price (because of a higher margin) and then decreases after a certain point (because fewer customers are willing to buy the product). </p>
+            <p>Ternary search helps find the **price** that gives the maximum profit efficiently by repeatedly narrowing the price range.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Ternary Search for Unimodal Functions</h2>
+            <p>The core logic of ternary search can be applied to continuous functions. The goal is to narrow down an interval $[l, r]$ to find the point where the function reaches its maximum or minimum. This iterative process continues until the interval is sufficiently small, determined by a small `eps` (epsilon) value.</p>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-example')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-example')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'java-example')">Java</button>
+                <button class="tab-button" onclick="openCode(event, 'c-example')">C</button>
+            </div>
+            
+            <div id="python-example" class="tab-content">
+                <h3>Python Example</h3>
+                <div class="syntax-box">
+                    <pre><code>def f(x):
+    # A unimodal function that increases then decreases
+    return -(x - 2)**2 + 4
+
+def ternary_search(l, r, eps=1e-6):
+    while r - l > eps:
+        mid1 = l + (r - l) / 3
+        mid2 = r - (r - l) / 3
+
+        if f(mid1) < f(mid2):
+            l = mid1
+        else:
+            r = mid2
+    return (l + r) / 2
+
+max_x = ternary_search(0, 5)
+print("Maximum at x =", max_x)
+print("f(x) =", f(max_x))</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-example" class="tab-content">
+                <h3>C++ Example</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <iomanip>
+
+double f(double x) {
+    // A unimodal function that increases then decreases
+    return -(x - 2) * (x - 2) + 4;
+}
+
+double ternarySearch(double l, double r, double eps = 1e-6) {
+    while (r - l > eps) {
+        double mid1 = l + (r - l) / 3.0;
+        double mid2 = r - (r - l) / 3.0;
+
+        if (f(mid1) < f(mid2)) {
+            l = mid1;
+        } else {
+            r = mid2;
+        }
+    }
+    return (l + r) / 2.0;
+}
+
+int main() {
+    double max_x = ternarySearch(0, 5);
+    std::cout << "Maximum at x = " << std::fixed << std::setprecision(6) << max_x << std::endl;
+    std::cout << "f(x) = " << std::fixed << std::setprecision(6) << f(max_x) << std::endl;
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="java-example" class="tab-content">
+                <h3>Java Example</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.text.DecimalFormat;
+
+public class UnimodalSearch {
+
+    public static double f(double x) {
+        // A unimodal function that increases then decreases
+        return -(x - 2) * (x - 2) + 4;
+    }
+
+    public static double ternarySearch(double l, double r, double eps) {
+        while (r - l > eps) {
+            double mid1 = l + (r - l) / 3.0;
+            double mid2 = r - (r - l) / 3.0;
+
+            if (f(mid1) < f(mid2)) {
+                l = mid1;
+            } else {
+                r = mid2;
+            }
+        }
+        return (l + r) / 2.0;
+    }
+
+    public static void main(String[] args) {
+        DecimalFormat df = new DecimalFormat("#.000000");
+        double max_x = ternarySearch(0, 5, 1e-6);
+        System.out.println("Maximum at x = " + df.format(max_x));
+        System.out.println("f(x) = " + df.format(f(max_x)));
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="c-example" class="tab-content">
+                <h3>C Example</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+
+double f(double x) {
+    // A unimodal function that increases then decreases
+    return -(x - 2) * (x - 2) + 4;
+}
+
+double ternarySearch(double l, double r) {
+    double eps = 1e-6; // A small value for precision
+    while (r - l > eps) {
+        double mid1 = l + (r - l) / 3.0;
+        double mid2 = r - (r - l) / 3.0;
+
+        if (f(mid1) < f(mid2)) {
+            l = mid1;
+        } else {
+            r = mid2;
+        }
+    }
+    return (l + r) / 2.0;
+}
+
+int main() {
+    double max_x = ternarySearch(0, 5);
+    printf("Maximum at x = %.6f\n", max_x);
+    printf("f(x) = %.6f\n", f(max_x));
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>4. Key Points for Advanced Learners</h2>
+            <ul>
+                <li>Use for continuous search problems (functions) where the solution space is continuous rather than discrete.</li>
+                <li><strong>Accuracy vs. Iterations:</strong> A smaller <code>eps</code> (epsilon) value gives more precise results but requires more iterations.</li>
+                <li>Can be applied in AI hyperparameter tuning, economics, and engineering optimization problems.</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2>5. Recommended Resources (Advanced)</h2>
+            <h3>Articles/Blogs:</h3>
+            <ul>
+                <li>Codeforces tutorials on “Ternary Search in Competitive Programming”</li>
+                <li>HackerEarth – “Optimization Problems using Ternary Search”</li>
+            </ul>
+            <h3>Courses:</h3>
+            <ul>
+                <li>Coursera: Algorithmic Toolbox</li>
+                <li>Udemy: Advanced Data Structures & Algorithms</li>
+            </ul>
+            <h3>Exercises:</h3>
+            <ul>
+                <li>Find the maximum of $f(x) = -x^2 + 4x + 5$.</li>
+                <li>Optimize profit or cost in a real-world simulation.</li>
+                <li>Competitive programming problems on Codeforces / LeetCode.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Binary Search</th>
+                        <th>Ternary Search</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Array Split</td>
+                        <td>2 parts</td>
+                        <td>3 parts</td>
+                    </tr>
+                    <tr>
+                        <td>Complexity</td>
+                        <td>$O(\log n)$</td>
+                        <td>$O(\log_3 n)$</td>
+                    </tr>
+                    <tr>
+                        <td>Use Case</td>
+                        <td>Sorted arrays</td>
+                        <td>Sorted arrays & unimodal functions</td>
+                    </tr>
+                    <tr>
+                        <td>Real-Life</td>
+                        <td>Playlist search</td>
+                        <td>Price optimization, maximum profit</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Ternary search is a powerful tool for sorted arrays and optimization problems, bridging the gap between basic search and advanced mathematical function maximization.</p>
+        </div>
+    </div>
+    
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
