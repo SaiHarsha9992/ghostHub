@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort Advanced</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Insertion Sort</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2 – Insertion Sort for Advanced Learners</h2>
+            <p>Now let’s go deeper into the why, when, and how of Insertion Sort beyond the basics.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Why Study Insertion Sort?</h2>
+            <ul>
+                <li>Used as a building block in more advanced algorithms like **Shell Sort**.</li>
+                <li>Efficient for **online sorting** (when data arrives one element at a time).</li>
+                <li>Performs well when arrays are **nearly sorted**.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Optimizations</h2>
+            <p>The core logic of shifting elements can be optimized in a few ways:</p>
+            <h3>Binary Insertion Sort</h3>
+            <p>Instead of a linear search to find the correct position for an element, you can use a **binary search**. This reduces the number of comparisons from $O(n)$ to $O(\log n)$. However, the process of shifting elements to make space for the new item still takes $O(n)$ time in the worst case.</p>
+            <h3>Adaptive Sorting</h3>
+            <p>Insertion sort is a naturally **adaptive** algorithm. It's efficient for data that is already substantially sorted because it performs fewer shifts and comparisons. This makes it a great choice for algorithms like Timsort, which use Insertion Sort to sort small chunks of data.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-World Applications</h2>
+            <ul>
+                <li><strong>Small datasets:</strong> Used in embedded systems where memory is limited.</li>
+                <li><strong>Partially sorted data:</strong> A good example is when you insert a new student record into an already sorted class list.</li>
+                <li><strong>Hybrid Algorithms:</strong> Python’s built-in `sort()` and `sorted()` functions use an algorithm called **Timsort**, which internally uses insertion sort for small partitions to gain efficiency.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Code Examples</h2>
+            <p>Below is a standard implementation of Insertion Sort, which is already quite efficient for small and nearly sorted data.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+            </div>
+            
+            <div id="python-code" class="tab-content">
+                <h3>Python Program</h3>
+                <div class="syntax-box">
+                    <pre><code>def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
+# Example usage
+arr = [12, 11, 13, 5, 6]
+print(insertion_sort(arr))</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-code" class="tab-content">
+                <h3>C++ Program</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+using namespace std;
+
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int arr[] = {12, 11, 13, 5, 6};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    insertionSort(arr, n);
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Java Program</h3>
+                <div class="syntax-box">
+                    <pre><code>public class InsertionSort {
+    public static void insertionSort(int arr[]) {
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {12, 11, 13, 5, 6};
+        insertionSort(arr);
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="c-code" class="tab-content">
+                <h3>C Program</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int arr[] = {12, 11, 13, 5, 6};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    insertionSort(arr, n);
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Advanced Exercises</h2>
+            <ul>
+                <li>Implement **Binary Insertion Sort**.</li>
+                <li>Compare the runtime of Insertion Sort with Bubble Sort and Merge Sort for small datasets.</li>
+                <li>Use insertion sort in a linked list instead of an array.</li>
+                <li>Modify insertion sort to sort in descending order.</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">Recommendations</h2>
+            <h3>For Beginners:</h3>
+            <ul>
+                <li><strong>Articles:</strong> GeeksforGeeks – Insertion Sort Basics, Tutorialspoint – Sorting Algorithms Overview.</li>
+                <li><strong>Courses:</strong> Coursera – Algorithms, Part I by Princeton, Udemy – Data Structures & Algorithms in C, C++, Java.</li>
+                <li><strong>Practice:</strong> HackerRank Sorting Section, LeetCode Easy Sorting Problems.</li>
+            </ul>
+            <h3>For Advanced Learners:</h3>
+            <ul>
+                <li><strong>Articles:</strong> CP-Algorithms – Binary Insertion Sort, Medium Blogs on Sorting Optimizations.</li>
+                <li><strong>Courses:</strong> MIT OpenCourseWare – Introduction to Algorithms (CLRS), Stanford Online – Algorithms Specialization.</li>
+                <li><strong>Exercises:</strong> Implement insertion sort with linked lists, compare binary insertion sort vs. normal insertion sort, and analyze insertion sort’s behavior on almost-sorted data.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Final Thoughts</h2>
+            <p>Insertion Sort might look simple, but it builds the foundation for understanding more complex sorting techniques. For beginners, it’s a stepping stone to algorithms. For advanced learners, it offers insights into optimization and hybrid sorting methods. </p>
+        </div>
+    </div>
+    
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
