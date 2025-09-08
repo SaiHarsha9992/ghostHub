@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort Advanced</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1A1E22;
+            color: #F0F0F0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1E22;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Quick Sort</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2: Quick Sort for Advanced Learners</h2>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Optimizations</h2>
+            <p>While the basic Quick Sort algorithm is effective, these optimizations are often used in practice to improve its performance and stability. </p>
+            <ul>
+                <li>**Randomized Pivot:** Instead of always picking the first or last element, a random pivot is chosen to reduce the chance of hitting the worst-case $O(n^2)$ time complexity.</li>
+                <li>**Median-of-Three:** A better pivot can be chosen by taking the median of the first, middle, and last elements of the array.</li>
+                <li>**Tail Call Elimination:** The recursive calls can be optimized to use a loop, which saves space on the recursion stack and helps prevent stack overflow errors on very large inputs.</li>
+                <li>**Hybrid Approach:** Modern implementations often switch to a different sorting algorithm, like Insertion Sort, for very small sub-arrays (e.g., arrays with fewer than 10 elements), as Insertion Sort is more efficient for small sizes.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-Time Applications</h2>
+            <ul>
+                <li>**Databases:** Quick Sort is a key algorithm in database systems for efficiently sorting data retrieved from queries.</li>
+                <li>**E-commerce:** Used for sorting products based on criteria like price, ratings, or popularity.</li>
+                <li>**Gaming Leaderboards:** Used to rank players and display leaderboards in real-time.</li>
+                <li>**Operating Systems:** Can be found in process scheduling and task prioritization mechanisms.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">More Examples</h2>
+            <ul>
+                <li>Sorting words in a dictionary application.</li>
+                <li>Arranging passengers by seat numbers on an airline manifest.</li>
+                <li>Ranking search results in a search engine like Google.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Pros & Cons</h2>
+            <ul>
+                <li>✅ **Pros:** Very fast in practice, and is an in-place sorting algorithm which means it uses minimal extra memory.</li>
+                <li>❌ **Cons:** Can degrade to $O(n^2)$ in the worst case, and its recursive nature can cause stack overflow issues for very large inputs if not optimized.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Recommendations for Further Learning</h2>
+            <h3>Articles & Blogs:</h3>
+            <ul>
+                <li>GeeksforGeeks – Quick Sort Explained</li>
+                <li>Medium – “Divide and Conquer Algorithms”</li>
+                <li>Visualgo – Algorithm visualizer for Quick Sort</li>
+            </ul>
+            <h3>Courses:</h3>
+            <ul>
+                <li>Coursera: Algorithms, Part I (Princeton)</li>
+                <li>Udemy: Mastering Data Structures & Algorithms in C and C++</li>
+                <li>MIT OpenCourseWare: Introduction to Algorithms</li>
+            </ul>
+            <h3>Exercises:</h3>
+            <ul>
+                <li>Implement Quick Sort with a random pivot.</li>
+                <li>Compare Quick Sort with Merge Sort for large inputs.</li>
+                <li>Write an iterative (non-recursive) Quick Sort using a stack.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Final Takeaway</h2>
+            <p>Quick Sort is like organizing your desk quickly by picking one item and then pushing others into the right group. It’s fast, practical, and widely used—a must-learn algorithm for every programmer. </p>
+        </div>
+    </div>
+</body>
+</html>
