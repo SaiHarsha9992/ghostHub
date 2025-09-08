@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Pointers Advanced</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Two Pointers Technique</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2: Two Pointers – Advanced Concepts</h2>
+            <p>Now that you know the basics of Two Pointers, let’s go a step further. The two-pointers technique is not just “left and right”; it has different variations depending on the problem.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. Types of Two Pointer Techniques</h2>
+            
+            <h3>1.1 Opposite Direction (Left and Right Pointers)</h3>
+            <p>Used for sorted arrays and palindrome problems. One pointer starts from the beginning, and the other from the end, moving towards each other. </p>
+            <p><strong>Example: Two Sum in a Sorted Array</strong></p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'twosum-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'twosum-c')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'twosum-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'twosum-java')">Java</button>
+            </div>
+            <div id="twosum-cpp" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <vector>
+#include <utility>
+using namespace std;
+
+pair<int, int> twoSum(vector<int>& arr, int target) {
+    int left = 0, right = arr.size() - 1;
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        if (sum == target) return {arr[left], arr[right]};
+        else if (sum < target) left++;
+        else right--;
+    }
+    return {-1, -1};
+}</code></pre>
+                </div>
+            </div>
+            <div id="twosum-c" class="tab-content">
+                <h3>C Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+
+void twoSum(int arr[], int n, int target) {
+    int left = 0, right = n - 1;
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        if (sum == target) {
+            printf("Pair found: %d, %d\n", arr[left], arr[right]);
+            return;
+        } else if (sum < target) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    printf("Pair not found\n");
+}</code></pre>
+                </div>
+            </div>
+            <div id="twosum-python" class="tab-content">
+                <h3>Python Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>def two_sum(arr, target):
+    left, right = 0, len(arr) - 1
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum == target:
+            return arr[left], arr[right]
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return None, None</code></pre>
+                </div>
+            </div>
+            <div id="twosum-java" class="tab-content">
+                <h3>Java Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.util.Arrays;
+
+public class TwoSum {
+    public static int[] twoSum(int[] arr, int target) {
+        int left = 0, right = arr.length - 1;
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+            if (sum == target) {
+                return new int[]{arr[left], arr[right]};
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return new int[]{-1, -1};
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <h3>1.2 Same Direction (Sliding Window Style)</h3>
+            <p>Both pointers move forward. This is used when you need to find a subarray or substring that satisfies a certain condition.  </p>
+            <p><strong>Example: Find the longest substring without repeating characters</strong></p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'longest-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'longest-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'longest-c')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'longest-java')">Java</button>
+            </div>
+            <div id="longest-python" class="tab-content">
+                <h3>Python Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>def longest_substring(s):
+    seen = set()
+    left = 0
+    max_len = 0
+    for right in range(len(s)):
+        while s[right] in seen:
+            seen.remove(s[left])
+            left += 1
+        seen.add(s[right])
+        max_len = max(max_len, right - left + 1)
+    return max_len
+
+print(longest_substring("abcabcbb")) # Output: 3 ("abc")</code></pre>
+                </div>
+            </div>
+            <div id="longest-cpp" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <string>
+#include <unordered_set>
+#include <algorithm>
+using namespace std;
+
+int longestSubstring(string s) {
+    unordered_set<char> seen;
+    int left = 0, max_len = 0;
+    for (int right = 0; right < s.length(); ++right) {
+        while (seen.count(s[right])) {
+            seen.erase(s[left]);
+            left++;
+        }
+        seen.insert(s[right]);
+        max_len = max(max_len, right - left + 1);
+    }
+    return max_len;
+}</code></pre>
+                </div>
+            </div>
+            <div id="longest-c" class="tab-content">
+                <h3>C Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int longestSubstring(char* s) {
+    int n = strlen(s);
+    int max_len = 0;
+    int left = 0;
+    bool seen[128] = {false}; // For ASCII characters
+
+    for (int right = 0; right < n; right++) {
+        while (seen[s[right]]) {
+            seen[s[left]] = false;
+            left++;
+        }
+        seen[s[right]] = true;
+        int current_len = right - left + 1;
+        if (current_len > max_len) {
+            max_len = current_len;
+        }
+    }
+    return max_len;
+}</code></pre>
+                </div>
+            </div>
+            <div id="longest-java" class="tab-content">
+                <h3>Java Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.util.HashSet;
+import java.util.Set;
+import java.lang.Math;
+
+public class LongestSubstring {
+    public static int longestSubstring(String s) {
+        Set<Character> seen = new HashSet<>();
+        int left = 0, maxLen = 0;
+        for (int right = 0; right < s.length(); right++) {
+            while (seen.contains(s.charAt(right))) {
+                seen.remove(s.charAt(left));
+                left++;
+            }
+            seen.add(s.charAt(right));
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <h3>1.3 Fast and Slow Pointers (Floyd’s Cycle Detection)</h3>
+            <p>One pointer moves one step at a time, while the other moves two steps. This is commonly used for detecting cycles in linked lists.  </p>
+            <p><strong>Example: Detect a Cycle in a Linked List</strong></p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'cycle-java')">Java</button>
+                <button class="tab-button" onclick="openCode(event, 'cycle-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'cycle-c')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cycle-python')">Python</button>
+            </div>
+            <div id="cycle-java" class="tab-content">
+                <h3>Java Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>class LinkedListCycle {
+    static class Node {
+        int val;
+        Node next;
+        Node(int x) { val = x; }
+    }
+
+    static boolean hasCycle(Node head) {
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+}</code></pre>
+                </div>
+            </div>
+            <div id="cycle-cpp" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+bool hasCycle(ListNode *head) {
+    ListNode *slow = head, *fast = head;
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {
+            return true;
+        }
+    }
+    return false;
+}</code></pre>
+                </div>
+            </div>
+            <div id="cycle-c" class="tab-content">
+                <h3>C Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+#include <stdbool.h>
+
+struct ListNode {
+    int val;
+    struct ListNode *next;
+};
+
+bool hasCycle(struct ListNode *head) {
+    struct ListNode *slow = head, *fast = head;
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {
+            return true;
+        }
+    }
+    return false;
+}</code></pre>
+                </div>
+            </div>
+            <div id="cycle-python" class="tab-content">
+                <h3>Python Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+def has_cycle(head):
+    slow = head
+    fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Advanced Problems Solvable with Two Pointers</h2>
+            <ul>
+                <li>Container With Most Water (LeetCode 11)</li>
+                <li>Trapping Rain Water (LeetCode 42)</li>
+                <li>Minimum Window Substring</li>
+                <li>Move Zeroes in Array</li>
+                <li>Merge Sorted Arrays</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Advantages of Mastering Two Pointers</h2>
+            <ul>
+                <li>✅ Turns brute-force $O(n^2)$ into $O(n)$ solutions.</li>
+                <li>✅ It's a core skill for interviews and competitive programming.</li>
+                <li>✅ Helps in sliding window, linked list, and string problems.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Recommended Resources</h2>
+            <ul>
+                <li>GeeksforGeeks – Two Pointers</li>
+                <li>LeetCode Patterns</li>
+                <li>Udemy Course: “Mastering Data Structures & Algorithms” by Abdul Bari.</li>
+                <li>Book: Competitive Programming 3 by Steven Halim.</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">5. Conclusion</h2>
+            <p>Two Pointers is not just a simple trick — it’s a multi-variant technique. From palindrome checks to complex sliding window problems, it helps us write efficient solutions.</p>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
