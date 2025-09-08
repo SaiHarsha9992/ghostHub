@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Advanced</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Merge Sort</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2: Advanced – Deep Dive into Merge Sort</h2>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Why Merge Sort is Powerful?</h2>
+            <p>Merge Sort is a highly valuable algorithm for several reasons beyond its excellent time complexity. </p>
+            <ul>
+                <li>Works efficiently on **large datasets** where other algorithms might struggle with performance.</li>
+                <li>Performs well for **linked lists** (since merging can be done in $O(1)$ space).</li>
+                <li>Suitable for **external sorting**, which involves sorting data that doesn’t fit into the main memory, like huge files.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Variations of Merge Sort</h2>
+            <p>The core concept of Merge Sort has been adapted to different use cases:</p>
+            <ul>
+                <li><strong>Bottom-Up Merge Sort:</strong> This is an iterative version of the algorithm that avoids recursion, making it useful in scenarios where the recursion depth could be an issue.</li>
+                <li><strong>In-Place Merge Sort:</strong> A variant that aims to reduce the extra memory usage, although it is often more complex to implement and can be slower.</li>
+                <li><strong>Parallel Merge Sort:</strong> This version is designed to leverage multi-core processors, making it highly effective for large datasets on modern systems.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-Life Advanced Example</h2>
+            <ul>
+                <li>**Banking System:** Used to sort millions of daily transactions by date, account number, or amount.</li>
+                <li>**Search Engines:** Essential for sorting and merging index files for faster and more accurate query results.</li>
+                <li>**E-commerce:** Sorting products by various criteria like price, popularity, and relevance on a large scale.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">When to Use Merge Sort?</h2>
+            <ul>
+                <li>When **stability** matters (preserving the relative order of equal elements).</li>
+                <li>For **linked lists**, where it outperforms Quick Sort.</li>
+                <li>When working with **huge files** in external memory, as it's a good fit for external sorting.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Learning Path & Recommendations</h2>
+            <h3>For Advanced Learners</h3>
+            <ul>
+                <li>**Articles:** MIT OpenCourseWare – Advanced Sorting, Stanford CS Algorithms Notes</li>
+                <li>**Exercises:** Implement Merge Sort on linked lists and implement parallel merge sort.</li>
+                <li>**Courses:** [Coursera: Divide and Conquer, Sorting and Searching, and Randomized Algorithms], [Udemy: Mastering Sorting Algorithms]</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Conclusion</h2>
+            <p>Merge Sort is a divide-and-conquer hero—always $O(n \log n)$, stable, and widely used in large-scale applications. While beginners should start with arrays, advanced learners can explore linked lists, bottom-up approaches, and parallel processing.</p>
+            <p>Sorting is not just theory—it powers everything from e-commerce websites to Google search rankings. </p>
+        </div>
+    </div>
+</body>
+</html>
