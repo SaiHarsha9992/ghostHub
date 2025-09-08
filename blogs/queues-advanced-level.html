@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queues – Advanced Level</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Queues – Advanced Level</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Recap – Why Advanced Queues?</h2>
+            <p>You've learned about basic queues (FIFO) and intermediate variants like circular queues and deques. At the advanced level, queues are not just standalone data structures but are combined with other data structures like heaps and trees to solve complex problems in scheduling, optimization, and graph traversal. </p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Priority Queue</h2>
+            <h3>What is it?</h3>
+            <p>A **priority queue** is a special type of queue where elements are served based on priority, not just the order in which they were added. The highest (or lowest) priority element is always at the front. Priority queues are typically implemented using **Heaps** (Binary Heaps).</p>
+            <p><strong>💡 Real-life analogy:</strong> An emergency room in a hospital—critical patients are treated before less critical ones, regardless of when they arrived.</p>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'pq-cpp')">C++ (STL)</button>
+                <button class="tab-button" onclick="openCode(event, 'pq-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'pq-java')">Java</button>
+            </div>
+            
+            <div id="pq-cpp" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    priority_queue<int> pq; // Max-Heap by default
+    pq.push(30);
+    pq.push(10);
+    pq.push(50);
+
+    cout << "Priority Queue (Max-Heap): ";
+    while (!pq.empty()) {
+        cout << pq.top() << " ";
+        pq.pop();
+    }
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="pq-python" class="tab-content">
+                <h3>Python Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>import heapq
+
+pq = []
+heapq.heappush(pq, 30)
+heapq.heappush(pq, 10)
+heapq.heappush(pq, 50)
+
+print("Priority Queue (Min-Heap):")
+while pq:
+    print(heapq.heappop(pq), end=" ")</code></pre>
+                </div>
+            </div>
+
+            <div id="pq-java" class="tab-content">
+                <h3>Java Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.util.PriorityQueue;
+
+public class Main {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(); // Min-Heap
+        pq.add(30);
+        pq.add(10);
+        pq.add(50);
+
+        System.out.print("Priority Queue (Min-Heap): ");
+        while (!pq.isEmpty()) {
+            System.out.print(pq.poll() + " ");
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Double-Ended Priority Queue (DEPQ)</h2>
+            <p>A DEPQ is a hybrid of a priority queue and a deque. It supports efficient retrieval and removal of both the minimum and maximum elements. A classic implementation uses two heaps: a min-heap and a max-heap. </p>
+            <p><strong>💡 Real-life analogy:</strong> A stock market system that needs to track both the highest and lowest prices of a stock in real-time efficiently.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Advanced Applications of Queues</h2>
+            <ul>
+                <li><strong>BFS in Graphs:</strong> A standard queue is used to traverse a graph level by level to find the shortest path in an unweighted graph.</li>
+                <li><strong>Sliding Window Maximum:</strong> A deque is used to efficiently find the maximum element in a moving window of a fixed size in $O(n)$ time.</li>
+                <li><strong>Job Scheduling:</strong> A priority queue ensures that high-priority jobs or tasks are executed before others.</li>
+                <li>**Dijkstra’s Algorithm:** A priority queue is a core component of this algorithm, used to efficiently get the next unvisited node with the shortest distance.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Problem-Solving Strategies</h2>
+            <ul>
+                <li>**Order vs. Priority:** If the order of arrival matters, use a regular queue. If priority matters, use a priority queue.</li>
+                <li>**Two Ends:** If a problem requires additions/removals from both ends, a deque is the right choice.</li>
+                <li>**Time Complexity:** Remember that queue and deque operations are typically $O(1)$, while priority queue operations are $O(\log n)$.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Famous Interview Problems (Advanced)</h2>
+            <ul>
+                <li>Implement an LRU Cache using a queue and a hashmap.</li>
+                <li>Perform a BFS in an unweighted graph.</li>
+                <li>Solve Dijkstra’s shortest path algorithm.</li>
+                <li>Find the sliding window maximum.</li>
+                <li>Solve the Rotten Oranges Problem (a multi-source BFS).</li>
+                <li>Find the Top K Frequent Elements (using a priority queue).</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">7. Recommended Learning Resources</h2>
+            <ul>
+                <li>**Book:** 📖 *Introduction to Algorithms* by Cormen et al. (CLRS) – Chapter on Heaps & Queues.</li>
+                <li>**Online Guide:** 🌐 GeeksforGeeks – Advanced Queue Problems.</li>
+                <li>**Video Tutorials:** 🎥 MIT OpenCourseWare – Graph Algorithms (BFS, Dijkstra).</li>
+                <li>**Practice Platforms:** 🚀 LeetCode Problems: [239. Sliding Window Maximum], [347. Top K Frequent Elements]</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
