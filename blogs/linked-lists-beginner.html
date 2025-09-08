@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked Lists for Beginners</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Linked Lists</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 1: Linked Lists for Beginners</h2>
+            <h3>1. Introduction: What is a Linked List?</h3>
+            <p>A Linked List is a fundamental data structure where each element (called a **node**) holds two things: the data and a reference (or pointer) to the next node. </p>
+            <p>Unlike arrays, which are continuous blocks of memory, linked lists are dynamic. This means you can easily add or remove elements without worrying about shifting memory, making them very flexible in size.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Real-Life Analogy</h2>
+            <p>Imagine a train 🚆:</p>
+            <ul>
+                <li>Each coach is a **node**.</li>
+                <li>A coach carries passengers (the **data**).</li>
+                <li>It has a connector (the **pointer**) that links to the next coach.</li>
+            </ul>
+            <p>If you want to add a coach, you just connect it to the chain. To remove one, you simply disconnect it. That’s a Linked List in real life.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Why Use Linked Lists?</h2>
+            <ul>
+                <li>**Dynamic Size:** They can grow or shrink at runtime without needing a fixed size.</li>
+                <li>**Efficient Insertions/Deletions:** Adding or removing elements is fast, as it only requires changing a few pointers and no shifting of elements like in an array.</li>
+                <li>**Flexibility:** Nodes can be stored anywhere in memory, as long as the links are correctly maintained.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Structure of a Node</h2>
+            <p>Here’s how a basic node structure is defined in different languages:</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'node-c')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'node-cpp')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'node-python')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'node-java')">Java</button>
+            </div>
+            
+            <div id="node-c" class="tab-content">
+                <h3>C Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>struct Node {
+    int data;
+    struct Node* next;
+};</code></pre>
+                </div>
+            </div>
+
+            <div id="node-cpp" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>class Node {
+public:
+    int data;
+    Node* next;
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
+};</code></pre>
+                </div>
+            </div>
+
+            <div id="node-python" class="tab-content">
+                <h3>Python Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None</code></pre>
+                </div>
+            </div>
+
+            <div id="node-java" class="tab-content">
+                <h3>Java Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>class Node {
+    int data;
+    Node next;
+    Node(int val) {
+        data = val;
+        next = null;
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Creating a Simple Linked List</h2>
+            <p>This example demonstrates how to create a basic singly linked list with three nodes in C.</p>
+            <div class="syntax-box">
+                <pre><code>#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+
+    head->data = 10;
+    head->next = second;
+
+    second->data = 20;
+    second->next = third;
+
+    third->data = 30;
+    third->next = NULL;
+
+    struct Node* temp = head;
+    while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    return 0;
+}
+</code></pre>
+            </div>
+            <p><strong>Output:</strong> <code>10 -> 20 -> 30 -> </code></p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Types of Linked Lists (Basic)</h2>
+            <ul>
+                <li>**Singly Linked List:** Nodes are connected in a single direction.</li>
+                <li>**Doubly Linked List:** Nodes have pointers to both the next and previous nodes. </li>
+                <li>**Circular Linked List:** The last node's pointer connects back to the first node, forming a loop.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">7. Real-Time Applications</h2>
+            <ul>
+                <li>**Music Playlist:** You can easily move to the next or previous song.</li>
+                <li>**Undo/Redo:** Each action can be a node in a list.</li>
+                <li>**Browser History:** Navigating back and forth between pages.</li>
+                <li>**Dynamic Memory Allocation:** Used in operating systems to manage memory.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">8. Recommendations for Beginners</h2>
+            <ul>
+                <li>**Article:** 📖 GeeksforGeeks “Linked List Basics”</li>
+                <li>**Video:** 🎥 FreeCodeCamp YouTube video on Linked Lists</li>
+                <li>**Practice:** 💻 LeetCode – solve beginner-level Linked List problems.</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
