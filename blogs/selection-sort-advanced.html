@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort Advanced</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Selection Sort</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2: Selection Sort Advanced Concepts</h2>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Variants & Improvements</h2>
+            <ul>
+                <li>**Bidirectional Selection Sort:** This is a variant that finds both the minimum and maximum elements in a single pass, then places them at the beginning and end of the unsorted portion of the array.</li>
+                <li>**Stable Selection Sort:** The standard algorithm is not stable. A modified version maintains stability by shifting elements instead of a direct swap, preserving the relative order of equal elements.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Comparison with Bubble & Insertion Sort</h2>
+            <ul>
+                <li>**Bubble Sort:** Performs many swaps and relatively fewer comparisons. It's efficient for nearly sorted arrays with an early exit optimization.</li>
+                <li>**Insertion Sort:** Also performs many swaps but is highly efficient for nearly sorted arrays and small datasets.</li>
+                <li>**Selection Sort:** Performs the fewest number of swaps but a high number of comparisons. This makes it a good choice when the cost of a swap is much higher than a comparison. </li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Use Cases in Real World</h2>
+            <ul>
+                <li>**Small data:** Used in situations where simplicity is more important than efficiency, or when the number of elements is small.</li>
+                <li>**Costly swaps:** Ideal when the elements being sorted are large or complex objects, making the number of swaps a critical performance factor.</li>
+                <li>**Embedded systems:** The in-place nature and minimal memory overhead of selection sort make it suitable for environments with limited resources.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Advanced Exercises</h2>
+            <ul>
+                <li>Implement Selection Sort in reverse (descending order).</li>
+                <li>Modify Selection Sort to sort an array of strings alphabetically.</li>
+                <li>Implement Bidirectional Selection Sort and compare its time complexity with the normal version.</li>
+                <li>Prove mathematically why Selection Sort always takes $O(n^2)$ comparisons.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Advanced Resources</h2>
+            <ul>
+                <li>**MIT OpenCourseWare:** Algorithms Course (6.006)</li>
+                <li>**Book:** “Algorithms” by Robert Sedgewick</li>
+                <li>**Online Judges:** LeetCode & Codeforces sorting challenges</li>
+                <li>**Course:** Coursera: Algorithms, Part I by Princeton</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Final Thoughts</h2>
+            <p>Selection Sort is not the fastest algorithm, but it’s a fantastic first step into sorting because it builds intuition about comparisons and swaps. </p>
+            <p>Mastering Selection Sort gives you a strong foundation to understand more efficient algorithms like Merge Sort, Quick Sort, and Heap Sort.</p>
+        </div>
+    </div>
+</body>
+</html>
