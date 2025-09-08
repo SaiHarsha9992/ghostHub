@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search – Intermediate Level</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🟢';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .sub-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .sub-list li {
+            list-style-type: none;
+        }
+
+        .real-life-example ul {
+            list-style-type: '📅';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: '📝';
+            margin-right: 10px;
+        }
+        
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+        
+        a {
+            color: #00A6FF;
+            text-decoration: none;
+        }
+
+        .emoji-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .emoji-list li {
+            list-style-type: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Binary Search – Intermediate Level</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Recap: Why Binary Search?</h2>
+            <div class="intro-text">
+                <p>At a beginner level, we learned that Binary Search works on **sorted arrays** and has an efficient time complexity of **O(log n)**. At the intermediate level, we use it not only to find an element but also to solve **range queries**, **optimization problems**, and **edge-case searching**.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Real-Life Analogy 🚀</h2>
+            <p>Think of booking flight tickets. You want the **lowest price** within a date range. Instead of checking day by day, you divide the range and search efficiently. This is similar to advanced Binary Search problems where we search for a **boundary** or a **condition**, not just an exact value.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Common Intermediate Problem Patterns</h2>
+            
+            <h3>🟢 Pattern 1: First and Last Occurrence of an Element</h3>
+            <p>Instead of just checking if an element exists, sometimes we want its first or last position. For example, in <code>[1,2,2,2,3,4]</code> with a key of <code>2</code>, the first occurrence is at index 1, and the last is at index 3.</p>
+            <h4>Python Example</h4>
+            <pre><code>def first_occurrence(arr, key):
+    low, high, ans = 0, len(arr)-1, -1
+    while low <= high:
+        mid = (low + high)//2
+        if arr[mid] == key:
+            ans = mid
+            high = mid - 1   # keep searching left
+        elif arr[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return ans
+
+def last_occurrence(arr, key):
+    low, high, ans = 0, len(arr)-1, -1
+    while low <= high:
+        mid = (low + high)//2
+        if arr[mid] == key:
+            ans = mid
+            low = mid + 1   # keep searching right
+        elif arr[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return ans
+
+arr = [1,2,2,2,3,4]
+print("First:", first_occurrence(arr, 2))  # 1
+print("Last:", last_occurrence(arr, 2))    # 3
+</code></pre>
+
+            <h3>🟢 Pattern 2: Searching in Rotated Sorted Array</h3>
+            <p>An array is sorted but rotated, like <code>[4,5,6,7,0,1,2]</code>. Finding a key like <code>0</code> requires a modified binary search. The core idea is that one half of the array will always be sorted, and you can use that property to decide which half to search in.</p>
+            <h4>Java Example</h4>
+            <pre><code>class SearchRotated {
+    public static int search(int[] nums, int key) {
+        int low = 0, high = nums.length-1;
+        while (low <= high) {
+            int mid = (low + high)/2;
+            if (nums[mid] == key) return mid;
+            if (nums[low] <= nums[mid]) { // left half sorted
+                if (key >= nums[low] && key < nums[mid]) high = mid-1;
+                else low = mid+1;
+            } else { // right half sorted
+                if (key > nums[mid] && key <= nums[high]) low = mid+1;
+                else high = mid-1;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        int[] arr = {4,5,6,7,0,1,2};
+        System.out.println(search(arr, 0)); // 4
+    }
+}
+</code></pre>
+
+            <h3>🟢 Pattern 3: Peak Element Problem</h3>
+            <p>Find an index <code>i</code> where <code>arr[i] >= arr[i-1]</code> and <code>arr[i] >= arr[i+1]</code>. For example, in <code>[1,3,4,3,2]</code>, the peak is at index 2 (value 4). This is solved by using binary search on a **condition** rather than a value. You reduce the search space by moving "uphill."</p>
+            <h4>C Example</h4>
+            <pre><code>#include <stdio.h>
+int findPeak(int arr[], int n) {
+    int low = 0, high = n-1;
+    while (low < high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] < arr[mid+1]) low = mid + 1;
+        else high = mid;
+    }
+    return low;
+}
+int main() {
+    int arr[] = {1, 3, 4, 3, 2};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int peak = findPeak(arr, n);
+    printf("Peak at index %d with value %d", peak, arr[peak]);
+}
+</code></pre>
+
+            <h3>🟢 Pattern 4: Square Root using Binary Search</h3>
+            <p>You can find the integer square root of a number <code>n</code> without using built-in functions. The search space is the range from 0 to `n`. You check if `mid * mid` is the answer, too small, or too large, and adjust the search range accordingly.</p>
+            <h4>C++ Example</h4>
+            <pre><code>#include <iostream>
+using namespace std;
+int sqrtBinary(int n) {
+    int low = 0, high = n, ans = -1;
+    while (low <= high) {
+        long mid = (low + high)/2;
+        if (mid*mid == n) return mid;
+        if (mid*mid < n) {
+            ans = mid;
+            low = mid+1;
+        } else high = mid-1;
+    }
+    return ans;
+}
+int main() {
+    cout << "Square root of 37: " << sqrtBinary(37);
+}
+</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Key Strategies for Intermediate Problem Solving</h2>
+            <ul>
+                <li>💡 **Think in terms of "conditions":** Binary Search can find boundaries, not just exact matches. An example is "Find the smallest number greater than or equal to X."</li>
+                <li>💡 **Work with monotonic functions:** If the solution space has a **monotonic property** (e.g., a "yes" condition followed by "no"s), you can apply binary search. An example is finding the minimum capacity needed to ship packages within a certain number of days.</li>
+                <li>💡 **Avoid overflow:** Use `mid = low + (high-low)//2` instead of `(low+high)//2` to prevent integer overflow with large values of `low` and `high`.</li>
+                <li>💡 **Dry-run with examples:** Always trace the algorithm with a small array to understand the flow and edge cases before coding.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Real-Time Applications of Intermediate Binary Search</h2>
+            <ul class="real-life-example">
+                <li>📅 **Scheduling:** Finding the earliest available slot.</li>
+                <li>🏦 **Banking:** Calculating EMI by using binary search on the interest rate.</li>
+                <li>🎮 **Gaming:** Finding the highest achievable level with given resources.</li>
+                <li>💻 **System Design:** Optimizing load balancing by finding minimum server capacity.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Recommended Learning Resources</h2>
+            <div class="resources">
+                <ul>
+                    <li>📖 **Algorithms** by Robert Sedgewick (Binary Search chapter).</li>
+                    <li>🌐 <a href="#">GeeksforGeeks</a> – Search for "Binary Search on Answer" problems.</li>
+                    <li>🎥 YouTube: **Tushar Roy** Binary Search playlist.</li>
+                </ul>
+            </div>
+            
+            <h2 class="section-heading">7. Exercises (Intermediate Level)</h2>
+            <ul class="sub-list">
+                <li>Find the first and last occurrence of a number.</li>
+                <li>Search for a number in a rotated sorted array.</li>
+                <li>Find the peak element in an array.</li>
+                <li>Implement integer square root using binary search.</li>
+                <li>Given a sorted array with duplicates, count the total number of occurrences of a key.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
