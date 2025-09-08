@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Merge Sort</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 1: Beginners – Understanding Merge Sort</h2>
+            <p>Sorting is one of the most fundamental problems in computer science. Among many algorithms, Merge Sort stands tall because of its efficiency and elegant **Divide and Conquer** approach.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Real-Life Analogy of Merge Sort</h2>
+            <p>Imagine you’re organizing a pile of exam papers:
+            <ol>
+                <li>Instead of trying to sort all papers at once, you split the pile into two smaller stacks.</li>
+                <li>You keep splitting until each stack has only one paper (a single paper is already sorted).</li>
+                <li>Then, you **merge** two stacks by comparing the top papers, arranging them in order.</li>
+                <li>You repeat this merging process until all stacks become one sorted pile.</li>
+            </ol>
+            This is exactly what Merge Sort does: **Divide** → Sort smaller parts → **Merge** back. 
+            </p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">How Merge Sort Works (Step-by-Step)</h2>
+            <ol>
+                <li>Divide the array into two halves.</li>
+                <li>Recursively sort both halves.</li>
+                <li>Merge the two sorted halves into one sorted array.</li>
+            </ol>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Time and Space Complexity</h2>
+            <ul>
+                <li><strong>Best Case:</strong> $O(n \log n)$</li>
+                <li><strong>Average Case:</strong> $O(n \log n)$</li>
+                <li><strong>Worst Case:</strong> $O(n \log n)$</li>
+                <li><strong>Space Complexity:</strong> $O(n)$ (extra space for temporary arrays)</li>
+            </ul>
+            <p>Merge Sort is **stable** and has a guaranteed $O(n \log n)$ time complexity.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Code Examples</h2>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+            </div>
+            
+            <div id="c-code" class="tab-content">
+                <h3>C Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+
+void merge(int arr[], int l, int m, int r) {
+    int n1 = m - l + 1, n2 = r - m;
+    int L[n1], R[n2];
+
+    for(int i=0;i<n1;i++) L[i] = arr[l+i];
+    for(int j=0;j<n2;j++) R[j] = arr[m+1+j];
+
+    int i=0, j=0, k=l;
+    while(i<n1 && j<n2) {
+        if(L[i] <= R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
+    }
+    while(i<n1) arr[k++] = L[i++];
+    while(j<n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if(l<r) {
+        int m = (l+r)/2;
+        mergeSort(arr,l,m);
+        mergeSort(arr,m+1,r);
+        merge(arr,l,m,r);
+    }
+}
+
+int main() {
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    mergeSort(arr,0,n-1);
+    printf("Sorted array: ");
+    for(int i=0;i<n;i++) printf("%d ", arr[i]);
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-code" class="tab-content">
+                <h3>C++ Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+using namespace std;
+
+void merge(int arr[], int l, int m, int r) {
+    int n1 = m-l+1, n2 = r-m;
+    int L[n1], R[n2];
+
+    for(int i=0;i<n1;i++) L[i] = arr[l+i];
+    for(int j=0;j<n2;j++) R[j] = arr[m+1+j];
+
+    int i=0,j=0,k=l;
+    while(i<n1 && j<n2) {
+        if(L[i]<=R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
+    }
+    while(i<n1) arr[k++] = L[i++];
+    while(j<n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if(l<r) {
+        int m = l+(r-l)/2;
+        mergeSort(arr,l,m);
+        mergeSort(arr,m+1,r);
+        merge(arr,l,m,r);
+    }
+}
+
+int main() {
+    int arr[] = {38,27,43,3,9,82,10};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    mergeSort(arr,0,n-1);
+    cout<<"Sorted array: ";
+    for(int i=0;i<n;i++) cout<<arr[i]<<" ";
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="python-code" class="tab-content">
+                <h3>Python Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr)//2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        merge_sort(L)
+        merge_sort(R)
+
+        i=j=k=0
+        while i<len(L) and j<len(R):
+            if L[i] < R[j]:
+                arr[k]=L[i]; i+=1
+            else:
+                arr[k]=R[j]; j+=1
+            k+=1
+
+        while i<len(L):
+            arr[k]=L[i]; i+=1; k+=1
+        while j<len(R):
+            arr[k]=R[j]; j+=1; k+=1
+
+arr = [12, 11, 13, 5, 6, 7]
+merge_sort(arr)
+print("Sorted array:", arr)</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Java Implementation</h3>
+                <div class="syntax-box">
+                    <pre><code>class MergeSort {
+    void merge(int arr[], int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+
+        for(int i=0;i<n1;++i) L[i] = arr[l+i];
+        for(int j=0;j<n2;++j) R[j] = arr[m+1+j];
+
+        int i=0,j=0,k=l;
+        while(i<n1 && j<n2) {
+            if(L[i]<=R[j]) arr[k++] = L[i++];
+            else arr[k++] = R[j++];
+        }
+        while(i<n1) arr[k++] = L[i++];
+        while(j<n2) arr[k++] = R[j++];
+    }
+
+    void mergeSort(int arr[], int l, int r) {
+        if(l<r) {
+            int m = l+(r-l)/2;
+            mergeSort(arr,l,m);
+            mergeSort(arr,m+1,r);
+            merge(arr,l,m,r);
+        }
+    }
+
+    public static void main(String args[]) {
+        int arr[] = {12,11,13,5,6,7};
+        MergeSort ob = new MergeSort();
+        ob.mergeSort(arr,0,arr.length-1);
+        System.out.print("Sorted array: ");
+        for(int i=0;i<arr.length;i++) System.out.print(arr[i]+" ");
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Learning Path & Recommendations</h2>
+            <h3>For Beginners</h3>
+            <ul>
+                <li><strong>Articles:</strong> GeeksforGeeks – Merge Sort Basics, Programiz – Merge Sort Explained</li>
+                <li><strong>Exercises:</strong> Sort student grades, roll numbers, or names.</li>
+                <li><strong>Courses:</strong> [Coursera: Algorithms Part I by Princeton University], [Khan Academy: Sorting Algorithms Basics]</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
