@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Advanced</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Bubble Sort</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">Part 2: Bubble Sort for Advanced Learners</h2>
+            <h3>Optimized Bubble Sort</h3>
+            <div class="intro-text">
+                <p>We can optimize Bubble Sort by checking if any swaps occurred during a pass. If no elements were swapped, it means the array is already sorted, and we can stop the algorithm early. This significantly improves the best-case time complexity.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Code Implementations</h2>
+            <p>Here are implementations of the optimized Bubble Sort algorithm in different programming languages:</p>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+            </div>
+            
+            <div id="python-code" class="tab-content">
+                <h3>Python Code</h3>
+                <div class="syntax-box">
+                    <pre><code>def bubble_sort_optimized(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if not swapped:
+            break
+
+# Example usage
+arr = [5, 3, 8, 4, 2]
+bubble_sort_optimized(arr)
+print(arr)</code></pre>
+                </div>
+            </div>
+            
+            <div id="cpp-code" class="tab-content">
+                <h3>C++ Code</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <utility>
+using namespace std;
+
+void bubbleSortOptimized(int arr[], int n) {
+    bool swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (swapped == false) {
+            break;
+        }
+    }
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    bubbleSortOptimized(arr, n);
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Java Code</h3>
+                <div class="syntax-box">
+                    <pre><code>public class OptimizedBubbleSort {
+    public static void bubbleSortOptimized(int arr[]) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            boolean swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+    }
+
+    public static void main(String args[]) {
+        int arr[] = {5, 3, 8, 4, 2};
+        bubbleSortOptimized(arr);
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="c-code" class="tab-content">
+                <h3>C Code</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+
+void bubbleSortOptimized(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int swapped = 0;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
+            }
+        }
+        if (swapped == 0) {
+            break;
+        }
+    }
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    bubbleSortOptimized(arr, n);
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">Complexity Analysis</h2>
+            <ul>
+                <li><strong>Best Case (Already Sorted):</strong> $O(n)$ with the optimization</li>
+                <li><strong>Worst Case (Reverse Sorted):</strong> $O(n^2)$</li>
+                <li><strong>Average Case:</strong> $O(n^2)$</li>
+                <li><strong>Space Complexity:</strong> $O(1)$ (in-place sorting)</li>
+                <li><strong>Stability:</strong> Stable (does not change the relative order of equal elements)</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">Variations</h2>
+            <ul>
+                <li><strong>Cocktail Shaker Sort (Bidirectional Bubble Sort):</strong> Swaps in both directions, from start to end and then from end to start.</li>
+                <li><strong>Odd-Even Sort (Parallel Bubble Sort):</strong> Designed to work on parallel computing systems.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">When to Use Bubble Sort?</h2>
+            <ul>
+                <li>For educational purposes to learn fundamental sorting concepts.</li>
+                <li>When the input size is very small (e.g., $n < 20$).</li>
+                <li>When the array is almost sorted, as the optimized version will be very fast.</li>
+            </ul>
+            <p>For large datasets, it is much more efficient to use advanced algorithms like Merge Sort, Quick Sort, or Heap Sort.</p>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">Recommendations & Exercises</h2>
+            <h3>Recommended Resources</h3>
+            <ul>
+                <li><strong>For Beginners:</strong> GeeksforGeeks, "Introduction to Algorithms" (CLRS), practice problems on LeetCode, HackerRank, CodeChef.</li>
+                <li><strong>For Advanced Learners:</strong> "Algorithms" by Robert Sedgewick, MIT OpenCourseWare: Introduction to Algorithms.</li>
+            </ul>
+            <h3>Exercises</h3>
+            <ul>
+                <li>Implement Bubble Sort in reverse order (descending).</li>
+                <li>Modify the algorithm to stop when the first $k$ elements are sorted.</li>
+                <li>Compare the performance of optimized Bubble Sort vs. Merge Sort on large arrays.</li>
+            </ul>
+            <p><strong>Final Thoughts:</strong> Bubble Sort is often called the “Hello World” of sorting algorithms: simple, intuitive, and perfect for beginners. While not efficient for large datasets, it builds the foundation to understand more advanced sorting algorithms.  </p>
+        </div>
+    </div>
+    
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
