@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacks – Intermediate Level</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Stacks – Intermediate Level</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Quick Recap</h2>
+            <p>A stack is a LIFO (Last In, First Out) structure with core operations like `push()`, `pop()`, and `peek()`. You've seen how to implement it using both static arrays and dynamic linked lists. Now, let's explore how stacks are used to solve classic problems efficiently. </p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Why Intermediate Stacks?</h2>
+            <p>Intermediate stack problems cover key topics in algorithm design, including:</p>
+            <ul>
+                <li>Expression evaluation (Infix to Postfix conversion, etc.)</li>
+                <li>Validating expressions (checking for balanced parentheses)</li>
+                <li>Finding next/previous greater/smaller elements in an array in $O(n)$ time.</li>
+                <li>Handling recursion behaviors.</li>
+                <li>Optimizing problems that might seem like $O(n^2)$ into $O(n)$ solutions.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Classic Intermediate Problems</h2>
+            
+            <h3>A. Balanced Parentheses</h3>
+            <p>Check if a string has balanced brackets: `()`, `{}`, `[]`.</p>
+            <p><strong>Algorithm Strategy:</strong></p>
+            <ol>
+                <li>Traverse the string.</li>
+                <li>Push opening brackets (`(`, `{`, `[`) onto the stack.</li>
+                <li>On a closing bracket, check the top of the stack. If it's a mismatch or the stack is empty, the string is invalid.</li>
+                <li>At the end of the string, the stack must be empty for the brackets to be balanced.</li>
+            </ol>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'balanced-python')">Python</button>
+            </div>
+            <div id="balanced-python" class="tab-content">
+                <h3>Python Example</h3>
+                <div class="syntax-box">
+                    <pre><code>def isBalanced(expr):
+    stack = []
+    mapping = {')':'(', '}':'{', ']':'['}
+    for ch in expr:
+        if ch in "({[":
+            stack.append(ch)
+        elif ch in ")}]":
+            if not stack or stack[-1] != mapping[ch]:
+                return False
+            stack.pop()
+    return not stack
+
+print(isBalanced("{[()]}")) # True
+print(isBalanced("{[(])}")) # False</code></pre>
+                </div>
+            </div>
+            
+            <h3>B. Reverse a String using Stack</h3>
+            <p>A classic use of the LIFO property is to reverse a string.</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'reverse-c')">C</button>
+            </div>
+            <div id="reverse-c" class="tab-content">
+                <h3>C Example</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+#include <string.h>
+#define MAX 100
+
+int main() {
+    char str[MAX] = "GhostCoder";
+    int len = strlen(str);
+    char stack[MAX];
+    int top = -1;
+
+    // Push characters onto the stack
+    for(int i=0; i<len; i++) stack[++top] = str[i];
+
+    // Pop characters to reverse the string
+    printf("Reversed string: ");
+    for(int i=0; i<len; i++) printf("%c", stack[top--]);
+    printf("\n");
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <h3>C. Next Greater Element (NGE)</h3>
+            <p><strong>Problem:</strong> For each element in an array, find the next element greater than it to its right. If none exists, return -1. </p>
+            <p><strong>Example:</strong> Input: `[4, 5, 2, 25]` → Output: `[5, 25, 25, -1]`</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'nge-cpp')">C++</button>
+            </div>
+            <div id="nge-cpp" class="tab-content">
+                <h3>C++ Example</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+#include <stack>
+#include <vector>
+using namespace std;
+
+vector<int> nextGreater(vector<int>& arr) {
+    int n = arr.size();
+    vector<int> ans(n, -1);
+    stack<int> st;
+    
+    for(int i = n - 1; i >= 0; i--) {
+        while(!st.empty() && st.top() <= arr[i]) st.pop();
+        if(!st.empty()) ans[i] = st.top();
+        st.push(arr[i]);
+    }
+    return ans;
+}
+
+int main() {
+    vector<int> arr = {4, 5, 2, 25};
+    vector<int> res = nextGreater(arr);
+    for(int x : res) cout << x << " ";
+    cout << endl;
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <h3>D. Infix → Postfix Conversion</h3>
+            <p>A crucial problem for understanding compiler design. </p>
+            <p><strong>Example:</strong> Infix: `(A+B) * C` → Postfix: `AB+C*`</p>
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'infix-java')">Java</button>
+            </div>
+            <div id="infix-java" class="tab-content">
+                <h3>Java Example</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.util.*;
+
+public class InfixToPostfix {
+    static int prec(char ch) {
+        if (ch == '+' || ch == '-') return 1;
+        if (ch == '*' || ch == '/') return 2;
+        if (ch == '^') return 3;
+        return -1;
+    }
+    
+    static String convert(String exp) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder result = new StringBuilder();
+        
+        for (char c : exp.toCharArray()) {
+            if (Character.isLetterOrDigit(c))
+                result.append(c);
+            else if (c == '(')
+                stack.push(c);
+            else if (c == ')') {
+                while (!stack.isEmpty() && stack.peek() != '(')
+                    result.append(stack.pop());
+                stack.pop();
+            } else {
+                while (!stack.isEmpty() && prec(c) <= prec(stack.peek()))
+                    result.append(stack.pop());
+                stack.push(c);
+            }
+        }
+        while (!stack.isEmpty())
+            result.append(stack.pop());
+        return result.toString();
+    }
+    
+    public static void main(String[] args) {
+        String exp = "(A+B)*C";
+        System.out.println("Postfix: " + convert(exp));
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Real-Life Analogies</h2>
+            <ul>
+                <li>**Compiler checking parentheses:** This is a direct application of the Balanced Brackets problem.</li>
+                <li>**Web browser tabs management:** Can be thought of as a Next Greater Element-type problem when finding the "next active tab" in a sorted list of open tabs.</li>
+                <li>**Mathematical expression solvers:** A key component of any scientific calculator or expression parser is converting infix expressions to postfix.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Problem-Solving Strategies with Stacks</h2>
+            <p>When approaching a new problem, ask yourself these questions to determine if a stack is the right tool:</p>
+            <ul>
+                <li>Do I need to remember a sequence of recent elements?</li>
+                <li>Do I need to undo or revert actions?</li>
+                <li>Am I trying to match pairs of items (e.g., brackets)?</li>
+            </ul>
+            <p>If the answer to any of these is yes, a stack can often lead to an efficient and clean solution.</p>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Recommended Learning Resources</h2>
+            <ul>
+                <li>**Book:** 📖 "Data Structures and Algorithms Made Easy" – Narasimha Karumanchi</li>
+                <li>**Online Guide:** 🌐 GeeksforGeeks – Stack Problems</li>
+                <li>**Video Tutorials:** 🎥 YouTube: Jenny’s Lectures on Stacks</li>
+                <li>**Practice Platforms:** 🚀 LeetCode problems – “Valid Parentheses”, “Next Greater Element I & II”</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
