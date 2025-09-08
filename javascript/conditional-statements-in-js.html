@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Statements</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Conditional Statements in JavaScript</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p>Conditional statements allow JavaScript to make decisions. They check conditions and run code based on true/false results. Just like in real life:</p>
+                <p><strong>Example:</strong> If it rains → take an umbrella, else → go without it.</p>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. if Statement</h2>
+            <p>Runs a block of code only if the condition is true.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code>let age = 20;
+if (age >= 18) {
+  console.log("You are an adult.");
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. if…else Statement</h2>
+            <p>Provides an alternative when the condition is false.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code>let marks = 40;
+if (marks >= 50) {
+  console.log("Pass");
+} else {
+  console.log("Fail");
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. if…else if…else Statement</h2>
+            <p>Used to test multiple conditions.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code>let score = 75;
+if (score >= 90) {
+  console.log("Grade A");
+} else if (score >= 75) {
+  console.log("Grade B");
+} else {
+  console.log("Grade C");
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. switch Statement</h2>
+            <p>Best for checking many possible cases.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code>let day = 2;
+switch (day) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  default:
+    console.log("Other Day");
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Write a program to check if a number is even or odd.</li>
+                    <li>Use <code>if…else</code> to check if the temperature is hot or cold.</li>
+                    <li>Write an <code>if…else if…else</code> that prints a grade based on marks.</li>
+                    <li>Use a <code>switch</code> to print the name of a month when given its number (1–12).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">7. Conclusion</h2>
+            <ul>
+                <li><strong>if</strong> → runs only when the condition is true</li>
+                <li><strong>if…else</strong> → runs one block if true, another if false</li>
+                <li><strong>if…else if…else</strong> → handles multiple conditions</li>
+                <li><strong>switch</strong> → a cleaner way to check many cases</li>
+            </ul>
+            <p>Conditional statements help JavaScript make smart decisions in programs 🎯.</p>
+        </div>
+    </div>
+</body>
+</html>
