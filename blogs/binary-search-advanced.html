@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search – Advanced Level</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🔵';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .sub-list {
+            list-style-type: '💡';
+            padding-left: 20px;
+        }
+
+        .sub-list li {
+            list-style-type: none;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '🌍';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .resources ul {
+            list-style-type: '📖';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+        
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+        
+        a {
+            color: #00A6FF;
+            text-decoration: none;
+        }
+
+        .emoji-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .emoji-list li {
+            list-style-type: none;
+        }
+        
+        .emoji-list li:before {
+            content: '🔵';
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Binary Search – Advanced Level</h1>
+        
+        <div class="introduction">
+            <h2 class="section-heading">1. Beyond Search: Binary Search on the Answer</h2>
+            <div class="intro-text">
+                <p>At beginner/intermediate levels, we used binary search to find a specific element in a sorted array. At an **advanced level**, we often use it to find the **answer itself** within a range of possibilities. This is known as **Binary Search on the Answer Space**.</p>
+                <p>💡 **Trick:** Define a function <code>f(x)</code> that returns <code>True</code> if a certain condition is satisfied for a value <code>x</code>. If this function is **monotonic** (meaning that once it returns true for a value, it will also return true for all subsequent values), then Binary Search can be applied to find the optimal <code>x</code>.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Real-Life Analogy 🌍</h2>
+            <ul class="real-life-example">
+                <li>📦 **Warehouse Capacity:** Find the minimum truck size to deliver all packages in a fixed number of days. You can binary search on the truck size.</li>
+                <li>🏟️ **Concert Ticket Pricing:** Find the maximum affordable price a majority of people can pay. You can binary search on the price.</li>
+                <li>📡 **WiFi Router Placement:** Place routers to maximize the minimum distance between them. You can binary search on the minimum distance.</li>
+            </ul>
+            <p>These problems don't have a sorted array to search through directly, but they all rely on the core logic of binary search on a monotonic answer space.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Advanced Problem Patterns</h2>
+
+            <h3>🔵 Pattern 1: Minimum in Rotated Sorted Array</h3>
+            <p>For a rotated sorted array like <code>[4,5,6,7,0,1,2]</code>, the minimum element is <code>0</code>. You can find this by binary searching on the array, comparing the middle element with the high element to see which half is sorted.</p>
+            <h4>Python Example</h4>
+            <pre><code>def findMin(nums):
+    low, high = 0, len(nums)-1
+    while low < high:
+        mid = (low + high)//2
+        if nums[mid] > nums[high]:
+            low = mid+1
+        else:
+            high = mid
+    return nums[low]
+
+print(findMin([4,5,6,7,0,1,2]))  # 0</code></pre>
+
+            <h3>🔵 Pattern 2: Binary Search on Real Numbers (Precision Search)</h3>
+            <p>You can find the square root of a number with decimal precision using binary search. The search continues until the search space becomes smaller than a predefined epsilon value, like <code>1e-6</code>.</p>
+            <h4>C Example</h4>
+            <pre><code>#include <stdio.h>
+#include <math.h>
+double sqrtPrecision(int n, double eps) {
+    double low = 0, high = n, mid;
+    while (high - low > eps) {
+        mid = (low + high)/2;
+        if (mid*mid < n) low = mid;
+        else high = mid;
+    }
+    return (low+high)/2;
+}
+int main() {
+    printf("Square root of 10: %.5f", sqrtPrecision(10, 1e-6));
+}</code></pre>
+
+            <h3>🔵 Pattern 3: Aggressive Cows 🐄 (Maximize Minimum Distance)</h3>
+            <p>Given a set of stalls, you need to place a number of cows so that the minimum distance between any two cows is as large as possible. You can binary search on the **distance**, and for each distance, use a greedy approach to check if it's possible to place all the cows.</p>
+            <h4>C++ Example</h4>
+            <pre><code>#include <bits/stdc++.h>
+using namespace std;
+
+bool canPlace(vector<int>& stalls, int cows, int dist) {
+    int count = 1, last = stalls[0];
+    for (int i=1; i<stalls.size(); i++) {
+        if (stalls[i] - last >= dist) {
+            count++;
+            last = stalls[i];
+            if (count >= cows) return true;
+        }
+    }
+    return false;
+}
+
+int aggressiveCows(vector<int>& stalls, int cows) {
+    sort(stalls.begin(), stalls.end());
+    int low = 1, high = stalls.back()-stalls[0], ans = 0;
+    while (low <= high) {
+        int mid = (low+high)/2;
+        if (canPlace(stalls, cows, mid)) {
+            ans = mid;
+            low = mid+1;
+        } else high = mid-1;
+    }
+    return ans;
+}
+
+int main() {
+    vector<int> stalls = {1,2,4,8,9};
+    cout << aggressiveCows(stalls, 3);
+}</code></pre>
+
+            <h3>🔵 Pattern 4: Book Allocation / Painter’s Partition</h3>
+            <p>Given an array of page counts for books and a number of students, you need to assign books to students such that the maximum number of pages a single student has is minimized. This is another classic binary search on the answer problem. The answer space is the possible range for the maximum number of pages a student can read.</p>
+            <h4>Java Example</h4>
+            <pre><code>class BookAllocation {
+    public static boolean canAllocate(int[] arr, int k, int limit) {
+        int count = 1, sum = 0;
+        for (int pages : arr) {
+            if (pages > limit) return false;
+            if (sum + pages > limit) {
+                count++;
+                sum = pages;
+                if (count > k) return false;
+            } else sum += pages;
+        }
+        return true;
+    }
+
+    public static int allocateBooks(int[] arr, int k) {
+        int low = 0, high = 0;
+        for (int x : arr) high += x;
+        int ans = high;
+        while (low <= high) {
+            int mid = (low+high)/2;
+            if (canAllocate(arr, k, mid)) {
+                ans = mid;
+                high = mid-1;
+            } else low = mid+1;
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] books = {12, 34, 67, 90};
+        System.out.println(allocateBooks(books, 2)); // 113
+    }
+}</code></pre>
+            
+            <h3>🔵 Pattern 5: Median of Two Sorted Arrays</h3>
+            <p>This problem, often seen in coding interviews, asks you to find the median of two sorted arrays. The solution involves binary searching on the **partition index** of one of the arrays to find the optimal split that satisfies the median conditions.</p>
+            <h4>Python Example</h4>
+            <pre><code>def findMedianSortedArrays(nums1, nums2):
+    A, B = nums1, nums2
+    if len(A) > len(B): A, B = B, A
+    m, n = len(A), len(B)
+    low, high = 0, m
+    while low <= high:
+        i = (low+high)//2
+        j = (m+n+1)//2 - i
+        L1 = A[i-1] if i > 0 else float('-inf')
+        R1 = A[i] if i < m else float('inf')
+        L2 = B[j-1] if j > 0 else float('-inf')
+        R2 = B[j] if j < n else float('inf')
+        if L1 <= R2 and L2 <= R1:
+            if (m+n)%2 == 0:
+                return (max(L1,L2) + min(R1,R2))/2
+            else:
+                return max(L1,L2)
+        elif L1 > R2:
+            high = i-1
+        else:
+            low = i+1
+
+print(findMedianSortedArrays([1,3],[2]))  # 2</code></pre>
+            
+            <h3>🔵 Pattern 6: Search in Infinite Sorted Array</h3>
+            <p>If you're given a conceptually infinite sorted array, you can't initialize a `high` pointer. The solution is to use a strategy of **exponential doubling** to find a range where the key might exist before performing a standard binary search.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Key Strategies at Advanced Level</h2>
+            <ul class="sub-list">
+                <li><p>**Binary Search on Answer Space:** This powerful technique works whenever a problem's solution space is monotonic, allowing you to use a binary search to find the optimal answer.</p></li>
+                <li><p>**Precision Handling:** For floating-point answers, you stop the search when the range (`high - low`) is smaller than a desired precision value (e.g., `1e-6`).</p></li>
+                <li><p>**Hybrid Use with Greedy:** Many advanced problems combine binary search on the answer with a **greedy feasibility check**. The binary search finds a potential answer, and the greedy algorithm checks if it's a valid solution.</p></li>
+                <li><p>**Identify Search Space:** The key is to recognize that the search space is not always array indices; it could be a distance, sum, or any other quantifiable property.</p></li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Real-Time Applications</h2>
+            <ul class="real-life-example">
+                <li>🚗 **Self-driving cars:** Finding the minimum safe braking distance.</li>
+                <li>📶 **Network optimization:** Maximizing minimum signal strength to ensure coverage.</li>
+                <li>📚 **Education tech:** Fairly splitting course modules among instructors.</li>
+                <li>🛒 **E-commerce:** Dynamic pricing based on customer behavior and purchase thresholds.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">6. Recommended Learning Resources</h2>
+            <div class="resources">
+                <ul>
+                    <li>📖 <a href="#">The Algorithm Design Manual – Steven Skiena</a>.</li>
+                    <li>🌐 <a href="#">GeeksforGeeks</a> – Advanced Binary Search Problems.</li>
+                    <li>🎥 <a href="#">MIT OpenCourseWare</a> – Binary Search & Applications.</li>
+                </ul>
+            </div>
+            
+            <h2 class="section-heading">7. Exercises (Advanced Level)</h2>
+            <ul class="sub-list">
+                <li>Find the minimum element in a rotated sorted array.</li>
+                <li>Implement square root with decimal precision using Binary Search.</li>
+                <li>Solve the Aggressive Cows problem.</li>
+                <li>Solve the Book Allocation / Painter Partition problem.</li>
+                <li>Find the Median of Two Sorted Arrays.</li>
+                <li>Search in an infinite sorted array.</li>
+                <li>Solve Koko Eating Bananas (Binary Search on speed).</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
