@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacks – Beginner’s Guide</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .syntax-box {
+            background-color: #1E242B;
+            padding: 15px;
+            border-left: 4px solid #ff9933;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-container {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #1A1E22;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #1A1E22;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+
+        .tab-button:hover {
+            background-color: #2A3138;
+        }
+
+        .tab-button.active {
+            background-color: #2A3138;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: #1E242B;
+            border-radius: 0 0 8px 8px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1A1E22;
+            color: #F0F0F0;
+        }
+        tr:nth-child(even) {
+            background-color: #1A1E22;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1>Stacks – Beginner’s Guide</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. What is a Stack?</h2>
+            <div class="intro-text">
+                <p>A Stack is a linear data structure that follows the principle: **LIFO** (Last In, First Out). The last element inserted is the first element to be removed.</p>
+                <p><strong>💡 Real-Life Analogy:</strong></p>
+                <ul>
+                    <li>**Plates in a cafeteria** 🍽️: Place a plate on top (Push). Remove the top plate first (Pop). </li>
+                    <li>**Undo/Redo in Word processors** ↩️: The last action performed is the first one undone.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Why Learn Stacks?</h2>
+            <p>Stacks are a fundamental concept and are used as a building block for many applications:</p>
+            <ul>
+                <li>Expression evaluation (Infix to Postfix, etc.)</li>
+                <li>Balanced parentheses check (e.g., `({})`)</li>
+                <li>Browser history navigation (Back/Forward)</li>
+                <li>Recursion (the system's call stack)</li>
+                <li>Undo/Redo operations in text editors</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Basic Stack Operations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Push(x)</code></td>
+                        <td>Adds an element `x` to the top of the stack.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Pop()</code></td>
+                        <td>Removes the top element from the stack.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Peek()/Top()</code></td>
+                        <td>Returns the top element without removing it.</td>
+                    </tr>
+                    <tr>
+                        <td><code>isEmpty()</code></td>
+                        <td>Checks if the stack contains any elements.</td>
+                    </tr>
+                    <tr>
+                        <td><code>isFull()</code></td>
+                        <td>(For fixed-size stacks) Checks if the stack is full.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Implementation of Stack</h2>
+            <h3>A. Using Arrays (Static Stack)</h3>
+            <p>An array-based stack has a fixed size. We use a variable, `top`, to track the top of the stack.</p>
+            
+            <div class="tab-container">
+                <button class="tab-button" onclick="openCode(event, 'c-code')">C</button>
+                <button class="tab-button" onclick="openCode(event, 'cpp-code')">C++</button>
+                <button class="tab-button" onclick="openCode(event, 'python-code')">Python</button>
+                <button class="tab-button" onclick="openCode(event, 'java-code')">Java</button>
+            </div>
+            
+            <div id="c-code" class="tab-content">
+                <h3>C Example</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <stdio.h>
+#define MAX 5
+int stack[MAX], top = -1;
+
+void push(int x) {
+    if (top == MAX-1) printf("Stack Overflow\n");
+    else stack[++top] = x;
+}
+
+void pop() {
+    if (top == -1) printf("Stack Underflow\n");
+    else printf("Popped: %d\n", stack[top--]);
+}
+
+void peek() {
+    if (top == -1) printf("Stack Empty\n");
+    else printf("Top: %d\n", stack[top]);
+}
+
+int main() {
+    push(10); push(20); push(30);
+    peek(); 
+    pop(); 
+    peek();
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="cpp-code" class="tab-content">
+                <h3>C++ Example</h3>
+                <div class="syntax-box">
+                    <pre><code>#include <iostream>
+using namespace std;
+#define MAX 5
+int stack[MAX], top = -1;
+
+void push(int x) {
+    if (top == MAX-1) cout << "Stack Overflow\n";
+    else stack[++top] = x;
+}
+void pop() {
+    if (top == -1) cout << "Stack Underflow\n";
+    else cout << "Popped: " << stack[top--] << "\n";
+}
+void peek() {
+    if (top == -1) cout << "Stack Empty\n";
+    else cout << "Top: " << stack[top] << "\n";
+}
+int main() {
+    push(10); push(20); push(30);
+    peek(); pop(); peek();
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div id="python-code" class="tab-content">
+                <h3>Python Example</h3>
+                <div class="syntax-box">
+                    <pre><code>stack = []
+
+stack.append(10) # Push
+stack.append(20)
+stack.append(30)
+
+print("Top:", stack[-1]) # Peek
+print("Popped:", stack.pop()) # Pop
+print("Top after pop:", stack[-1])</code></pre>
+                </div>
+            </div>
+
+            <div id="java-code" class="tab-content">
+                <h3>Java Example</h3>
+                <div class="syntax-box">
+                    <pre><code>import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        System.out.println("Top: " + stack.peek());
+        System.out.println("Popped: " + stack.pop());
+        System.out.println("Top after pop: " + stack.peek());
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <h3>B. Using Linked List (Dynamic Stack) – Concept</h3>
+            <p>Unlike an array, a linked list stack can grow dynamically. Each node in the list holds data and a pointer to the next node. The `push` operation involves inserting at the head, and `pop` involves removing from the head. (Code can be explored in an intermediate guide.)</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Real-Time Examples</h2>
+            <ul>
+                <li><strong>Undo/Redo in Text Editors</strong> ✍️: Each action is pushed onto a stack. To undo, you simply pop the last action.</li>
+                <li><strong>Browser Back/Forward</strong> 🌐: The back button pops the current page from the history stack, while the forward button pushes it back onto a forward-history stack.</li>
+                <li><strong>Recursive Function Calls</strong> 🔄: The system manages a call stack to keep track of the sequence of function calls.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Beginner-Level Problems</h2>
+            <ul>
+                <li>Implement a stack using arrays.</li>
+                <li>Push 5 elements and pop 2, then display the remaining elements.</li>
+                <li>Write a program to reverse a string using a stack.</li>
+                <li>Implement <code>peek()</code> and <code>isEmpty()</code> functions.</li>
+                <li>Evaluate whether a string of parentheses is balanced using a stack.</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">7. Recommended Resources</h2>
+            <ul>
+                <li><strong>Book:</strong> 📖 "Data Structures and Algorithms in C" – Reema Thareja</li>
+                <li><strong>Online Guide:</strong> 🌐 GeeksforGeeks – Stack Basics</li>
+                <li><strong>Video Tutorial:</strong> 🎥 YouTube: Abdul Bari – Stack Explanation</li>
+                <li><strong>Practice Platforms:</strong> 🚀 LeetCode, HackerRank, Codeforces</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function openCode(evt, codeName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = evt.currentTarget.parentNode.parentNode.querySelectorAll('.tab-content');
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = evt.currentTarget.parentNode.querySelectorAll('.tab-button');
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(codeName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContainers = document.querySelectorAll('.tab-container');
+            tabContainers.forEach(function(container) {
+                var firstButton = container.querySelector('.tab-button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
