@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to the DOM</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Introduction to the DOM</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p>The **DOM (Document Object Model)** is a programming interface for web pages. It represents the page as a tree of objects (nodes), allowing JavaScript to access, modify, and manipulate HTML and CSS dynamically. Understanding the DOM is essential for making interactive web pages.</p>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. DOM Structure</h2>
+            <ul>
+                <li>Every HTML page is a document object.</li>
+                <li>Elements like <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;button&gt;</code> are nodes in the DOM tree.</li>
+                <li>JavaScript can traverse, access, and modify these nodes.</li>
+            </ul>
+            <p><strong>Example:</strong></p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h1 id="heading"&gt;Hello, World!&lt;/h1&gt;
+  &lt;p class="text"&gt;This is a paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <ul>
+                <li>The <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code> tags are nodes.</li>
+                <li><code>document</code> is the root object representing the page.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Selecting Elements in the DOM</h2>
+            <h3>(A) By ID</h3>
+            <pre><code>let heading = document.getElementById("heading");
+console.log(heading.textContent); // Hello, World!</code></pre>
+            <h3>(B) By Class Name</h3>
+            <pre><code>let paragraphs = document.getElementsByClassName("text");
+console.log(paragraphs[0].textContent); // This is a paragraph.</code></pre>
+            <h3>(C) By Tag Name</h3>
+            <pre><code>let allParagraphs = document.getElementsByTagName("p");
+console.log(allParagraphs.length); // 1</code></pre>
+            <h3>(D) Using querySelector</h3>
+            <p>● Selects the first matching element using a CSS selector</p>
+            <pre><code>let firstParagraph = document.querySelector(".text");
+console.log(firstParagraph.textContent); // This is a paragraph.</code></pre>
+            <h3>(E) Using querySelectorAll</h3>
+            <p>● Selects all matching elements using a CSS selector</p>
+            <pre><code>let allParagraphs = document.querySelectorAll("p");
+allParagraphs.forEach(p => console.log(p.textContent));</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Select an element by ID and change its text content.</li>
+                    <li>Select all elements by class and change their style color.</li>
+                    <li>Use <code>querySelector</code> to select the first <code>&lt;p&gt;</code> element and make it bold.</li>
+                    <li>Use <code>querySelectorAll</code> to loop through all <code>&lt;li&gt;</code> items and change their background color.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Advantages ✅</h2>
+            <ul>
+                <li>Makes web pages interactive and dynamic</li>
+                <li>Allows modifying content, styles, and attributes in real time</li>
+                <li>Can respond to user events like clicks, typing, and scrolling</li>
+                <li>Works with all modern browsers</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Disadvantages ❌</h2>
+            <ul>
+                <li>Direct DOM manipulation can be slow for large documents</li>
+                <li>Excessive use of DOM methods may make code hard to maintain</li>
+                <li>Beginners may get confused with node lists vs arrays</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. How to Save and Run DOM Examples</h2>
+            <p>1. Open a text editor (VS Code, Sublime, Notepad++).</p>
+            <p>2. Write your HTML and JavaScript code.</p>
+            <p>3. Save the file with a <code>.html</code> extension, e.g., <code>dom.html</code>.</p>
+            <p>4. Open it in a browser to see the results.</p>
+            <p><strong>Example HTML:</strong></p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;DOM Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 id="heading"&gt;Hello, World!&lt;/h1&gt;
+  &lt;p class="text"&gt;This is a paragraph.&lt;/p&gt;
+  
+  &lt;script&gt;
+    let heading = document.getElementById("heading");
+    heading.textContent = "Welcome to the DOM!";
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">8. Conclusion</h2>
+            <ul>
+                <li>The DOM represents HTML documents as objects, allowing dynamic access and modification.</li>
+                <li>Use <code>getElementById</code>, <code>getElementsByClassName</code>, <code>getElementsByTagName</code>, <code>querySelector</code>, and <code>querySelectorAll</code> to select elements.</li>
+                <li>Mastering DOM selection is essential for interactive web pages and event handling.</li>
+            </ul>
+            <p>📌 Tip: Start by selecting elements and changing their text or style before moving to event handling and DOM manipulation.</p>
+        </div>
+    </div>
+</body>
+</html>
+
