@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging and Error Handling in JavaScript</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Debugging and Error Handling in JavaScript</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p>Errors are inevitable in programming. JavaScript provides tools to detect, debug, and handle errors gracefully. Proper debugging and error handling improve code reliability and user experience.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Types of Errors in JavaScript</h2>
+            <h3>Syntax Errors</h3>
+            <p>→ Mistakes in code structure</p>
+            <pre><code>console.log("Hello World" // Missing closing parenthesis</code></pre>
+            <h3>Runtime Errors</h3>
+            <p>→ Occur during execution</p>
+            <pre><code>let num;
+console.log(num.toFixed(2)); // Error: Cannot read property 'toFixed' of undefined</code></pre>
+            <h3>Logical Errors</h3>
+            <p>→ Code runs but produces the wrong output</p>
+            <pre><code>let total = 10 + "5"; // Output: "105" instead of 15</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Debugging Techniques</h2>
+            <h3>(A) Using console.log</h3>
+            <p>● Most common method to trace values and execution.</p>
+            <pre><code>let x = 10;
+console.log("Value of x:", x);</code></pre>
+            <h3>(B) Using console.error</h3>
+            <p>● Shows errors clearly in the console.</p>
+            <pre><code>console.error("Something went wrong!");</code></pre>
+            <h3>(C) Using console.table</h3>
+            <p>● Displays arrays or objects in table format for easier inspection.</p>
+            <pre><code>let users = [
+    {name: "Durga", age: 20},
+    {name: "Lakshmi", age: 22}
+];
+console.table(users);</code></pre>
+            <h3>(D) Browser Debugger</h3>
+            <p>● Use breakpoints, step-over, step-into, and inspect variables directly in browser dev tools.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Error Handling with try...catch</h2>
+            <p>● <code>try</code> → Code that may throw an error</p>
+            <p>● <code>catch</code> → Handle the error without stopping execution</p>
+            <p>● <code>finally</code> → Code that runs regardless of the error</p>
+            <pre><code>try {
+    let result = riskyOperation(); // May throw an error
+    console.log(result);
+} catch (error) {
+    console.log("Error occurred:", error.message);
+} finally {
+    console.log("Execution finished");
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Throwing Custom Errors</h2>
+            <p>● Use <code>throw</code> to create custom errors.</p>
+            <pre><code>function checkAge(age) {
+    if(age < 18) {
+        throw new Error("You must be 18 or older");
+    } else {
+        console.log("Access granted");
+    }
+}
+
+try {
+    checkAge(16);
+} catch (error) {
+    console.log(error.message);
+}</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Create a <code>try...catch</code> block around a division operation and handle division by zero.</li>
+                    <li>Use <code>console.table</code> to display an array of objects.</li>
+                    <li>Throw a custom error if a string input is empty.</li>
+                    <li>Debug a function using <code>console.log</code> to find a logical error.</li>
+                    <li>Use the browser debugger to step through a simple loop and inspect variables.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Advantages ✅</h2>
+            <ul>
+                <li>Helps identify and fix bugs quickly</li>
+                <li>Prevents the program from crashing unexpectedly</li>
+                <li>Provides meaningful error messages to developers</li>
+                <li>Improves code reliability and user experience</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">8. Disadvantages ❌</h2>
+            <ul>
+                <li>Overusing <code>try...catch</code> for normal control flow can slow down performance</li>
+                <li>Console debugging may be less effective for complex applications</li>
+                <li>Logical errors still require careful inspection, cannot be caught automatically</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">9. Conclusion</h2>
+            <ul>
+                <li><strong>JavaScript errors:</strong> syntax, runtime, logical</li>
+                <li><strong>Debugging tools:</strong> <code>console.log</code>, <code>console.error</code>, <code>console.table</code>, browser debugger</li>
+                <li><strong>Error handling:</strong> <code>try...catch</code>, <code>finally</code>, and custom <code>throw</code></li>
+                <li>Mastering debugging and error handling is essential for writing robust, maintainable JavaScript code</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
