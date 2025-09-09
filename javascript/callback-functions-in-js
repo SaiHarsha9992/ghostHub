@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Functions in JavaScript</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Callback Functions in JavaScript</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p>In JavaScript, functions are first-class objects, meaning we can pass them as arguments to other functions. These are called <strong>callback functions</strong>.</p>
+                <p>Callbacks allow us to:</p>
+                <ul>
+                    <li>Control execution order</li>
+                    <li>Handle asynchronous tasks</li>
+                    <li>Make our code modular and reusable</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. What is a Callback Function?</h2>
+            <p>A callback function is a function passed as an argument to another function and executed inside that function.</p>
+            <h3>(A) Basic Example</h3>
+            <pre><code>function greet(name) {
+  console.log("Hello, " + name);
+}
+
+function processUserInput(callback) {
+  let name = "Durga";
+  callback(name); // Calls the callback function
+}
+
+processUserInput(greet); // Output: Hello, Durga</code></pre>
+            <h3>(B) Callback with setTimeout</h3>
+            <pre><code>function sayHi() {
+  console.log("Hi after 2 seconds!");
+}
+
+setTimeout(sayHi, 2000); // Executes after 2 seconds</code></pre>
+            <h3>(C) Callback with Arrays</h3>
+            <pre><code>let numbers = [1, 2, 3, 4];
+
+numbers.forEach(function(num) {
+  console.log(num * 2); // 2, 4, 6, 8
+});</code></pre>
+            <h3>(D) Arrow Function as Callback</h3>
+            <pre><code>numbers.forEach(num => console.log(num * 3)); // 3, 6, 9, 12</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. How to Use Callback Functions</h2>
+            <p>1. Create a normal function → This can be used as a callback.</p>
+            <p>2. Pass it as an argument → Inside another function.</p>
+            <p>3. Call it inside the outer function → Execute it when needed.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code>function outerFunction(callback) {
+  console.log("Inside outer function");
+  callback(); // Executes the passed callback
+}
+
+outerFunction(() => console.log("Hello from callback!"));</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Where to Use Callbacks</h2>
+            <ul>
+                <li>Handling asynchronous tasks like <code>setTimeout</code>, <code>fetch</code>, or API calls.</li>
+                <li>Event handling in the browser (<code>click</code>, <code>mouseover</code>, <code>keydown</code>).</li>
+                <li>Array methods: <code>forEach</code>, <code>map</code>, <code>filter</code>, <code>reduce</code>.</li>
+                <li>Modular and reusable functions in large applications.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Advantages of Callbacks ✅</h2>
+            <ul>
+                <li>Helps control execution order</li>
+                <li>Makes code modular and reusable</li>
+                <li>Efficient for asynchronous operations</li>
+                <li>Widely supported in JavaScript and used in many built-in methods</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Disadvantages of Callbacks ❌</h2>
+            <ul>
+                <li>Can lead to **callback hell** if nested too deeply</li>
+                <li>Harder to read and maintain with complex logic</li>
+                <li>Debugging nested callbacks can be tricky</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Create a function that takes another function as an argument and calls it</li>
+                    <li>Use a callback to print squares of numbers in an array</li>
+                    <li>Use <code>setTimeout</code> to show a message after 3 seconds</li>
+                    <li>Convert a normal callback function into an arrow function callback</li>
+                    <li>Attach a click event to a button using a callback</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">8. How to Save and Run the File</h2>
+            <p>Open a text editor (VS Code, Sublime, Notepad++)</p>
+            <p>Write your JavaScript code</p>
+            <p>Save the file with <code>.js</code> extension, e.g., <code>callback.js</code></p>
+            <p><strong>Run it in:</strong></p>
+            <ul>
+                <li><strong>Browser:</strong> Link the <code>.js</code> file in an HTML file
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Callback Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src="callback.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </li>
+                <li><strong>Node.js:</strong> Open terminal → <code>node callback.js</code></li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">9. Conclusion</h2>
+            <ul>
+                <li><strong>Callback functions</strong> → Functions passed as arguments to other functions</li>
+                <li>They allow modular, reusable, and asynchronous code</li>
+                <li>Commonly used in timers, events, and array methods</li>
+                <li>Mastering callbacks is essential before moving to Promises and <code>async/await</code></li>
+            </ul>
+            <p>📌 Tip: Start small with callbacks, then try combining them with events and API calls.</p>
+        </div>
+    </div>
+</body>
+</html>
