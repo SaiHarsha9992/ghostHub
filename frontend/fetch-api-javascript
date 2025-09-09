@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API and Working with APIs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Fetch API and Working with APIs</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p>APIs (Application Programming Interfaces) allow your JavaScript code to communicate with servers to fetch or send data.</p>
+                <p>The **Fetch API** is a modern way to make HTTP requests in JavaScript. It returns a Promise and is simpler than older techniques like XMLHttpRequest.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Making a Simple Fetch Request</h2>
+            <pre><code>fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then(response => response.json()) // Convert response to JSON
+    .then(data => console.log(data))   // Use the data
+    .catch(error => console.log('Error:', error));</code></pre>
+            <ul>
+                <li><code>.then()</code> handles the resolved promise</li>
+                <li><code>.catch()</code> handles errors</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Fetch with Async/Await</h2>
+            <pre><code>async function getPost() {
+    try {
+        let response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+        let data = await response.json();
+        console.log(data);
+    } catch(error) {
+        console.log('Error:', error);
+    }
+}
+
+getPost();</code></pre>
+            <p>● <code>async/await</code> makes the code cleaner and easier to read</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Sending Data with POST Request</h2>
+            <pre><code>async function createPost() {
+    let postData = {
+        title: "New Post",
+        body: "This is a new post",
+        userId: 1
+    };
+
+    let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    });
+
+    let data = await response.json();
+    console.log(data);
+}
+
+createPost();</code></pre>
+            <ul>
+                <li><code>method</code> → HTTP method (GET, POST, PUT, DELETE)</li>
+                <li><code>headers</code> → Specify data type</li>
+                <li><code>body</code> → Convert object to JSON string with <code>JSON.stringify()</code></li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Handling Errors and Status Codes</h2>
+            <pre><code>fetch('https://jsonplaceholder.typicode.com/posts/1000')
+    .then(response => {
+        if(!response.ok) {
+            throw new Error('Network response was not ok ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.log('Error:', error));</code></pre>
+            <p>● Always check <code>response.ok</code> to handle HTTP errors</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Fetch a list of posts from <code>jsonplaceholder.typicode.com/posts</code> and log them.</li>
+                    <li>Fetch a single post using <code>async/await</code>.</li>
+                    <li>Send a POST request with your own data.</li>
+                    <li>Handle errors for invalid URLs or network failures.</li>
+                    <li>Display fetched data dynamically in HTML using <code>innerHTML</code> or <code>textContent</code>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Advantages ✅</h2>
+            <ul>
+                <li>Simple and modern syntax for HTTP requests</li>
+                <li>Works seamlessly with Promises and <code>async/await</code></li>
+                <li>Can handle GET, POST, PUT, DELETE requests easily</li>
+                <li>Supported by all modern browsers</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">8. Disadvantages ❌</h2>
+            <ul>
+                <li>Does not support IE without polyfills</li>
+                <li>Only handles HTTP requests; no built-in support for timeout</li>
+                <li>Error handling requires checking <code>response.ok</code> manually</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">9. Conclusion</h2>
+            <ul>
+                <li>The Fetch API is a powerful, modern way to communicate with servers.</li>
+                <li>Use <code>.then()</code> or <code>async/await</code> to handle asynchronous requests.</li>
+                <li>Always handle errors and check response status.</li>
+                <li>Fetch API is essential for working with APIs, fetching data, and building dynamic web apps.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
