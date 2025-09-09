@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage, SessionStorage, and Cookies</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">LocalStorage, SessionStorage, and Cookies</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p>Web storage allows JavaScript to store data in the browser. This is useful for saving user preferences, session info, and temporary data. There are three main storage options:</p>
+                <ul>
+                    <li><strong>LocalStorage</strong> → Stores data permanently until cleared</li>
+                    <li><strong>SessionStorage</strong> → Stores data for the current session only</li>
+                    <li><strong>Cookies</strong> → Small data stored by the browser, sent to the server with requests</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. LocalStorage</h2>
+            <p>● Stores data as key-value pairs in the browser</p>
+            <p>● Persists even after closing the browser</p>
+            <h3>Basic Methods</h3>
+            <pre><code>// Set item
+localStorage.setItem("username", "Durga");
+
+// Get item
+let name = localStorage.getItem("username");
+console.log(name); // Durga
+
+// Remove item
+localStorage.removeItem("username");
+
+// Clear all items
+localStorage.clear();</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. SessionStorage</h2>
+            <p>● Stores data for the duration of the browser tab session</p>
+            <p>● Cleared automatically when the tab is closed</p>
+            <h3>Basic Methods</h3>
+            <pre><code>// Set item
+sessionStorage.setItem("sessionName", "TestUser");
+
+// Get item
+console.log(sessionStorage.getItem("sessionName"));
+
+// Remove item
+sessionStorage.removeItem("sessionName");
+
+// Clear all items
+sessionStorage.clear();</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Cookies</h2>
+            <p>● Small pieces of data stored by the browser</p>
+            <p>● Sent with every HTTP request to the server</p>
+            <p>● Can have an expiry date</p>
+            <h3>Creating and Reading Cookies</h3>
+            <pre><code>// Set a cookie
+document.cookie = "username=Durga; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/";
+
+// Read all cookies
+console.log(document.cookie);</code></pre>
+            <p>● Note: Cookies are limited in size (~4KB) and slower than web storage.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Differences Between Storage Options</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>LocalStorage</th>
+                        <th>SessionStorage</th>
+                        <th>Cookies</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lifetime</td>
+                        <td>Permanent</td>
+                        <td>Current session</td>
+                        <td>Set expiry date / default session</td>
+                    </tr>
+                    <tr>
+                        <td>Data sent to server</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Storage size</td>
+                        <td>~5-10 MB</td>
+                        <td>~5-10 MB</td>
+                        <td>~4 KB</td>
+                    </tr>
+                    <tr>
+                        <td>Scope</td>
+                        <td>Across tabs</td>
+                        <td>Current tab only</td>
+                        <td>Across tabs depending on path/domain</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Store a username in LocalStorage and display it on page load.</li>
+                    <li>Store a temporary session ID in SessionStorage.</li>
+                    <li>Create a cookie with an expiry date and read it.</li>
+                    <li>Remove an item from LocalStorage and check if it’s removed.</li>
+                    <li>Compare the behavior of LocalStorage vs SessionStorage after closing and reopening a tab.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Advantages ✅</h2>
+            <ul>
+                <li>Easy to store and retrieve data in the browser</li>
+                <li>Reduces server requests by storing data locally</li>
+                <li>Useful for offline applications</li>
+                <li>Simple API (<code>setItem</code>, <code>getItem</code>, <code>removeItem</code>)</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">8. Disadvantages ❌</h2>
+            <ul>
+                <li>Data is not secure (anyone with browser access can view it)</li>
+                <li>Cookies are limited in size and sent with every request</li>
+                <li>LocalStorage and SessionStorage are synchronous, can block the main thread for large data</li>
+                <li>Not suitable for sensitive information</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">9. Conclusion</h2>
+            <ul>
+                <li><strong>LocalStorage</strong> → Persistent, client-side storage</li>
+                <li><strong>SessionStorage</strong> → Temporary storage for the session</li>
+                <li><strong>Cookies</strong> → Small data sent to the server with requests</li>
+                <li>Choosing the right storage depends on data size, lifetime, and sensitivity</li>
+                <li>Mastering web storage is essential for modern web applications, user preferences, and offline functionality</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
