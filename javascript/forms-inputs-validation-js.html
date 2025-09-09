@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms, Inputs, and Validation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Forms, Inputs, and Validation</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p>Forms are essential for collecting user input on web pages. JavaScript allows you to read input values, validate data, and provide feedback before sending it to the server.</p>
+                <p>Key concepts include:</p>
+                <ul>
+                    <li>Accessing form elements and input values</li>
+                    <li>Validating input dynamically</li>
+                    <li>Preventing form submission when input is invalid</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Accessing Form Elements and Input Values</h2>
+            <h3>(A) Using document.getElementById</h3>
+            <pre><code>let username = document.getElementById("username").value;
+console.log(username);</code></pre>
+            <h3>(B) Using querySelector</h3>
+            <pre><code>let email = document.querySelector("#email").value;
+console.log(email);</code></pre>
+            <h3>(C) Accessing Form Elements via Form Object</h3>
+            <pre><code>let form = document.forms["myForm"];
+let name = form["name"].value;
+console.log(name);</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Validating Inputs</h2>
+            <h3>(A) Checking for Empty Fields</h3>
+            <pre><code>let name = document.querySelector("#name").value;
+if(name === "") {
+    alert("Name cannot be empty");
+}</code></pre>
+            <h3>(B) Checking Input Length</h3>
+            <pre><code>let password = document.querySelector("#password").value;
+if(password.length < 6) {
+    alert("Password must be at least 6 characters");
+}</code></pre>
+            <h3>(C) Validating Email Format</h3>
+            <pre><code>let email = document.querySelector("#email").value;
+let regex = /^\S+@\S+\.\S+$/;
+if(!regex.test(email)) {
+    alert("Please enter a valid email");
+}</code></pre>
+            <h3>(D) Combining Multiple Validations</h3>
+            <pre><code>let form = document.querySelector("#myForm");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent form submission
+    
+    let name = form["name"].value;
+    let email = form["email"].value;
+
+    if(name === "") {
+        alert("Name is required");
+    } else if(!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Enter a valid email");
+    } else {
+        alert("Form submitted successfully!");
+    }
+});</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Real-time Validation</h2>
+            <p>● Use <code>input</code> or <code>change</code> events for instant feedback</p>
+            <pre><code>let passwordInput = document.querySelector("#password");
+
+passwordInput.addEventListener("input", function() {
+    if(passwordInput.value.length < 6) {
+        passwordInput.style.borderColor = "red";
+    } else {
+        passwordInput.style.borderColor = "green";
+    }
+});</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Create a form with name, email, and password fields.</li>
+                    <li>Validate that name is not empty and password is at least 6 characters.</li>
+                    <li>Validate email format using a regular expression.</li>
+                    <li>Provide real-time feedback as the user types.</li>
+                    <li>Prevent form submission if any validation fails.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Advantages ✅</h2>
+            <ul>
+                <li>Prevents incorrect data from being sent to the server</li>
+                <li>Provides better user experience with instant feedback</li>
+                <li>Can combine multiple validation rules easily</li>
+                <li>Works with both static and dynamic forms</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">7. Disadvantages ❌</h2>
+            <ul>
+                <li>Relying only on client-side validation is insecure (always validate on the server too)</li>
+                <li>Complex validations may require regular expressions, which can be tricky</li>
+                <li>Excessive real-time validation can affect performance on large forms</li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">8. Conclusion</h2>
+            <ul>
+                <li>JavaScript allows you to access form inputs and validate them dynamically</li>
+                <li>Use events like <code>submit</code>, <code>input</code>, and <code>change</code> for validation</li>
+                <li>Combine regex, length checks, and empty checks for robust validation</li>
+                <li>Real-time feedback improves user experience and reduces errors</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
