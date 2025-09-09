@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON in JavaScript</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-life-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-life-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: '📝';
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">JSON in JavaScript</h1>
+
+        <div class="introduction">
+            <h2 class="section-heading">1. Introduction</h2>
+            <div class="intro-text">
+                <p><strong>JSON (JavaScript Object Notation)</strong> is a lightweight data format used for storing and exchanging data. It is widely used in APIs, server communication, and web applications.</p>
+                <p>In JavaScript, we often convert JSON to objects to manipulate data and convert objects to JSON for sending data to a server.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. JSON Syntax Rules</h2>
+            <ul>
+                <li>Data is in key-value pairs.</li>
+                <li>Keys must be strings enclosed in double quotes.</li>
+                <li>Values can be strings, numbers, objects, arrays, true, false, or null.</li>
+                <li>Arrays are enclosed in <code>[ ]</code>, objects in <code>{ }</code>.</li>
+            </ul>
+            <p><strong>Example JSON:</strong></p>
+            <pre><code>{
+  "name": "Durga",
+  "age": 20,
+  "city": "Hyderabad",
+  "hobbies": ["singing", "reading"]
+}</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Parsing JSON (Converting JSON to Object)</h2>
+            <p>Use <code>JSON.parse()</code> to convert a JSON string into a JavaScript object.</p>
+            <pre><code>let jsonData = '{"name":"Durga","age":20,"city":"Hyderabad"}';
+let person = JSON.parse(jsonData);
+
+console.log(person.name); // Durga
+console.log(person.age);  // 20</code></pre>
+            <p>● Tip: Ensure the JSON string is properly formatted, otherwise <code>JSON.parse()</code> will throw an error.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Stringifying Objects (Converting Object to JSON)</h2>
+            <p>Use <code>JSON.stringify()</code> to convert a JavaScript object into a JSON string.</p>
+            <pre><code>let person = {
+    name: "Durga",
+    age: 20,
+    city: "Hyderabad"
+};
+
+let jsonString = JSON.stringify(person);
+console.log(jsonString);
+// {"name":"Durga","age":20,"city":"Hyderabad"}</code></pre>
+            <p>● Useful for sending data to a server or storing in local storage.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Formatting JSON</h2>
+            <p><code>JSON.stringify</code> can take additional parameters to format JSON nicely.</p>
+            <pre><code>let person = {
+    name: "Durga",
+    age: 20,
+    city: "Hyderabad"
+};
+
+let formattedJSON = JSON.stringify(person, null, 4);
+console.log(formattedJSON);
+/*
+{
+    "name": "Durga",
+    "age": 20,
+    "city": "Hyderabad"
+}
+*/</code></pre>
+            <p>● The third parameter specifies the number of spaces for indentation.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Mini-Practice Tasks 📝</h2>
+            <div class="resources">
+                <ul>
+                    <li>Convert a JSON string of your favorite movies into a JavaScript object.</li>
+                    <li>Access and print specific properties from the object.</li>
+                    <li>Convert a JavaScript object into a JSON string and log it.</li>
+                    <li>Use indentation in <code>JSON.stringify</code> to format it nicely.</li>
+                    <li>Store a JSON string in <code>localStorage</code> and retrieve it using <code>JSON.parse</code>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">7. Advantages of JSON ✅</h2>
+            <ul>
+                <li>Lightweight and easy to read/write</li>
+                <li>Standard format for data exchange between client and server</li>
+                <li>Works with almost all programming languages</li>
+                <li>Can represent complex data structures like arrays and nested objects</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">8. Disadvantages of JSON ❌</h2>
+            <ul>
+                <li>Keys must always be strings in double quotes</li>
+                <li>Cannot store functions, <code>undefined</code>, or special JavaScript objects like <code>Date</code> directly</li>
+                <li>Large JSON files may be slow to parse in the browser</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">9. How to Save and Run JSON Examples</h2>
+            <p>1. Open a text editor (VS Code, Sublime, Notepad++).</p>
+            <p>2. Write your JavaScript code using <code>JSON.parse()</code> and <code>JSON.stringify()</code>.</p>
+            <p>3. Save the file with a <code>.js</code> extension, e.g., <code>json.js</code>.</p>
+            <p><strong>Run in Browser:</strong></p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;JSON Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src="json.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p><strong>Run in Node.js:</strong></p>
+            <p>Open terminal → <code>node json.js</code></p>
+        </div>
+
+        <div class="conclusion">
+            <h2 class="section-heading">10. Conclusion</h2>
+            <ul>
+                <li>JSON is a lightweight format for storing and exchanging data.</li>
+                <li><code>JSON.parse()</code> → Convert JSON string to JavaScript object.</li>
+                <li><code>JSON.stringify()</code> → Convert JavaScript object to JSON string.</li>
+                <li>Formatting JSON improves readability, especially for APIs and local storage.</li>
+                <li>Mastering JSON is essential for working with APIs, servers, and web applications.</li>
+            </ul>
+            <p>📌 Tip: Always validate your JSON format online or using tools to avoid parsing errors.</p>
+        </div>
+    </div>
+</body>
+</html>
