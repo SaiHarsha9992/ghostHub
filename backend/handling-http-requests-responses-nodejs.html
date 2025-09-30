@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handling HTTP Requests & Responses in Node.js</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+        
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-world-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-world-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1E242B;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2A3138;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Handling HTTP Requests & Responses in Node.js</h1>
+        <p>Learn the core of web communication in Node.js and how to master client-server interaction 😎</p>
+
+        <div class="introduction">
+            <h2 class="section-heading">Introduction</h2>
+            <div class="intro-text">
+                <p><strong>HTTP (HyperText Transfer Protocol)</strong> is the backbone of web communication. In Node.js, handling HTTP requests and responses is like managing a WhatsApp group:</p>
+                <ul>
+                    <li><strong>Requests:</strong> Students send messages asking for notes, homework updates, or announcements.</li>
+                    <li><strong>Responses:</strong> You reply back with the info, images, or funny memes.</li>
+                </ul>
+                <p>Mastering HTTP requests & responses allows you to control what data goes in and what comes out of your server.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">HTTP Methods</h2>
+            <p>HTTP provides standard methods for communication between client and server:</p>
+            <ul>
+                <li><strong>GET:</strong> Fetch data from the server.</li>
+                <li><strong>POST:</strong> Send new data to the server.</li>
+                <li><strong>PUT:</strong> Update existing data.</li>
+                <li><strong>DELETE:</strong> Remove data from the server.</li>
+                <li><strong>PATCH:</strong> Partially update existing data.</li>
+            </ul>
+            <p><strong>Student analogy:</strong> GET = check your results, POST = submit homework, PUT = edit assignment, DELETE = erase embarrassing chat.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">1. Setting up a Basic HTTP Server in Node.js</h2>
+            <p>Node.js has a built-in <code>http</code> module to handle requests and responses.</p>
+            <pre><code>// Import HTTP module
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, this is your Node.js server!');
+});
+
+server.listen(3000, () => {
+    console.log('Server running at http://localhost:3000/');
+});</code></pre>
+            <p><strong>Code Explanation:</strong></p>
+            <ul>
+                <li><code>require('http')</code>: Imports the built-in Node.js HTTP module for creating a server.</li>
+                <li><code>http.createServer((req, res) => {...})</code>: Creates an HTTP server.</li>
+                <li><code>req</code>: Request object containing client request info (URL, headers, method, body).</li>
+                <li><code>res</code>: Response object used to send data back to the client.</li>
+                <li><code>res.writeHead(200, {'Content-Type': 'text/plain'})</code>: Sets HTTP status code (200 = OK) and response headers.</li>
+                <li><code>res.end('Hello...')</code>: Ends the response and sends the message to the client.</li>
+                <li><code>server.listen(3000, () => {...})</code>: Starts the server on port 3000 and runs the callback once the server is ready.</li>
+            </ul>
+            <p>Start the server using <code>node server.js</code>. Your first Node HTTP server is ready to handle requests!</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">2. Understanding the Request Object</h2>
+            <p>The <code>req</code> object contains all information about the client’s request:</p>
+            <ul>
+                <li><code>req.url</code>: The URL requested by the client.</li>
+                <li><code>req.method</code>: HTTP method (GET, POST, etc.).</li>
+                <li><code>req.headers</code>: Request headers like content-type or auth tokens.</li>
+                <li><code>req.body</code>: Data sent by the client (available when using middleware like <code>express.json()</code>).</li>
+            </ul>
+            <p>Think of it like reading a WhatsApp message: you know who sent it, what they want, and any extra info attached.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">3. Understanding the Response Object</h2>
+            <p>The <code>res</code> object allows you to send data back to the client:</p>
+            <ul>
+                <li><code>res.status(code)</code>: Set HTTP status code.</li>
+                <li><code>res.setHeader(name, value)</code>: Set response headers.</li>
+                <li><code>res.write(data)</code>: Write data to the response.</li>
+                <li><code>res.end(data)</code>: End response and optionally send data.</li>
+                <li><code>res.json(data)</code>: Send JSON response (commonly used in APIs).</li>
+            </ul>
+            <p><strong>Student analogy:</strong> You answer a question in class or WhatsApp; how detailed or quick your response is depends on your server logic 😎.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">4. Handling GET & POST Requests</h2>
+            <p>Example using Express.js for GET and POST:</p>
+            <pre><code>const express = require('express');
+const app = express();
+app.use(express.json());
+
+let messages = [];
+
+// GET request
+app.get('/messages', (req, res) => {
+    res.json(messages);
+});
+
+// POST request
+app.post('/messages', (req, res) => {
+    const newMessage = req.body;
+    messages.push(newMessage);
+    res.status(201).json(newMessage);
+});
+
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));</code></pre>
+            <p><strong>Code Explanation:</strong></p>
+            <ul>
+                <li><code>app.use(express.json())</code>: Middleware to parse JSON request bodies.</li>
+                <li><code>let messages = [];</code>: An array storing messages (simulating a simple database).</li>
+                <li><code>app.get('/messages', (req, res) => {...})</code>: GET route to fetch all messages.</li>
+                <li><code>req</code>: Request info (not used here).</li>
+                <li><code>res.json(messages)</code>: Sends the array as JSON to the client.</li>
+                <li><code>app.post('/messages', (req, res) => {...})</code>: POST route to add a new message.</li>
+                <li><code>req.body</code>: Contains the JSON data sent by the client.</li>
+                <li><code>messages.push(newMessage)</code>: Adds the new message to the array.</li>
+                <li><code>res.status(201).json(newMessage)</code>: Sends response with status 201 (Created).</li>
+                <li><code>app.listen(3000,...)</code>: Starts the server on port 3000.</li>
+            </ul>
+            <p><strong>Analogy:</strong> GET = checking all messages in the WhatsApp group, POST = sending a new message.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">5. Request & Response Flow</h2>
+            <p>Visualizing the flow of HTTP requests and responses:</p>
+            <pre><code>[Client Browser / App]
+      |
+      v
+[HTTP Request] --> GET / POST / PUT / DELETE
+      |
+      v
+[Node.js Server] --> Processes request
+      |
+      v
+[Response Object] --> Sends data back
+      |
+      v
+[Client Receives Response] --> Display data</code></pre>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Advanced Topics</h2>
+            <ul>
+                <li><strong>Query Parameters:</strong> Handle optional data in requests.</li>
+                <li><strong>Route Parameters:</strong> Extract dynamic parts of URLs.</li>
+                <li><strong>Error Handling:</strong> Send proper HTTP codes for errors.</li>
+                <li><strong>Middleware:</strong> Process requests before route handling.</li>
+                <li><strong>Streaming Data:</strong> Send or receive large data without loading it all in memory.</li>
+                <li><strong>Asynchronous Handling:</strong> Handle multiple requests efficiently using <code>async/await</code> or callbacks.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
