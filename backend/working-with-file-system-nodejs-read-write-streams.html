@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with File System in Node.js</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #00A6FF;
+            padding-left: 15px;
+        }
+        
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '🤖';
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-world-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #ff9933;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-world-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">📂 Working with File System in Node.js – Read/Write/Streams</h1>
+
+        <div class="introduction">
+            <div class="intro-text">
+                <p>The File System (<code>fs</code>) module in Node.js is like the “USB drive of your code” — it lets your program read, write, and stream files directly on your computer. Think of it as the college lab assistant: always handling files, assignments, and saving your “all-nighter project” before the deadline 😅.</p>
+            </div>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">1. Importing the File System Module</h2>
+            <p>The <code>fs</code> module comes built-in with Node.js (no npm install required 🎉). You can access it by requiring it like this:</p>
+            <pre><code>const fs = require('fs');</code></pre>
+            <p>That’s like saying, <em>“Yo Node.js, bring me the file manager toolbox.”</em></p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Reading Files</h2>
+            <p>Reading files in Node.js is like copying notes from your topper friend 📒. You have two main ways:</p>
+            <h3>Synchronous Reading</h3>
+            <pre><code>const data = fs.readFileSync('example.txt', 'utf-8');
+console.log(data);</code></pre>
+            <p>This blocks everything until the file is read. Like waiting in the mess queue 🍛 — no other work until food arrives.</p>
+            <h3>Asynchronous Reading</h3>
+            <pre><code>fs.readFile('example.txt', 'utf-8', (err, data) => {
+  if (err) {
+    console.log('Error reading file');
+    return;
+  }
+  console.log(data);
+});</code></pre>
+            <p>Here, Node.js multitasks like your friend who eats biryani 🍗 while watching Netflix 📺.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Writing Files</h2>
+            <p>Writing to a file is like submitting your assignment. You either overwrite or append content.</p>
+            <pre><code>fs.writeFile('notes.txt', 'Hello, Node.js!', (err) => {
+  if (err) throw err;
+  console.log('File created successfully!');
+});</code></pre>
+            <p>Boom 💥 — new file created. Just don’t try this on your project files without backups (been there, cried later 🥲).</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Working with Streams</h2>
+            <p>Streams are like downloading a movie in parts instead of waiting for the whole 4GB file. Node.js processes data in <strong>chunks</strong>, making it memory-efficient.</p>
+            <pre><code>const readStream = fs.createReadStream('bigfile.txt', 'utf-8');
+
+readStream.on('data', (chunk) => {
+  console.log('Received chunk:', chunk);
+});</code></pre>
+            <p>It’s like eating a family-sized pizza slice by slice 🍕 instead of trying to stuff the whole thing at once.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">📊 Flowchart of FS Operations</h2>
+            <pre><code>  [ Start ]
+      |
+      v
+  [ Import fs ]
+      |
+      v
+  [ Read File ] -----> [ Write File ]
+      |                      |
+      v                      v
+  [ Streams ] ---------> [ Process Large Data ]
+      |
+      v
+  [ End ]</code></pre>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Real-World Analogy for Students</h2>
+            <ul>
+                <li><strong>Read File:</strong> Copying your topper’s assignment 📑.</li>
+                <li><strong>Write File:</strong> Submitting your own assignment.</li>
+                <li><strong>Append File:</strong> Adding extra answers after the teacher announced bonus questions.</li>
+                <li><strong>Streams:</strong> Sharing lecture notes on WhatsApp page by page instead of one huge PDF.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">6. Error Handling in FS</h2>
+            <p>Always handle errors. Otherwise, your program crashes like your WiFi during online exams 😭.</p>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">📌 Conclusion & More Resources</h2>
+            <p>The <code>fs</code> module is your best buddy when working with files. From reading notes to writing projects and handling large data with streams — Node.js makes file handling fast and fun.</p>
+            <h3>🔗 Additional Links for Deep Dive:</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://nodejs.org/docs/latest/api/fs.html" target="_blank">Official Node.js FS Docs</a></li>
+                    <li><a href="https://www.w3schools.com/nodejs/nodejs_filesystem.asp" target="_blank">W3Schools FS Tutorial</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/node-js-file-system/" target="_blank">GeeksForGeeks Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
