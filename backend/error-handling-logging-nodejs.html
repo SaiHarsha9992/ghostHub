@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling & Logging Best Practices in Node.js</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+        html, body {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #E0E0E0;
+            background-color: #0B0F11;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;
+        }
+            
+        .content-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #F0F0F0;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section-heading {
+            font-size: 1.8em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .introduction, .section-content, .conclusion {
+            background-color: #0B0F11;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            border-left: 5px solid #FF9933; /* Changed intro color for emphasis */
+            padding-left: 15px;
+        }
+        
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul {
+            list-style-type: '⚡'; /* Changed list style for errors */
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            padding-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .real-world-example {
+            background-color: #0B0F11;
+            border-left: 4px solid #00A6FF;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .real-world-example ul {
+            list-style-type: '💡';
+        }
+
+        .conclusion {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .resources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .resources ul li::before {
+            content: none;
+        }
+
+        .resources li {
+            background-color: #1E242B;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+        }
+
+        /* Styling for the Errors table */
+        .error-table {
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #1E242B;
+        }
+        .error-table p {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-wrapper">
+        <h1 class="section-heading">Error Handling & Logging Best Practices in Node.js</h1>
+        <p>Learn how to catch errors, log them smartly, and avoid server chaos 😎</p>
+
+        <div class="introduction">
+            <div class="intro-text">
+                <p>Errors happen… even in your Node.js apps! From typos in code to network failures, unexpected things occur. Handling these errors properly prevents your server from crashing and helps you debug issues faster.</p>
+                <p>Logging is like your app keeping a diary—recording what happened, when, and why. Proper logs help developers trace issues, monitor performance, and fix bugs efficiently.</p>
+                <p><strong>Student analogy:</strong> Imagine your hostel Wi-Fi fails during an online exam. Error handling = you report it correctly, logging = you note down the Wi-Fi error time and what happened to explain to your seniors 😅.</p>
+            </div>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">1. Types of Errors</h2>
+            <div class="error-table">
+                <pre><code>Types of Errors
+  |
+  |-- Synchronous Errors
+  |
+  |-- Asynchronous Errors
+  |
+  |-- Operational Errors
+  |
+  |-- Programmer Errors</code></pre>
+            </div>
+            <p>Node.js errors can be categorized to help you handle them more effectively:</p>
+
+            <h3>Synchronous Errors</h3>
+            <p>Happen in normal code execution line by line. Easily handled using try-catch.</p>
+            <pre><code>try {
+    const number = JSON.parse('123abc'); // Invalid JSON
+} catch (error) {
+    console.error('Synchronous error caught:', error.message);
+}</code></pre>
+
+            <h3>Asynchronous Errors</h3>
+            <p>Happen in callbacks, promises, or async/await. Require proper async error handling.</p>
+            <pre><code>setTimeout(() => {
+    try {
+        throw new Error('Async error!');
+    } catch (error) {
+        console.error('Caught inside callback:', error.message);
+    }
+}, 1000);</code></pre>
+
+            <h3>Operational Errors</h3>
+            <p>External issues like database unavailability, network failures, or file system errors.</p>
+            <pre><code>const fs = require('fs');
+fs.readFile('/wrong/path/file.txt', 'utf8', (err, data) => {
+    if (err) console.error('Operational error:', err.message);
+});</code></pre>
+
+            <h3>Programmer Errors</h3>
+            <p>Bugs in your code like undefined variables, type errors, or logical mistakes.</p>
+            <pre><code>function divide(a, b) {
+    return a / b;
+}
+console.log(divide(5, x)); // ReferenceError: x is not defined</code></pre>
+            <p><strong>Student analogy:</strong> Synchronous errors = forgetting your notebook in class, asynchronous errors = waiting for your friend to submit an assignment online, operational errors = Wi-Fi down during an online quiz, programmer errors = calculating your CGPA wrong 😅.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">2. Basic Error Handling</h2>
+            <p>Using <code>try-catch</code> for synchronous errors:</p>
+            <pre><code>try {
+    const data = JSON.parse('{"name":"John"}');
+    console.log('Parsed data:', data);
+} catch (error) {
+    console.error('Error parsing JSON:', error.message);
+}</code></pre>
+            <p><strong>Code Explanation:</strong></p>
+            <ul>
+                <li><code>try { ... }</code>: Code that may throw an error.</li>
+                <li><code>catch (error) { ... }</code>: Captures the error object if any error occurs.</li>
+                <li><code>error.message</code>: Contains a human-readable error description.</li>
+                <li><code>console.error(...)</code>: Logs the error in red in your terminal.</li>
+            </ul>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">3. Handling Asynchronous Errors</h2>
+            <p>Async functions require <code>try-catch</code> or <code>.catch()</code> for promises:</p>
+            <pre><code>async function fetchData() {
+    try {
+        // Assume fetch is available (e.g., node-fetch installed)
+        const response = await fetch('https://api.example.com/data'); 
+        const data = await response.json();
+        console.log('Data:', data);
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+    }
+}
+
+fetchData();</code></pre>
+            <p><strong>Code Explanation:</strong></p>
+            <ul>
+                <li><code>async function fetchData()</code>: Declares an asynchronous function.</li>
+                <li><code>await fetch(...)</code>: Waits for the HTTP request to complete.</li>
+                <li><code>try-catch</code>: Captures both synchronous and asynchronous errors inside async function.</li>
+            </ul>
+            <p><strong>Analogy:</strong> Like checking your hostel Wi-Fi multiple times, and if it fails, you catch the error and report it properly 😅.</p>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">4. Logging Best Practices</h2>
+            <ul>
+                <li><strong>Use a Logging Library:</strong> Libraries like <strong>winston</strong> or <strong>pino</strong> for structured logs.</li>
+                <li><strong>Separate Log Levels:</strong> <code>info</code>, <code>warn</code>, <code>error</code>, <code>debug</code> for clarity.</li>
+                <li><strong>Include Timestamps:</strong> Helps trace issues in production.</li>
+                <li><strong>Avoid Logging Sensitive Info:</strong> Keep passwords, API keys out of logs.</li>
+                <li><strong>Centralized Logging:</strong> Tools like ELK stack, Graylog, or cloud logging for big apps.</li>
+            </ul>
+        </div>
+        
+        <div class="section-content">
+            <h2 class="section-heading">5. Example: Using Winston for Logging</h2>
+            <pre><code>const winston = require('winston');
+
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
+    transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'combined.log' })
+    ]
+});
+
+// Usage
+logger.info('Server started successfully');
+logger.error('Database connection failed');</code></pre>
+            <p><strong>Code Explanation:</strong></p>
+            <ul>
+                <li><code>winston.createLogger()</code>: Creates a logger instance.</li>
+                <li><code>level</code>: Minimum severity level to log.</li>
+                <li><code>format</code>: Combines timestamp and JSON format for readable logs.</li>
+                <li><code>transports</code>: Determines where logs are written (console, files).</li>
+                <li><code>logger.info(...)</code> & <code>logger.error(...)</code>: Log messages at different levels.</li>
+            </ul>
+            <p><strong>Student analogy:</strong> Think of it like keeping separate diaries: one for regular events, one for major failures 😅.</p>
+        </div>
+
+        <div class="section-content">
+            <h2 class="section-heading">6. Advanced Topics</h2>
+            <ul>
+                <li><strong>Global Error Handlers:</strong> <code>process.on('uncaughtException')</code> and <code>process.on('unhandledRejection')</code>.</li>
+                <li><strong>Structured Logging:</strong> Use JSON logs for easy parsing by log monitoring tools.</li>
+                <li><strong>Monitoring & Alerts:</strong> Integrate with tools like Sentry, New Relic, or Datadog.</li>
+                <li><strong>Contextual Logging:</strong> Include request ID, user info, and session context.</li>
+            </ul>
+        </div>
+        
+        <div class="conclusion">
+            <h2 class="section-heading">Conclusion</h2>
+            <p>Proper error handling and logging are essential for building reliable and maintainable Node.js applications. Catch errors, log them smartly, and monitor your server to prevent chaos.</p>
+            <h3>Learn More:</h3>
+            <div class="resources">
+                <ul>
+                    <li><a href="https://www.npmjs.com/package/winston" target="_blank">Winston Logging Library</a></li>
+                    <li><a href="https://nodejs.dev/learn/error-handling-in-nodejs" target="_blank">Node.js Error Handling Best Practices</a></li>
+                    <li><a href="https://sentry.io/" target="_blank">Sentry Error Monitoring</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
